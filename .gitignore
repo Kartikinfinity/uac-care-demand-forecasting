@@ -26,3 +26,9 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+
+# Data artifacts
+*.parquet
+data/interim/
+data/processed/
+forecasts/
