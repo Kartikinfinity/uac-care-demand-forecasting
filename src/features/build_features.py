@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 import sys
+from datetime import timedelta
+
 import holidays
 
 # Ensure project root is in path
@@ -10,7 +12,8 @@ sys.path.insert(0, str(project_root))
 
 from src.config import (
     MASTER_SERIES_PATH, NUMERIC_COLS, TARGET_1, TARGET_2,
-    COL_TRANSFERRED, COL_DISCHARGED, DATA_PROCESSED_DIR, COL_DATE
+    COL_TRANSFERRED, COL_DISCHARGED, DATA_PROCESSED_DIR, COL_DATE,
+    LAG_PERIODS, ROLLING_WINDOWS, ROLLING_MIN_PERIODS_MEAN, ROLLING_MIN_PERIODS_VAR,
 )
 
 PROCESSED_DIR = DATA_PROCESSED_DIR
@@ -27,13 +30,19 @@ def add_calendar_features(df: pd.DataFrame) -> pd.DataFrame:
     # Holiday proximity flag (US federal holidays)
     us_holidays = holidays.US(years=df_feat['parsed_date'].dt.year.unique())
     
-    # Check if current date, date+1, date+2, date-1, date-2 is a holiday
-    # We use a 2-day proximity
+    # Holiday PROXIMITY, deliberately calendar-based: this is the only feature
+    # that is genuinely about wall-clock dates rather than reporting periods, so
+    # invariant 1 (no calendar arithmetic) does not apply to it. Lags, rolling
+    # windows and horizons all remain strict period-position offsets.
+    #
+    # Membership is tested on datetime.date objects. Adding a pandas Timedelta
+    # to a Timestamp and testing THAT against the holidays mapping raised a
+    # NumPy deprecation on every call (3,588 warnings per test run) and is slated
+    # to become an error.
     def is_near_holiday(d):
-        for offset in range(-2, 3):
-            if (d + pd.Timedelta(days=offset)) in us_holidays:
-                return 1
-        return 0
+        base = d.date()
+        return int(any((base + timedelta(days=offset)) in us_holidays
+                       for offset in range(-2, 3)))
 
     df_feat['is_near_holiday'] = df_feat['parsed_date'].apply(is_near_holiday)
     
@@ -51,24 +60,37 @@ def add_lag_and_rolling_features(df: pd.DataFrame) -> pd.DataFrame:
     
     cols_to_lag = NUMERIC_COLS + ['net_flow']
     
-    # 2. Lags (t-1, t-7, t-14)
-    lags = [1, 7, 14]
+    # 2. Lags -- integer offsets on the period-position index, never calendar
+    #    arithmetic (invariant 1). `.shift(k)` on a positionally-ordered frame
+    #    is exactly a k-period-position offset.
     for col in cols_to_lag:
-        for lag in lags:
+        for lag in LAG_PERIODS:
             df_feat[f'lag_{lag}_{col}'] = df_feat[col].shift(lag)
-            
-    # 3. Rolling Windows (7, 14)
-    windows = [7, 14]
+
+    # 3. Rolling windows.
+    #    The series is shifted by one period FIRST, so the current row can never
+    #    enter its own window (invariant 3).
+    #
+    #    On min_periods: these are permissive by design (see config). Flow
+    #    columns are true-missing at gap slots and pandas' rolling reductions
+    #    skip NaN, so a `rolling_7` value spans 7 period-positions but may rest
+    #    on fewer than 7 observations. The name describes the window SPAN, not
+    #    the sample size. An `n_obs` column is emitted alongside every rolling
+    #    statistic so the true sample size is visible to any consumer rather
+    #    than implied by the column name.
     for col in cols_to_lag:
-        for w in windows:
-            # Shift by 1 first to prevent current-row leakage
+        for w in ROLLING_WINDOWS:
             shifted_series = df_feat[col].shift(1)
-            # Use min_periods=1 to allow early predictions, or strict w?
-            # Roadmap implies we will evaluate on robust data, but min_periods=1 is safe.
-            # We'll use strict w to be rigorously correct about window sizes.
-            df_feat[f'rolling_{w}_mean_{col}'] = shifted_series.rolling(window=w, min_periods=1).mean()
-            df_feat[f'rolling_{w}_var_{col}'] = shifted_series.rolling(window=w, min_periods=2).var()
-            
+            df_feat[f'rolling_{w}_mean_{col}'] = shifted_series.rolling(
+                window=w, min_periods=ROLLING_MIN_PERIODS_MEAN
+            ).mean()
+            df_feat[f'rolling_{w}_var_{col}'] = shifted_series.rolling(
+                window=w, min_periods=ROLLING_MIN_PERIODS_VAR
+            ).var()
+            df_feat[f'rolling_{w}_nobs_{col}'] = shifted_series.rolling(
+                window=w, min_periods=1
+            ).count()
+
     return df_feat
 
 def build_features():
@@ -91,8 +113,6 @@ def build_features():
     
     # RF Drop-NaN Logging (Addendum Sec 2 & 11)
     # Count rows with NaNs in feature space (which ML models like RF can't handle natively)
-    total_rows = len(df)
-    
     # For Target 1: Features are lags/rolling. The target itself is not dropped.
     # Exclude the raw flow columns since we use their lags for features, but 
     # if a flow column lag is NaN, the feature row is NaN.

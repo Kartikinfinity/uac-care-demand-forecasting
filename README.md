@@ -20,19 +20,39 @@ python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirements.txt          # runtime
+pip install -r requirements-dev.txt      # runtime + test tooling
 
-# Generate forecast artifacts
+# Rebuild every artifact from the raw CSV, in order
+python -m src.data.clean               # -> data/interim/master_series.parquet
+python -m src.eda                      # -> docs/eda_findings.md, reports/figures/
+python -m src.features.build_features  # -> data/processed/features_target*.parquet
+python -m src.evaluation.run_baselines # -> forecasts/*.csv, docs/day5_baseline_metrics.md
+
+# Run the test suite
+python -m pytest -q
+
+# Generate forecast artifacts (available from Day 9)
 python src/forecast/generate.py
 
-# Run the dashboard
+# Run the dashboard (available from Day 10)
 streamlit run app/Home.py
 ```
+
+### Data location
+
+The raw CSV ships at the **repository root** as
+`HHS_Unaccompanied_Alien_Children_Program (1).csv`, and `src/config.py`
+resolves it from there. The roadmap's directory sketch shows it under
+`data/raw/`; the file was delivered at the root and is read-only either way.
+This deviation is recorded rather than silently reconciled, so the documented
+path matches the path the code actually uses.
 
 ## Project Structure
 
 ```
-├── data/raw/                  # Original CSV (source of truth)
+├── HHS_..._Program (1).csv    # Original CSV (source of truth, read-only)
+├── data/raw/                  # reserved (see "Data location" above)
 ├── data/interim/              # Cleaned master series
 ├── data/processed/            # Model-ready feature tables
 ├── src/
@@ -49,7 +69,8 @@ streamlit run app/Home.py
 ├── reports/                   # Research paper, executive summary
 ├── docs/                      # Requirements matrix, discrepancy log
 ├── notebooks/                 # EDA notebooks
-├── requirements.txt
+├── requirements.txt           # runtime dependencies
+├── requirements-dev.txt       # + test tooling
 └── README.md
 ```
 

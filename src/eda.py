@@ -650,7 +650,18 @@ def write_findings_document(findings: dict):
         doc.append(f"- Secondary break: **{res['secondary_break_date']}** (CUSUM = {res['secondary_cusum_value']:.0f})")
         doc.append("")
 
-    doc.append(f"**Locked decision:** Training-window cap at **{TRAINING_CAP_DATE}** confirmed by structural-break scan.")
+    # The cap date is FROZEN by PRE_BUILD_TECHNICAL_ADDENDUM Section 2; this scan
+    # is corroborating evidence, not its source. Stating that the scan "confirms"
+    # the exact date would be false: the CUSUM argmax lands on a nearby but
+    # different date, and claiming otherwise would be a fabricated result.
+    doc.append(f"**Locked decision:** Training-window cap at **{TRAINING_CAP_DATE}**, frozen by "
+               f"`PRE_BUILD_TECHNICAL_ADDENDUM.md` Section 2 -- NOT derived from this scan.")
+    doc.append("")
+    doc.append("This scan is corroborating evidence only. It locates the dominant CUSUM "
+               "deviation at the dates listed above, which sit near but are not identical to "
+               "the frozen cap date. The scan therefore supports the existence of a regime "
+               "change in this period; it does not by itself select 2025-02-05, and this "
+               "document does not claim that it does.")
     doc.append("")
 
     # 3. Within-Week Seasonality
@@ -745,9 +756,9 @@ def write_findings_document(findings: dict):
     else:
         doc.append(f"| Seasonal period (Discharged) | None (m=1) | Kruskal-Wallis p={disch_seas.get('diff_p_value', 'N/A'):.6f}, no weekly effect |")
 
-    doc.append(f"| Training cap date | {TRAINING_CAP_DATE} | Structural-break scan confirms regime shift |")
+    doc.append(f"| Training cap date | {TRAINING_CAP_DATE} | Frozen by addendum Sec. 2; scan corroborates a regime change nearby |")
     doc.append(f"| Rolling window design | Period-based (not calendar) | Already locked in addendum |")
-    doc.append(f"| MAPE reliability | Unstable for flow columns | Zero-value days present |")
+    doc.append(f"| MAPE reliability | Unstable for flow columns | Small denominators (flow minima near 0) plus zero-value days |")
     doc.append(f"| Imbalance signal independence | {'Near-independent' if abs(corr['transferred_discharged_diff']) < 0.2 else 'Correlated'} | Diff correlation = {corr['transferred_discharged_diff']:.4f} |")
     doc.append("")
     doc.append("---")

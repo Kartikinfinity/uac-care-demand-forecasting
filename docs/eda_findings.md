@@ -27,7 +27,9 @@
 - Dominant break: **2024-07-28** (CUSUM = 35874)
 - Secondary break: **2024-07-04** (CUSUM = 35623)
 
-**Locked decision:** Training-window cap at **2025-02-05** confirmed by structural-break scan.
+**Locked decision:** Training-window cap at **2025-02-05**, frozen by `PRE_BUILD_TECHNICAL_ADDENDUM.md` Section 2 -- NOT derived from this scan.
+
+This scan is corroborating evidence only. It locates the dominant CUSUM deviation at the dates listed above, which sit near but are not identical to the frozen cap date. The scan therefore supports the existence of a regime change in this period; it does not by itself select 2025-02-05, and this document does not claim that it does.
 
 ## 3. Within-Week Seasonality
 
@@ -86,9 +88,9 @@ Seasonal strength close to 0 = weak seasonality; close to 1 = strong. Trend stre
 | Differencing order (d) | 1 for both targets | ADF/KPSS tests above |
 | Seasonal period (HHS Care) | m=5 | Kruskal-Wallis p=0.000000 |
 | Seasonal period (Discharged) | m=5 | Kruskal-Wallis p=0.000000 |
-| Training cap date | 2025-02-05 | Structural-break scan confirms regime shift |
+| Training cap date | 2025-02-05 | Frozen by addendum Sec. 2; scan corroborates a regime change nearby |
 | Rolling window design | Period-based (not calendar) | Already locked in addendum |
-| MAPE reliability | Unstable for flow columns | Zero-value days present |
+| MAPE reliability | Unstable for flow columns | Small denominators (flow minima near 0) plus zero-value days |
 | Imbalance signal independence | Near-independent | Diff correlation = 0.0739 |
 
 ---

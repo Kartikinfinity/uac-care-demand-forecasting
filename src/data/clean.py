@@ -13,6 +13,11 @@ from src.config import (
     REPORTING_WEEKDAYS, OFF_TEMPLATE_FRIDAYS, EXPECTED_TOTAL_POSITIONS
 )
 from src.data.load import load_raw_data
+from src.data.validate import (
+    validate_master_series,
+    build_provenance,
+    write_provenance,
+)
 
 def clean_and_reindex_data(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -94,10 +99,22 @@ def generate_master_series():
     # Ensure interim dir exists
     MASTER_SERIES_PATH.parent.mkdir(parents=True, exist_ok=True)
     
+    # Fail-fast gate + data hash (addendum Sec. 9, Day 2). Validation runs BEFORE
+    # anything is written, so a series that violates the frozen specification can
+    # never reach an artifact that downstream days would trust.
+    print("Validating master series against the frozen specification...")
+    validate_master_series(df_master)
+
     print(f"Saving to {MASTER_SERIES_PATH}...")
     df_master.to_parquet(MASTER_SERIES_PATH, index=False)
+
+    record = build_provenance(RAW_CSV_PATH, df_master)
+    write_provenance(record)
+    print(f"Provenance written: raw_csv_sha256={record['raw_csv_sha256'][:12]}... "
+          f"master_series_sha256={record['master_series_sha256'][:12]}... "
+          f"data_as_of={record['data_as_of']}")
     print("Master series generated successfully.")
-    
+
     return df_master
 
 if __name__ == '__main__':
