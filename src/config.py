@@ -31,6 +31,9 @@ RAW_CSV_PATH = PROJECT_ROOT / RAW_CSV_FILENAME
 
 # Interim artifacts
 MASTER_SERIES_PATH = DATA_INTERIM_DIR / "master_series.parquet"
+# Provenance sidecar (addendum Sec. 3: content hash of the raw CSV and of the
+# cleaned master series, plus a generation timestamp).
+PROVENANCE_PATH = DATA_INTERIM_DIR / "provenance.json"
 
 # ──────────────────────────────────────────────────────────────────────
 # COLUMN NAMES (defined once, imported everywhere)
@@ -100,6 +103,55 @@ MIN_INITIAL_TRAINING = 50    # Minimum initial training size
 
 # Forecast horizons
 FORECAST_HORIZONS = [1, 7, 14]
+
+# The single enforced value of the addendum's "~60-80 usable rows" fallback floor.
+# The lower bound of the frozen range is used as the hard threshold; the harness
+# also reports how many folds would flip if MAX_USABLE_ROWS_FLOOR were enforced
+# instead, so the choice inside the range is auditable rather than silent.
+TRAINING_FLOOR_ROWS = MIN_USABLE_ROWS_FLOOR
+
+# The two training-window rules every fold is evaluated under (addendum Sec 5,
+# "recent-regime evaluation"). Identical by construction for folds whose origin
+# precedes TRAINING_CAP_DATE.
+WINDOW_RULES = ["full", "capped"]
+
+# ----------------------------------------------------------------------
+# SEASONALITY / BASELINE PARAMETERS
+# ----------------------------------------------------------------------
+# Reporting-week seasonal period, confirmed at Day 3 against actual within-week
+# seasonality in each target's differenced level (Kruskal-Wallis p < 1e-5 for
+# both targets) -- not assumed from the reporting schedule.
+SEASONAL_PERIOD_M = 5
+
+# Moving-average baseline window (periods), matching the documented 7-period
+# rolling window used in feature engineering.
+MOVING_AVERAGE_WINDOW = 7
+
+# ----------------------------------------------------------------------
+# FEATURE-ENGINEERING PARAMETERS
+# ----------------------------------------------------------------------
+# Rolling-window sizes (period-positions, never calendar days).
+ROLLING_WINDOWS = [7, 14]
+LAG_PERIODS = [1, 7, 14]
+
+# Minimum non-missing observations required inside a rolling window before a
+# value is emitted. These are DELIBERATELY permissive: flow columns are
+# true-missing at the 49 gap slots (invariant 2) and a strict requirement would
+# void a rolling feature for every window overlapping a gap. The consequence is
+# that a "rolling_7" value can rest on fewer than 7 observations -- 253 rows do,
+# with a floor of 2 -- so the name describes the window SPAN, not the sample
+# size behind it. Recorded here as an explicit choice rather than an accident;
+# `n_obs` companion columns expose the true sample size per row.
+ROLLING_MIN_PERIODS_MEAN = 1
+ROLLING_MIN_PERIODS_VAR = 2
+
+# ----------------------------------------------------------------------
+# DAY-5 EVALUATION ARTIFACTS
+# ----------------------------------------------------------------------
+FOLD_MANIFEST_PATH = FORECASTS_DIR / "walk_forward_folds.csv"
+BASELINE_PREDICTIONS_PATH = FORECASTS_DIR / "baseline_predictions.csv"
+BASELINE_METRICS_PATH = FORECASTS_DIR / "baseline_metrics.csv"
+BASELINE_METRICS_REPORT_PATH = DOCS_DIR / "day5_baseline_metrics.md"
 
 # ──────────────────────────────────────────────────────────────────────
 # EARLY-WARNING PARAMETERS (Section 8 of addendum)
