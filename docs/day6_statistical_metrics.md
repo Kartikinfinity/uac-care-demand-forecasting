@@ -46,37 +46,37 @@ No fit failed on any fold, under either window rule.
 
 ## 3. Full comparison -- all development folds, common support
 
-Common support spans all five candidates: 3580 of 3900 prediction rows retained.
+Common support spans all five candidates: 3570 of 3900 prediction rows retained.
 
 ### Children in HHS Care
 
 | target | model | window_rule | horizon | n_scored | MAE | RMSE | MAPE | sMAPE | MASE | ME_bias |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Children in HHS Care | exponential_smoothing | capped | 1 | 65 | 48.972 | 65.31 | 0.839 | 0.837 | 0.164 | -14.889 |
+| Children in HHS Care | exponential_smoothing | capped | 1 | 65 | 48.991 | 65.31 | 0.84 | 0.837 | 0.164 | -14.871 |
 | Children in HHS Care | moving_average | capped | 1 | 65 | 178.554 | 258.907 | 2.69 | 2.665 | 0.575 | -28.031 |
 | Children in HHS Care | naive | capped | 1 | 65 | 48.231 | 74.035 | 0.699 | 0.699 | 0.157 | -11.954 |
-| Children in HHS Care | sarima | capped | 1 | 65 | 44.312 | 62.892 | 0.635 | 0.637 | 0.147 | -19.781 |
-| Children in HHS Care | seasonal_naive | capped | 1 | 65 | 236.569 | 363.464 | 3.618 | 3.537 | 0.763 | 21.308 |
-| Children in HHS Care | exponential_smoothing | capped | 7 | 57 | 294.857 | 410.758 | 4.576 | 4.551 | 0.994 | 5.942 |
+| Children in HHS Care | sarima | capped | 1 | 65 | 44.554 | 62.938 | 0.645 | 0.646 | 0.148 | -19.415 |
+| Children in HHS Care | seasonal_naive | capped | 1 | 65 | 236.185 | 363.407 | 3.603 | 3.521 | 0.761 | 21.692 |
+| Children in HHS Care | exponential_smoothing | capped | 7 | 57 | 294.738 | 410.756 | 4.571 | 4.546 | 0.993 | 5.624 |
 | Children in HHS Care | moving_average | capped | 7 | 57 | 468.792 | 673.605 | 7.73 | 7.336 | 1.538 | 171.208 |
 | Children in HHS Care | naive | capped | 7 | 57 | 382.614 | 543.317 | 6.075 | 5.845 | 1.274 | 174.228 |
-| Children in HHS Care | sarima | capped | 7 | 57 | 309.533 | 431.092 | 4.75 | 4.746 | 1.047 | -16.815 |
-| Children in HHS Care | seasonal_naive | capped | 7 | 57 | 464.211 | 665.278 | 7.755 | 7.385 | 1.532 | 115.228 |
+| Children in HHS Care | sarima | capped | 7 | 57 | 309.7 | 431.118 | 4.756 | 4.753 | 1.048 | -16.648 |
+| Children in HHS Care | seasonal_naive | capped | 7 | 57 | 464.035 | 665.264 | 7.748 | 7.378 | 1.532 | 115.404 |
 | Children in HHS Care | exponential_smoothing | capped | 14 | 63 | 518.088 | 755.236 | 8.423 | 8.036 | 1.728 | 85.241 |
 | Children in HHS Care | moving_average | capped | 14 | 63 | 670.057 | 954.45 | 11.711 | 10.727 | 2.2 | 194.592 |
 | Children in HHS Care | naive | capped | 14 | 63 | 602.508 | 859.826 | 10.358 | 9.58 | 2.003 | 203.651 |
 | Children in HHS Care | sarima | capped | 14 | 63 | 564.84 | 796.768 | 9.983 | 9.837 | 1.902 | 61.897 |
 | Children in HHS Care | seasonal_naive | capped | 14 | 63 | 617.857 | 876.619 | 10.524 | 9.785 | 2.042 | 165.317 |
-| Children in HHS Care | exponential_smoothing | full | 1 | 65 | 52.019 | 66.948 | 0.964 | 0.961 | 0.175 | -14.727 |
+| Children in HHS Care | exponential_smoothing | full | 1 | 65 | 51.88 | 66.802 | 0.958 | 0.955 | 0.174 | -14.587 |
 | Children in HHS Care | moving_average | full | 1 | 65 | 178.554 | 258.907 | 2.69 | 2.665 | 0.575 | -28.031 |
 | Children in HHS Care | naive | full | 1 | 65 | 48.231 | 74.035 | 0.699 | 0.699 | 0.157 | -11.954 |
-| Children in HHS Care | sarima | full | 1 | 65 | 44.669 | 62.935 | 0.65 | 0.651 | 0.148 | -19.645 |
-| Children in HHS Care | seasonal_naive | full | 1 | 65 | 236.569 | 363.464 | 3.618 | 3.537 | 0.763 | 21.308 |
-| Children in HHS Care | exponential_smoothing | full | 7 | 57 | 300.576 | 412.09 | 4.809 | 4.777 | 1.015 | 10.771 |
+| Children in HHS Care | sarima | full | 1 | 65 | 44.64 | 62.929 | 0.649 | 0.65 | 0.148 | -19.301 |
+| Children in HHS Care | seasonal_naive | full | 1 | 65 | 236.185 | 363.407 | 3.603 | 3.521 | 0.761 | 21.692 |
+| Children in HHS Care | exponential_smoothing | full | 7 | 57 | 299.289 | 411.879 | 4.758 | 4.724 | 1.01 | 12.058 |
 | Children in HHS Care | moving_average | full | 7 | 57 | 468.792 | 673.605 | 7.73 | 7.336 | 1.538 | 171.208 |
 | Children in HHS Care | naive | full | 7 | 57 | 382.614 | 543.317 | 6.075 | 5.845 | 1.274 | 174.228 |
-| Children in HHS Care | sarima | full | 7 | 57 | 309.77 | 431.137 | 4.761 | 4.758 | 1.048 | -18.077 |
-| Children in HHS Care | seasonal_naive | full | 7 | 57 | 464.211 | 665.278 | 7.755 | 7.385 | 1.532 | 115.228 |
+| Children in HHS Care | sarima | full | 7 | 57 | 309.826 | 431.139 | 4.764 | 4.761 | 1.048 | -18.02 |
+| Children in HHS Care | seasonal_naive | full | 7 | 57 | 464.035 | 665.264 | 7.748 | 7.378 | 1.532 | 115.404 |
 | Children in HHS Care | exponential_smoothing | full | 14 | 63 | 518.228 | 755.793 | 8.428 | 8.026 | 1.729 | 92.093 |
 | Children in HHS Care | moving_average | full | 14 | 63 | 670.057 | 954.45 | 11.711 | 10.727 | 2.2 | 194.592 |
 | Children in HHS Care | naive | full | 14 | 63 | 602.508 | 859.826 | 10.358 | 9.58 | 2.003 | 203.651 |
@@ -87,31 +87,31 @@ Common support spans all five candidates: 3580 of 3900 prediction rows retained.
 
 | target | model | window_rule | horizon | n_scored | MAE | RMSE | MAPE | sMAPE | MASE | ME_bias |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Children discharged from HHS Care | exponential_smoothing | capped | 1 | 63 | 26.266 | 37.508 | 16.908 | 16.694 | 0.695 | -4.449 |
-| Children discharged from HHS Care | moving_average | capped | 1 | 63 | 34.141 | 47.371 | 19.833 | 19.037 | 0.907 | -25.221 |
-| Children discharged from HHS Care | naive | capped | 1 | 63 | 39.698 | 54.32 | 25.658 | 25.069 | 1.053 | -36.111 |
-| Children discharged from HHS Care | sarima | capped | 1 | 63 | 24.541 | 33.9 | 20.247 | 22.932 | 0.652 | 11.689 |
-| Children discharged from HHS Care | seasonal_naive | capped | 1 | 63 | 33.127 | 47.84 | 23.051 | 19.532 | 0.871 | 14.365 |
-| Children discharged from HHS Care | exponential_smoothing | capped | 7 | 49 | 34.469 | 47.012 | 38.906 | 27.875 | 0.926 | 2.306 |
+| Children discharged from HHS Care | exponential_smoothing | capped | 1 | 62 | 26.611 | 37.804 | 16.47 | 16.381 | 0.704 | -4.599 |
+| Children discharged from HHS Care | moving_average | capped | 1 | 62 | 34.672 | 47.751 | 19.981 | 19.182 | 0.921 | -25.647 |
+| Children discharged from HHS Care | naive | capped | 1 | 62 | 40.274 | 54.754 | 25.485 | 24.977 | 1.068 | -36.758 |
+| Children discharged from HHS Care | sarima | capped | 1 | 62 | 24.905 | 34.171 | 20.281 | 22.98 | 0.662 | 11.909 |
+| Children discharged from HHS Care | seasonal_naive | capped | 1 | 62 | 33.629 | 48.223 | 23.13 | 19.525 | 0.884 | 14.629 |
+| Children discharged from HHS Care | exponential_smoothing | capped | 7 | 49 | 34.374 | 47.001 | 38.309 | 26.934 | 0.923 | 2.524 |
 | Children discharged from HHS Care | moving_average | capped | 7 | 49 | 40.754 | 57.695 | 37.753 | 28.396 | 1.082 | -33.071 |
 | Children discharged from HHS Care | naive | capped | 7 | 49 | 45.143 | 61.949 | 39.432 | 34.499 | 1.198 | -42.694 |
-| Children discharged from HHS Care | sarima | capped | 7 | 49 | 35.073 | 44.076 | 42.402 | 38.761 | 0.946 | 11.242 |
-| Children discharged from HHS Care | seasonal_naive | capped | 7 | 49 | 34.469 | 47.287 | 41.915 | 29.201 | 0.925 | 8.959 |
+| Children discharged from HHS Care | sarima | capped | 7 | 49 | 35.026 | 44.071 | 42.113 | 38.266 | 0.944 | 11.431 |
+| Children discharged from HHS Care | seasonal_naive | capped | 7 | 49 | 34.306 | 47.267 | 40.895 | 27.586 | 0.92 | 9.204 |
 | Children discharged from HHS Care | exponential_smoothing | capped | 14 | 61 | 33.896 | 45.562 | 42.679 | 32.046 | 0.899 | 12.875 |
 | Children discharged from HHS Care | moving_average | capped | 14 | 61 | 42.511 | 59.318 | 52.705 | 32.967 | 1.114 | 36.765 |
 | Children discharged from HHS Care | naive | capped | 14 | 61 | 40.279 | 55.527 | 52.864 | 35.685 | 1.058 | 25.721 |
 | Children discharged from HHS Care | sarima | capped | 14 | 61 | 36.954 | 46.676 | 78.57 | 53.398 | 0.984 | -1.023 |
 | Children discharged from HHS Care | seasonal_naive | capped | 14 | 61 | 32.689 | 43.344 | 35.914 | 29.825 | 0.867 | 5.934 |
-| Children discharged from HHS Care | exponential_smoothing | full | 1 | 63 | 26.261 | 37.503 | 16.901 | 16.711 | 0.695 | -4.415 |
-| Children discharged from HHS Care | moving_average | full | 1 | 63 | 34.141 | 47.371 | 19.833 | 19.037 | 0.907 | -25.221 |
-| Children discharged from HHS Care | naive | full | 1 | 63 | 39.698 | 54.32 | 25.658 | 25.069 | 1.053 | -36.111 |
-| Children discharged from HHS Care | sarima | full | 1 | 63 | 24.373 | 33.89 | 19.329 | 22.224 | 0.647 | 11.7 |
-| Children discharged from HHS Care | seasonal_naive | full | 1 | 63 | 33.127 | 47.84 | 23.051 | 19.532 | 0.871 | 14.365 |
-| Children discharged from HHS Care | exponential_smoothing | full | 7 | 49 | 34.398 | 46.995 | 38.432 | 27.235 | 0.924 | 2.33 |
+| Children discharged from HHS Care | exponential_smoothing | full | 1 | 62 | 26.627 | 37.801 | 16.642 | 16.525 | 0.705 | -4.544 |
+| Children discharged from HHS Care | moving_average | full | 1 | 62 | 34.672 | 47.751 | 19.981 | 19.182 | 0.921 | -25.647 |
+| Children discharged from HHS Care | naive | full | 1 | 62 | 40.274 | 54.754 | 25.485 | 24.977 | 1.068 | -36.758 |
+| Children discharged from HHS Care | sarima | full | 1 | 62 | 24.658 | 34.151 | 18.663 | 21.179 | 0.654 | 11.996 |
+| Children discharged from HHS Care | seasonal_naive | full | 1 | 62 | 33.629 | 48.223 | 23.13 | 19.525 | 0.884 | 14.629 |
+| Children discharged from HHS Care | exponential_smoothing | full | 7 | 49 | 34.244 | 46.98 | 37.466 | 25.89 | 0.919 | 2.517 |
 | Children discharged from HHS Care | moving_average | full | 7 | 49 | 40.754 | 57.695 | 37.753 | 28.396 | 1.082 | -33.071 |
 | Children discharged from HHS Care | naive | full | 7 | 49 | 45.143 | 61.949 | 39.432 | 34.499 | 1.198 | -42.694 |
-| Children discharged from HHS Care | sarima | full | 7 | 49 | 34.508 | 43.893 | 38.505 | 34.29 | 0.928 | 11.556 |
-| Children discharged from HHS Care | seasonal_naive | full | 7 | 49 | 34.469 | 47.287 | 41.915 | 29.201 | 0.925 | 8.959 |
+| Children discharged from HHS Care | sarima | full | 7 | 49 | 34.38 | 43.863 | 37.703 | 32.536 | 0.924 | 11.684 |
+| Children discharged from HHS Care | seasonal_naive | full | 7 | 49 | 34.306 | 47.267 | 40.895 | 27.586 | 0.92 | 9.204 |
 | Children discharged from HHS Care | exponential_smoothing | full | 14 | 61 | 33.802 | 45.539 | 42.823 | 30.483 | 0.897 | 13.053 |
 | Children discharged from HHS Care | moving_average | full | 14 | 61 | 42.511 | 59.318 | 52.705 | 32.967 | 1.114 | 36.765 |
 | Children discharged from HHS Care | naive | full | 14 | 61 | 40.279 | 55.527 | 52.864 | 35.685 | 1.058 | 25.721 |
@@ -127,31 +127,31 @@ champion selection at Day 8.
 
 | target | model | window_rule | horizon | n_scored | MAE | RMSE | MAPE | sMAPE | MASE | ME_bias |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Children in HHS Care | exponential_smoothing | capped | 1 | 15 | 28.493 | 41.627 | 1.281 | 1.264 | 0.102 | 24.622 |
+| Children in HHS Care | exponential_smoothing | capped | 1 | 15 | 28.574 | 41.629 | 1.284 | 1.267 | 0.102 | 24.704 |
 | Children in HHS Care | moving_average | capped | 1 | 15 | 42.971 | 59.511 | 1.857 | 1.837 | 0.156 | 16.133 |
 | Children in HHS Care | naive | capped | 1 | 15 | 10.133 | 13.967 | 0.444 | 0.444 | 0.037 | 0.0 |
-| Children in HHS Care | sarima | capped | 1 | 15 | 10.393 | 15.577 | 0.461 | 0.459 | 0.037 | 8.592 |
-| Children in HHS Care | seasonal_naive | capped | 1 | 15 | 58.067 | 83.612 | 2.502 | 2.457 | 0.209 | 25.667 |
-| Children in HHS Care | exponential_smoothing | capped | 7 | 14 | 62.005 | 77.825 | 2.775 | 2.722 | 0.227 | 44.176 |
+| Children in HHS Care | sarima | capped | 1 | 15 | 11.44 | 16.357 | 0.503 | 0.5 | 0.041 | 10.178 |
+| Children in HHS Care | seasonal_naive | capped | 1 | 15 | 56.4 | 82.519 | 2.435 | 2.389 | 0.203 | 27.333 |
+| Children in HHS Care | exponential_smoothing | capped | 7 | 14 | 61.518 | 77.768 | 2.755 | 2.703 | 0.225 | 42.88 |
 | Children in HHS Care | moving_average | capped | 7 | 14 | 105.735 | 133.774 | 4.708 | 4.583 | 0.385 | 43.837 |
 | Children in HHS Care | naive | capped | 7 | 14 | 70.214 | 86.874 | 3.13 | 3.079 | 0.256 | 26.5 |
-| Children in HHS Care | sarima | capped | 7 | 14 | 61.705 | 79.302 | 2.742 | 2.789 | 0.221 | -30.608 |
-| Children in HHS Care | seasonal_naive | capped | 7 | 14 | 111.286 | 143.531 | 4.959 | 4.814 | 0.404 | 47.429 |
+| Children in HHS Care | sarima | capped | 7 | 14 | 62.385 | 79.882 | 2.77 | 2.815 | 0.223 | -29.928 |
+| Children in HHS Care | seasonal_naive | capped | 7 | 14 | 110.571 | 143.262 | 4.931 | 4.785 | 0.401 | 48.143 |
 | Children in HHS Care | exponential_smoothing | capped | 14 | 14 | 108.743 | 127.25 | 4.926 | 4.912 | 0.403 | -6.402 |
 | Children in HHS Care | moving_average | capped | 14 | 14 | 179.837 | 220.547 | 8.221 | 7.885 | 0.658 | 63.367 |
 | Children in HHS Care | naive | capped | 14 | 14 | 147.643 | 176.41 | 6.728 | 6.531 | 0.542 | 43.929 |
 | Children in HHS Care | sarima | capped | 14 | 14 | 220.444 | 306.999 | 9.951 | 10.979 | 0.779 | -168.226 |
 | Children in HHS Care | seasonal_naive | capped | 14 | 14 | 152.643 | 181.303 | 6.965 | 6.757 | 0.561 | 46.786 |
-| Children in HHS Care | exponential_smoothing | full | 1 | 15 | 41.699 | 51.689 | 1.821 | 1.803 | 0.15 | 25.326 |
+| Children in HHS Care | exponential_smoothing | full | 1 | 15 | 41.093 | 50.864 | 1.797 | 1.778 | 0.148 | 25.932 |
 | Children in HHS Care | moving_average | full | 1 | 15 | 42.971 | 59.511 | 1.857 | 1.837 | 0.156 | 16.133 |
 | Children in HHS Care | naive | full | 1 | 15 | 10.133 | 13.967 | 0.444 | 0.444 | 0.037 | 0.0 |
-| Children in HHS Care | sarima | full | 1 | 15 | 11.94 | 16.297 | 0.525 | 0.523 | 0.043 | 9.181 |
-| Children in HHS Care | seasonal_naive | full | 1 | 15 | 58.067 | 83.612 | 2.502 | 2.457 | 0.209 | 25.667 |
-| Children in HHS Care | exponential_smoothing | full | 7 | 14 | 85.288 | 102.556 | 3.724 | 3.642 | 0.312 | 63.837 |
+| Children in HHS Care | sarima | full | 1 | 15 | 11.814 | 16.21 | 0.52 | 0.518 | 0.042 | 10.673 |
+| Children in HHS Care | seasonal_naive | full | 1 | 15 | 56.4 | 82.519 | 2.435 | 2.389 | 0.203 | 27.333 |
+| Children in HHS Care | exponential_smoothing | full | 7 | 14 | 80.05 | 99.052 | 3.516 | 3.428 | 0.293 | 69.074 |
 | Children in HHS Care | moving_average | full | 7 | 14 | 105.735 | 133.774 | 4.708 | 4.583 | 0.385 | 43.837 |
 | Children in HHS Care | naive | full | 7 | 14 | 70.214 | 86.874 | 3.13 | 3.079 | 0.256 | 26.5 |
-| Children in HHS Care | sarima | full | 7 | 14 | 62.667 | 80.299 | 2.791 | 2.838 | 0.224 | -35.748 |
-| Children in HHS Care | seasonal_naive | full | 7 | 14 | 111.286 | 143.531 | 4.959 | 4.814 | 0.404 | 47.429 |
+| Children in HHS Care | sarima | full | 7 | 14 | 62.898 | 80.341 | 2.8 | 2.848 | 0.225 | -35.516 |
+| Children in HHS Care | seasonal_naive | full | 7 | 14 | 110.571 | 143.262 | 4.931 | 4.785 | 0.401 | 48.143 |
 | Children in HHS Care | exponential_smoothing | full | 14 | 14 | 109.372 | 141.344 | 4.95 | 4.867 | 0.407 | 24.435 |
 | Children in HHS Care | moving_average | full | 14 | 14 | 179.837 | 220.547 | 8.221 | 7.885 | 0.658 | 63.367 |
 | Children in HHS Care | naive | full | 14 | 14 | 147.643 | 176.41 | 6.728 | 6.531 | 0.542 | 43.929 |
@@ -162,31 +162,31 @@ champion selection at Day 8.
 
 | target | model | window_rule | horizon | n_scored | MAE | RMSE | MAPE | sMAPE | MASE | ME_bias |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Children discharged from HHS Care | exponential_smoothing | capped | 1 | 15 | 3.886 | 6.183 | 24.798 | 25.02 | 0.115 | -1.005 |
-| Children discharged from HHS Care | moving_average | capped | 1 | 15 | 4.246 | 7.956 | 28.471 | 23.907 | 0.122 | 1.027 |
-| Children discharged from HHS Care | naive | capped | 1 | 15 | 4.133 | 5.379 | 46.455 | 36.242 | 0.121 | -1.067 |
-| Children discharged from HHS Care | sarima | capped | 1 | 15 | 5.726 | 7.752 | 41.5 | 56.218 | 0.168 | -2.888 |
-| Children discharged from HHS Care | seasonal_naive | capped | 1 | 15 | 6.333 | 13.163 | 39.516 | 30.381 | 0.182 | 2.467 |
-| Children discharged from HHS Care | exponential_smoothing | capped | 7 | 13 | 7.139 | 9.861 | 91.453 | 53.555 | 0.211 | 0.855 |
+| Children discharged from HHS Care | exponential_smoothing | capped | 1 | 14 | 3.817 | 6.268 | 23.422 | 24.228 | 0.113 | -1.422 |
+| Children discharged from HHS Care | moving_average | capped | 1 | 14 | 4.466 | 8.23 | 29.748 | 24.896 | 0.128 | 1.017 |
+| Children discharged from HHS Care | naive | capped | 1 | 14 | 4.143 | 5.464 | 47.175 | 36.632 | 0.121 | -1.429 |
+| Children discharged from HHS Care | sarima | capped | 1 | 14 | 5.993 | 8.007 | 43.169 | 58.808 | 0.175 | -2.951 |
+| Children discharged from HHS Care | seasonal_naive | capped | 1 | 14 | 6.643 | 13.615 | 41.04 | 31.123 | 0.191 | 2.786 |
+| Children discharged from HHS Care | exponential_smoothing | capped | 7 | 13 | 6.779 | 9.664 | 89.204 | 50.009 | 0.2 | 1.68 |
 | Children discharged from HHS Care | moving_average | capped | 7 | 13 | 6.61 | 8.495 | 89.42 | 48.601 | 0.196 | 0.987 |
 | Children discharged from HHS Care | naive | capped | 7 | 13 | 8.462 | 11.916 | 90.709 | 61.219 | 0.248 | -1.231 |
-| Children discharged from HHS Care | sarima | capped | 7 | 13 | 11.277 | 13.398 | 106.546 | 97.732 | 0.34 | -0.923 |
-| Children discharged from HHS Care | seasonal_naive | capped | 7 | 13 | 10.308 | 15.611 | 103.0 | 61.125 | 0.301 | 4.923 |
+| Children discharged from HHS Care | sarima | capped | 7 | 13 | 11.103 | 13.337 | 105.455 | 95.867 | 0.334 | -0.211 |
+| Children discharged from HHS Care | seasonal_naive | capped | 7 | 13 | 9.692 | 15.372 | 99.154 | 55.037 | 0.282 | 5.846 |
 | Children discharged from HHS Care | exponential_smoothing | capped | 14 | 12 | 7.329 | 9.904 | 89.325 | 67.642 | 0.215 | 2.1 |
 | Children discharged from HHS Care | moving_average | capped | 14 | 12 | 7.685 | 10.722 | 107.085 | 55.823 | 0.226 | 6.423 |
 | Children discharged from HHS Care | naive | capped | 14 | 12 | 9.333 | 10.97 | 138.935 | 77.81 | 0.277 | 4.167 |
 | Children discharged from HHS Care | sarima | capped | 14 | 12 | 18.073 | 19.854 | 280.164 | 171.307 | 0.531 | -14.269 |
 | Children discharged from HHS Care | seasonal_naive | capped | 14 | 12 | 5.333 | 7.059 | 64.135 | 57.857 | 0.157 | -1.0 |
-| Children discharged from HHS Care | exponential_smoothing | full | 1 | 15 | 3.868 | 6.062 | 24.766 | 25.089 | 0.114 | -0.86 |
-| Children discharged from HHS Care | moving_average | full | 1 | 15 | 4.246 | 7.956 | 28.471 | 23.907 | 0.122 | 1.027 |
-| Children discharged from HHS Care | naive | full | 1 | 15 | 4.133 | 5.379 | 46.455 | 36.242 | 0.121 | -1.067 |
-| Children discharged from HHS Care | sarima | full | 1 | 15 | 5.019 | 7.559 | 37.645 | 53.243 | 0.145 | -2.842 |
-| Children discharged from HHS Care | seasonal_naive | full | 1 | 15 | 6.333 | 13.163 | 39.516 | 30.381 | 0.182 | 2.467 |
-| Children discharged from HHS Care | exponential_smoothing | full | 7 | 13 | 6.87 | 9.566 | 89.667 | 51.144 | 0.203 | 0.948 |
+| Children discharged from HHS Care | exponential_smoothing | full | 1 | 14 | 3.886 | 6.199 | 24.185 | 24.863 | 0.114 | -1.18 |
+| Children discharged from HHS Care | moving_average | full | 1 | 14 | 4.466 | 8.23 | 29.748 | 24.896 | 0.128 | 1.017 |
+| Children discharged from HHS Care | naive | full | 1 | 14 | 4.143 | 5.464 | 47.175 | 36.632 | 0.121 | -1.429 |
+| Children discharged from HHS Care | sarima | full | 1 | 14 | 4.901 | 7.619 | 36.004 | 50.834 | 0.141 | -2.568 |
+| Children discharged from HHS Care | seasonal_naive | full | 1 | 14 | 6.643 | 13.615 | 41.04 | 31.123 | 0.191 | 2.786 |
+| Children discharged from HHS Care | exponential_smoothing | full | 7 | 13 | 6.288 | 9.283 | 86.027 | 46.073 | 0.185 | 1.652 |
 | Children discharged from HHS Care | moving_average | full | 7 | 13 | 6.61 | 8.495 | 89.42 | 48.601 | 0.196 | 0.987 |
 | Children discharged from HHS Care | naive | full | 7 | 13 | 8.462 | 11.916 | 90.709 | 61.219 | 0.248 | -1.231 |
-| Children discharged from HHS Care | sarima | full | 7 | 13 | 9.15 | 10.892 | 91.854 | 80.881 | 0.272 | 0.26 |
-| Children discharged from HHS Care | seasonal_naive | full | 7 | 13 | 10.308 | 15.611 | 103.0 | 61.125 | 0.301 | 4.923 |
+| Children discharged from HHS Care | sarima | full | 7 | 13 | 8.667 | 10.432 | 88.833 | 74.269 | 0.258 | 0.743 |
+| Children discharged from HHS Care | seasonal_naive | full | 7 | 13 | 9.692 | 15.372 | 99.154 | 55.037 | 0.282 | 5.846 |
 | Children discharged from HHS Care | exponential_smoothing | full | 14 | 12 | 6.851 | 9.355 | 90.06 | 59.695 | 0.2 | 3.002 |
 | Children discharged from HHS Care | moving_average | full | 14 | 12 | 7.685 | 10.722 | 107.085 | 55.823 | 0.226 | 6.423 |
 | Children discharged from HHS Care | naive | full | 14 | 12 | 9.333 | 10.97 | 138.935 | 77.81 | 0.277 | 4.167 |
@@ -202,61 +202,61 @@ compared against the better of the two. Beating one is not a pass.
 
 | target | window_rule | horizon | model | MAE | MAE_naive | MAE_seasonal_naive | beats_both_baselines | skill_vs_best_baseline_pct |
 |---|---|---|---|---|---|---|---|---|
-| Children discharged from HHS Care | capped | 1 | exponential_smoothing | 26.266 | 39.698 | 33.127 | True | 20.71 |
-| Children discharged from HHS Care | capped | 7 | exponential_smoothing | 34.469 | 45.143 | 34.469 | True | 0.0 |
+| Children discharged from HHS Care | capped | 1 | exponential_smoothing | 26.611 | 40.274 | 33.629 | True | 20.87 |
+| Children discharged from HHS Care | capped | 7 | exponential_smoothing | 34.374 | 45.143 | 34.306 | False | -0.2 |
 | Children discharged from HHS Care | capped | 14 | exponential_smoothing | 33.896 | 40.279 | 32.689 | False | -3.69 |
-| Children discharged from HHS Care | capped | 1 | sarima | 24.541 | 39.698 | 33.127 | True | 25.92 |
-| Children discharged from HHS Care | capped | 7 | sarima | 35.073 | 45.143 | 34.469 | False | -1.75 |
+| Children discharged from HHS Care | capped | 1 | sarima | 24.905 | 40.274 | 33.629 | True | 25.94 |
+| Children discharged from HHS Care | capped | 7 | sarima | 35.026 | 45.143 | 34.306 | False | -2.1 |
 | Children discharged from HHS Care | capped | 14 | sarima | 36.954 | 40.279 | 32.689 | False | -13.05 |
-| Children discharged from HHS Care | full | 1 | exponential_smoothing | 26.261 | 39.698 | 33.127 | True | 20.72 |
-| Children discharged from HHS Care | full | 7 | exponential_smoothing | 34.398 | 45.143 | 34.469 | True | 0.21 |
+| Children discharged from HHS Care | full | 1 | exponential_smoothing | 26.627 | 40.274 | 33.629 | True | 20.82 |
+| Children discharged from HHS Care | full | 7 | exponential_smoothing | 34.244 | 45.143 | 34.306 | True | 0.18 |
 | Children discharged from HHS Care | full | 14 | exponential_smoothing | 33.802 | 40.279 | 32.689 | False | -3.41 |
-| Children discharged from HHS Care | full | 1 | sarima | 24.373 | 39.698 | 33.127 | True | 26.43 |
-| Children discharged from HHS Care | full | 7 | sarima | 34.508 | 45.143 | 34.469 | False | -0.11 |
+| Children discharged from HHS Care | full | 1 | sarima | 24.658 | 40.274 | 33.629 | True | 26.68 |
+| Children discharged from HHS Care | full | 7 | sarima | 34.38 | 45.143 | 34.306 | False | -0.22 |
 | Children discharged from HHS Care | full | 14 | sarima | 36.566 | 40.279 | 32.689 | False | -11.86 |
-| Children in HHS Care | capped | 1 | exponential_smoothing | 48.972 | 48.231 | 236.569 | False | -1.54 |
-| Children in HHS Care | capped | 7 | exponential_smoothing | 294.857 | 382.614 | 464.211 | True | 22.94 |
+| Children in HHS Care | capped | 1 | exponential_smoothing | 48.991 | 48.231 | 236.185 | False | -1.58 |
+| Children in HHS Care | capped | 7 | exponential_smoothing | 294.738 | 382.614 | 464.035 | True | 22.97 |
 | Children in HHS Care | capped | 14 | exponential_smoothing | 518.088 | 602.508 | 617.857 | True | 14.01 |
-| Children in HHS Care | capped | 1 | sarima | 44.312 | 48.231 | 236.569 | True | 8.13 |
-| Children in HHS Care | capped | 7 | sarima | 309.533 | 382.614 | 464.211 | True | 19.1 |
+| Children in HHS Care | capped | 1 | sarima | 44.554 | 48.231 | 236.185 | True | 7.62 |
+| Children in HHS Care | capped | 7 | sarima | 309.7 | 382.614 | 464.035 | True | 19.06 |
 | Children in HHS Care | capped | 14 | sarima | 564.84 | 602.508 | 617.857 | True | 6.25 |
-| Children in HHS Care | full | 1 | exponential_smoothing | 52.019 | 48.231 | 236.569 | False | -7.86 |
-| Children in HHS Care | full | 7 | exponential_smoothing | 300.576 | 382.614 | 464.211 | True | 21.44 |
+| Children in HHS Care | full | 1 | exponential_smoothing | 51.88 | 48.231 | 236.185 | False | -7.57 |
+| Children in HHS Care | full | 7 | exponential_smoothing | 299.289 | 382.614 | 464.035 | True | 21.78 |
 | Children in HHS Care | full | 14 | exponential_smoothing | 518.228 | 602.508 | 617.857 | True | 13.99 |
-| Children in HHS Care | full | 1 | sarima | 44.669 | 48.231 | 236.569 | True | 7.39 |
-| Children in HHS Care | full | 7 | sarima | 309.77 | 382.614 | 464.211 | True | 19.04 |
+| Children in HHS Care | full | 1 | sarima | 44.64 | 48.231 | 236.185 | True | 7.45 |
+| Children in HHS Care | full | 7 | sarima | 309.826 | 382.614 | 464.035 | True | 19.02 |
 | Children in HHS Care | full | 14 | sarima | 571.29 | 602.508 | 617.857 | True | 5.18 |
 
 ### Recent regime (governs Day 8)
 
 | target | window_rule | horizon | model | MAE | MAE_naive | MAE_seasonal_naive | beats_both_baselines | skill_vs_best_baseline_pct |
 |---|---|---|---|---|---|---|---|---|
-| Children discharged from HHS Care | capped | 1 | exponential_smoothing | 3.886 | 4.133 | 6.333 | True | 5.99 |
-| Children discharged from HHS Care | capped | 7 | exponential_smoothing | 7.139 | 8.462 | 10.308 | True | 15.63 |
+| Children discharged from HHS Care | capped | 1 | exponential_smoothing | 3.817 | 4.143 | 6.643 | True | 7.86 |
+| Children discharged from HHS Care | capped | 7 | exponential_smoothing | 6.779 | 8.462 | 9.692 | True | 19.88 |
 | Children discharged from HHS Care | capped | 14 | exponential_smoothing | 7.329 | 9.333 | 5.333 | False | -37.42 |
-| Children discharged from HHS Care | capped | 1 | sarima | 5.726 | 4.133 | 6.333 | False | -38.54 |
-| Children discharged from HHS Care | capped | 7 | sarima | 11.277 | 8.462 | 10.308 | False | -33.28 |
+| Children discharged from HHS Care | capped | 1 | sarima | 5.993 | 4.143 | 6.643 | False | -44.65 |
+| Children discharged from HHS Care | capped | 7 | sarima | 11.103 | 8.462 | 9.692 | False | -31.21 |
 | Children discharged from HHS Care | capped | 14 | sarima | 18.073 | 9.333 | 5.333 | False | -238.86 |
-| Children discharged from HHS Care | full | 1 | exponential_smoothing | 3.868 | 4.133 | 6.333 | True | 6.42 |
-| Children discharged from HHS Care | full | 7 | exponential_smoothing | 6.87 | 8.462 | 10.308 | True | 18.8 |
+| Children discharged from HHS Care | full | 1 | exponential_smoothing | 3.886 | 4.143 | 6.643 | True | 6.21 |
+| Children discharged from HHS Care | full | 7 | exponential_smoothing | 6.288 | 8.462 | 9.692 | True | 25.69 |
 | Children discharged from HHS Care | full | 14 | exponential_smoothing | 6.851 | 9.333 | 5.333 | False | -28.47 |
-| Children discharged from HHS Care | full | 1 | sarima | 5.019 | 4.133 | 6.333 | False | -21.43 |
-| Children discharged from HHS Care | full | 7 | sarima | 9.15 | 8.462 | 10.308 | False | -8.14 |
+| Children discharged from HHS Care | full | 1 | sarima | 4.901 | 4.143 | 6.643 | False | -18.31 |
+| Children discharged from HHS Care | full | 7 | sarima | 8.667 | 8.462 | 9.692 | False | -2.43 |
 | Children discharged from HHS Care | full | 14 | sarima | 16.099 | 9.333 | 5.333 | False | -201.85 |
-| Children in HHS Care | capped | 1 | exponential_smoothing | 28.493 | 10.133 | 58.067 | False | -181.18 |
-| Children in HHS Care | capped | 7 | exponential_smoothing | 62.005 | 70.214 | 111.286 | True | 11.69 |
+| Children in HHS Care | capped | 1 | exponential_smoothing | 28.574 | 10.133 | 56.4 | False | -181.99 |
+| Children in HHS Care | capped | 7 | exponential_smoothing | 61.518 | 70.214 | 110.571 | True | 12.39 |
 | Children in HHS Care | capped | 14 | exponential_smoothing | 108.743 | 147.643 | 152.643 | True | 26.35 |
-| Children in HHS Care | capped | 1 | sarima | 10.393 | 10.133 | 58.067 | False | -2.56 |
-| Children in HHS Care | capped | 7 | sarima | 61.705 | 70.214 | 111.286 | True | 12.12 |
+| Children in HHS Care | capped | 1 | sarima | 11.44 | 10.133 | 56.4 | False | -12.9 |
+| Children in HHS Care | capped | 7 | sarima | 62.385 | 70.214 | 110.571 | True | 11.15 |
 | Children in HHS Care | capped | 14 | sarima | 220.444 | 147.643 | 152.643 | False | -49.31 |
-| Children in HHS Care | full | 1 | exponential_smoothing | 41.699 | 10.133 | 58.067 | False | -311.5 |
-| Children in HHS Care | full | 7 | exponential_smoothing | 85.288 | 70.214 | 111.286 | False | -21.47 |
+| Children in HHS Care | full | 1 | exponential_smoothing | 41.093 | 10.133 | 56.4 | False | -305.53 |
+| Children in HHS Care | full | 7 | exponential_smoothing | 80.05 | 70.214 | 110.571 | False | -14.01 |
 | Children in HHS Care | full | 14 | exponential_smoothing | 109.372 | 147.643 | 152.643 | True | 25.92 |
-| Children in HHS Care | full | 1 | sarima | 11.94 | 10.133 | 58.067 | False | -17.83 |
-| Children in HHS Care | full | 7 | sarima | 62.667 | 70.214 | 111.286 | True | 10.75 |
+| Children in HHS Care | full | 1 | sarima | 11.814 | 10.133 | 56.4 | False | -16.58 |
+| Children in HHS Care | full | 7 | sarima | 62.898 | 70.214 | 110.571 | True | 10.42 |
 | Children in HHS Care | full | 14 | sarima | 249.469 | 147.643 | 152.643 | False | -68.97 |
 
-Gate summary: **16 of 24** target/horizon/rule cells pass across all dev folds; **9 of 24** in the recent regime.
+Gate summary: **15 of 24** target/horizon/rule cells pass across all dev folds; **9 of 24** in the recent regime.
 
 ## 6. Does the training-window cap matter now?
 
@@ -284,14 +284,14 @@ the product's uncertainty estimate.
 | Children discharged from HHS Care | exponential_smoothing | 1 | 65 | 98.5 | 209.2 | 95.0 |
 | Children discharged from HHS Care | exponential_smoothing | 7 | 57 | 96.5 | 250.8 | 95.0 |
 | Children discharged from HHS Care | exponential_smoothing | 14 | 63 | 100.0 | 298.3 | 95.0 |
-| Children discharged from HHS Care | sarima | 1 | 65 | 92.3 | 136.0 | 95.0 |
-| Children discharged from HHS Care | sarima | 7 | 57 | 91.2 | 182.4 | 95.0 |
+| Children discharged from HHS Care | sarima | 1 | 65 | 92.3 | 136.2 | 95.0 |
+| Children discharged from HHS Care | sarima | 7 | 57 | 91.2 | 182.5 | 95.0 |
 | Children discharged from HHS Care | sarima | 14 | 63 | 98.4 | 229.7 | 95.0 |
-| Children in HHS Care | exponential_smoothing | 1 | 65 | 98.5 | 402.8 | 95.0 |
-| Children in HHS Care | exponential_smoothing | 7 | 57 | 91.2 | 1649.5 | 95.0 |
+| Children in HHS Care | exponential_smoothing | 1 | 65 | 98.5 | 402.9 | 95.0 |
+| Children in HHS Care | exponential_smoothing | 7 | 57 | 91.2 | 1651.1 | 95.0 |
 | Children in HHS Care | exponential_smoothing | 14 | 63 | 88.9 | 3123.7 | 95.0 |
-| Children in HHS Care | sarima | 1 | 65 | 100.0 | 409.0 | 95.0 |
-| Children in HHS Care | sarima | 7 | 57 | 93.0 | 1787.6 | 95.0 |
+| Children in HHS Care | sarima | 1 | 65 | 100.0 | 409.9 | 95.0 |
+| Children in HHS Care | sarima | 7 | 57 | 93.0 | 1790.1 | 95.0 |
 | Children in HHS Care | sarima | 14 | 63 | 93.7 | 3551.1 | 95.0 |
 
 N here is small (low tens per cell), so these coverage figures carry wide 

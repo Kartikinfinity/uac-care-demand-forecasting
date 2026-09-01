@@ -65,11 +65,11 @@ Folds whose origin *precedes* the cutoff are untouched by the cap (invariant 4):
 | Children in HHS Care | naive | full | 1 | 65 | 48.231 | 74.035 | 0.699 | 0.699 | 0.157 | -11.954 |
 | Children in HHS Care | naive | full | 7 | 57 | 382.614 | 543.317 | 6.075 | 5.845 | 1.274 | 174.228 |
 | Children in HHS Care | naive | full | 14 | 63 | 602.508 | 859.826 | 10.358 | 9.58 | 2.003 | 203.651 |
-| Children in HHS Care | seasonal_naive | capped | 1 | 65 | 236.569 | 363.464 | 3.618 | 3.537 | 0.763 | 21.308 |
-| Children in HHS Care | seasonal_naive | capped | 7 | 57 | 464.211 | 665.278 | 7.755 | 7.385 | 1.532 | 115.228 |
+| Children in HHS Care | seasonal_naive | capped | 1 | 65 | 236.185 | 363.407 | 3.603 | 3.521 | 0.761 | 21.692 |
+| Children in HHS Care | seasonal_naive | capped | 7 | 57 | 464.035 | 665.264 | 7.748 | 7.378 | 1.532 | 115.404 |
 | Children in HHS Care | seasonal_naive | capped | 14 | 63 | 617.857 | 876.619 | 10.524 | 9.785 | 2.042 | 165.317 |
-| Children in HHS Care | seasonal_naive | full | 1 | 65 | 236.569 | 363.464 | 3.618 | 3.537 | 0.763 | 21.308 |
-| Children in HHS Care | seasonal_naive | full | 7 | 57 | 464.211 | 665.278 | 7.755 | 7.385 | 1.532 | 115.228 |
+| Children in HHS Care | seasonal_naive | full | 1 | 65 | 236.185 | 363.407 | 3.603 | 3.521 | 0.761 | 21.692 |
+| Children in HHS Care | seasonal_naive | full | 7 | 57 | 464.035 | 665.264 | 7.748 | 7.378 | 1.532 | 115.404 |
 | Children in HHS Care | seasonal_naive | full | 14 | 63 | 617.857 | 876.619 | 10.524 | 9.785 | 2.042 | 165.317 |
 
 ### Children discharged from HHS Care
@@ -88,11 +88,11 @@ Folds whose origin *precedes* the cutoff are untouched by the cap (invariant 4):
 | Children discharged from HHS Care | naive | full | 1 | 65 | 39.631 | 54.0 | 25.242 | 24.697 | 1.051 | -36.154 |
 | Children discharged from HHS Care | naive | full | 7 | 57 | 51.561 | 70.461 | 38.899 | 36.167 | 1.36 | -49.456 |
 | Children discharged from HHS Care | naive | full | 14 | 63 | 39.063 | 54.641 | 51.715 | 35.006 | 1.027 | 24.968 |
-| Children discharged from HHS Care | seasonal_naive | capped | 1 | 63 | 33.127 | 47.84 | 23.051 | 19.532 | 0.871 | 14.365 |
-| Children discharged from HHS Care | seasonal_naive | capped | 7 | 49 | 34.469 | 47.287 | 41.915 | 29.201 | 0.925 | 8.959 |
+| Children discharged from HHS Care | seasonal_naive | capped | 1 | 62 | 33.629 | 48.223 | 23.13 | 19.525 | 0.884 | 14.629 |
+| Children discharged from HHS Care | seasonal_naive | capped | 7 | 49 | 34.306 | 47.267 | 40.895 | 27.586 | 0.92 | 9.204 |
 | Children discharged from HHS Care | seasonal_naive | capped | 14 | 61 | 32.689 | 43.344 | 35.914 | 29.825 | 0.867 | 5.934 |
-| Children discharged from HHS Care | seasonal_naive | full | 1 | 63 | 33.127 | 47.84 | 23.051 | 19.532 | 0.871 | 14.365 |
-| Children discharged from HHS Care | seasonal_naive | full | 7 | 49 | 34.469 | 47.287 | 41.915 | 29.201 | 0.925 | 8.959 |
+| Children discharged from HHS Care | seasonal_naive | full | 1 | 62 | 33.629 | 48.223 | 23.13 | 19.525 | 0.884 | 14.629 |
+| Children discharged from HHS Care | seasonal_naive | full | 7 | 49 | 34.306 | 47.267 | 40.895 | 27.586 | 0.92 | 9.204 |
 | Children discharged from HHS Care | seasonal_naive | full | 14 | 61 | 32.689 | 43.344 | 35.914 | 29.825 | 0.867 | 5.934 |
 
 ## 5. Baseline metrics -- folds with origin on/after 2025-02-05
@@ -115,11 +115,11 @@ Addendum Section 5: where the two rankings disagree, **this** recent-regime rank
 | Children in HHS Care | naive | full | 1 | 15 | 10.133 | 13.967 | 0.444 | 0.444 | 0.037 | 0.0 |
 | Children in HHS Care | naive | full | 7 | 14 | 70.214 | 86.874 | 3.13 | 3.079 | 0.256 | 26.5 |
 | Children in HHS Care | naive | full | 14 | 14 | 147.643 | 176.41 | 6.728 | 6.531 | 0.542 | 43.929 |
-| Children in HHS Care | seasonal_naive | capped | 1 | 15 | 58.067 | 83.612 | 2.502 | 2.457 | 0.209 | 25.667 |
-| Children in HHS Care | seasonal_naive | capped | 7 | 14 | 111.286 | 143.531 | 4.959 | 4.814 | 0.404 | 47.429 |
+| Children in HHS Care | seasonal_naive | capped | 1 | 15 | 56.4 | 82.519 | 2.435 | 2.389 | 0.203 | 27.333 |
+| Children in HHS Care | seasonal_naive | capped | 7 | 14 | 110.571 | 143.262 | 4.931 | 4.785 | 0.401 | 48.143 |
 | Children in HHS Care | seasonal_naive | capped | 14 | 14 | 152.643 | 181.303 | 6.965 | 6.757 | 0.561 | 46.786 |
-| Children in HHS Care | seasonal_naive | full | 1 | 15 | 58.067 | 83.612 | 2.502 | 2.457 | 0.209 | 25.667 |
-| Children in HHS Care | seasonal_naive | full | 7 | 14 | 111.286 | 143.531 | 4.959 | 4.814 | 0.404 | 47.429 |
+| Children in HHS Care | seasonal_naive | full | 1 | 15 | 56.4 | 82.519 | 2.435 | 2.389 | 0.203 | 27.333 |
+| Children in HHS Care | seasonal_naive | full | 7 | 14 | 110.571 | 143.262 | 4.931 | 4.785 | 0.401 | 48.143 |
 | Children in HHS Care | seasonal_naive | full | 14 | 14 | 152.643 | 181.303 | 6.965 | 6.757 | 0.561 | 46.786 |
 
 ### Children discharged from HHS Care
@@ -138,16 +138,16 @@ Addendum Section 5: where the two rankings disagree, **this** recent-regime rank
 | Children discharged from HHS Care | naive | full | 1 | 15 | 4.133 | 5.379 | 46.455 | 36.242 | 0.121 | -1.067 |
 | Children discharged from HHS Care | naive | full | 7 | 14 | 9.357 | 12.781 | 88.178 | 62.301 | 0.277 | -2.643 |
 | Children discharged from HHS Care | naive | full | 14 | 14 | 8.286 | 10.212 | 121.468 | 68.735 | 0.247 | 3.857 |
-| Children discharged from HHS Care | seasonal_naive | capped | 1 | 15 | 6.333 | 13.163 | 39.516 | 30.381 | 0.182 | 2.467 |
-| Children discharged from HHS Care | seasonal_naive | capped | 7 | 13 | 10.308 | 15.611 | 103.0 | 61.125 | 0.301 | 4.923 |
+| Children discharged from HHS Care | seasonal_naive | capped | 1 | 14 | 6.643 | 13.615 | 41.04 | 31.123 | 0.191 | 2.786 |
+| Children discharged from HHS Care | seasonal_naive | capped | 7 | 13 | 9.692 | 15.372 | 99.154 | 55.037 | 0.282 | 5.846 |
 | Children discharged from HHS Care | seasonal_naive | capped | 14 | 12 | 5.333 | 7.059 | 64.135 | 57.857 | 0.157 | -1.0 |
-| Children discharged from HHS Care | seasonal_naive | full | 1 | 15 | 6.333 | 13.163 | 39.516 | 30.381 | 0.182 | 2.467 |
-| Children discharged from HHS Care | seasonal_naive | full | 7 | 13 | 10.308 | 15.611 | 103.0 | 61.125 | 0.301 | 4.923 |
+| Children discharged from HHS Care | seasonal_naive | full | 1 | 14 | 6.643 | 13.615 | 41.04 | 31.123 | 0.191 | 2.786 |
+| Children discharged from HHS Care | seasonal_naive | full | 7 | 13 | 9.692 | 15.372 | 99.154 | 55.037 | 0.282 | 5.846 |
 | Children discharged from HHS Care | seasonal_naive | full | 14 | 12 | 5.333 | 7.059 | 64.135 | 57.857 | 0.157 | -1.0 |
 
 ## 6. Like-for-like comparison (common support)
 
-Models abstain at different points: the seasonal-naive lookback sometimes lands on a true-missing flow-gap slot, so it returns fewer forecasts than naive on the same folds (see Section 8). Comparing raw MAE across models scored on different subsets is not like-for-like, and the Day-8 champion rule needs a like-for-like one. The table below restricts every model to the test points **all** baselines could be scored on -- 192 of 2340 prediction rows dropped. The abstentions are reported, not hidden.
+Models abstain at different points: the seasonal-naive lookback sometimes lands on a true-missing flow-gap slot, so it returns fewer forecasts than naive on the same folds (see Section 8). Comparing raw MAE across models scored on different subsets is not like-for-like, and the Day-8 champion rule needs a like-for-like one. The table below restricts every model to the test points **all** baselines could be scored on -- 198 of 2340 prediction rows dropped. The abstentions are reported, not hidden.
 
 ### Children in HHS Care -- all development folds, common support
 
@@ -165,34 +165,34 @@ Models abstain at different points: the seasonal-naive lookback sometimes lands 
 | Children in HHS Care | naive | full | 1 | 65 | 48.231 | 74.035 | 0.699 | 0.699 | 0.157 | -11.954 |
 | Children in HHS Care | naive | full | 7 | 57 | 382.614 | 543.317 | 6.075 | 5.845 | 1.274 | 174.228 |
 | Children in HHS Care | naive | full | 14 | 63 | 602.508 | 859.826 | 10.358 | 9.58 | 2.003 | 203.651 |
-| Children in HHS Care | seasonal_naive | capped | 1 | 65 | 236.569 | 363.464 | 3.618 | 3.537 | 0.763 | 21.308 |
-| Children in HHS Care | seasonal_naive | capped | 7 | 57 | 464.211 | 665.278 | 7.755 | 7.385 | 1.532 | 115.228 |
+| Children in HHS Care | seasonal_naive | capped | 1 | 65 | 236.185 | 363.407 | 3.603 | 3.521 | 0.761 | 21.692 |
+| Children in HHS Care | seasonal_naive | capped | 7 | 57 | 464.035 | 665.264 | 7.748 | 7.378 | 1.532 | 115.404 |
 | Children in HHS Care | seasonal_naive | capped | 14 | 63 | 617.857 | 876.619 | 10.524 | 9.785 | 2.042 | 165.317 |
-| Children in HHS Care | seasonal_naive | full | 1 | 65 | 236.569 | 363.464 | 3.618 | 3.537 | 0.763 | 21.308 |
-| Children in HHS Care | seasonal_naive | full | 7 | 57 | 464.211 | 665.278 | 7.755 | 7.385 | 1.532 | 115.228 |
+| Children in HHS Care | seasonal_naive | full | 1 | 65 | 236.185 | 363.407 | 3.603 | 3.521 | 0.761 | 21.692 |
+| Children in HHS Care | seasonal_naive | full | 7 | 57 | 464.035 | 665.264 | 7.748 | 7.378 | 1.532 | 115.404 |
 | Children in HHS Care | seasonal_naive | full | 14 | 63 | 617.857 | 876.619 | 10.524 | 9.785 | 2.042 | 165.317 |
 
 ### Children discharged from HHS Care -- all development folds, common support
 
 | target | model | window_rule | horizon | n_scored | MAE | RMSE | MAPE | sMAPE | MASE | ME_bias |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Children discharged from HHS Care | moving_average | capped | 1 | 63 | 34.141 | 47.371 | 19.833 | 19.037 | 0.907 | -25.221 |
+| Children discharged from HHS Care | moving_average | capped | 1 | 62 | 34.672 | 47.751 | 19.981 | 19.182 | 0.921 | -25.647 |
 | Children discharged from HHS Care | moving_average | capped | 7 | 49 | 40.754 | 57.695 | 37.753 | 28.396 | 1.082 | -33.071 |
 | Children discharged from HHS Care | moving_average | capped | 14 | 61 | 42.511 | 59.318 | 52.705 | 32.967 | 1.114 | 36.765 |
-| Children discharged from HHS Care | moving_average | full | 1 | 63 | 34.141 | 47.371 | 19.833 | 19.037 | 0.907 | -25.221 |
+| Children discharged from HHS Care | moving_average | full | 1 | 62 | 34.672 | 47.751 | 19.981 | 19.182 | 0.921 | -25.647 |
 | Children discharged from HHS Care | moving_average | full | 7 | 49 | 40.754 | 57.695 | 37.753 | 28.396 | 1.082 | -33.071 |
 | Children discharged from HHS Care | moving_average | full | 14 | 61 | 42.511 | 59.318 | 52.705 | 32.967 | 1.114 | 36.765 |
-| Children discharged from HHS Care | naive | capped | 1 | 63 | 39.698 | 54.32 | 25.658 | 25.069 | 1.053 | -36.111 |
+| Children discharged from HHS Care | naive | capped | 1 | 62 | 40.274 | 54.754 | 25.485 | 24.977 | 1.068 | -36.758 |
 | Children discharged from HHS Care | naive | capped | 7 | 49 | 45.143 | 61.949 | 39.432 | 34.499 | 1.198 | -42.694 |
 | Children discharged from HHS Care | naive | capped | 14 | 61 | 40.279 | 55.527 | 52.864 | 35.685 | 1.058 | 25.721 |
-| Children discharged from HHS Care | naive | full | 1 | 63 | 39.698 | 54.32 | 25.658 | 25.069 | 1.053 | -36.111 |
+| Children discharged from HHS Care | naive | full | 1 | 62 | 40.274 | 54.754 | 25.485 | 24.977 | 1.068 | -36.758 |
 | Children discharged from HHS Care | naive | full | 7 | 49 | 45.143 | 61.949 | 39.432 | 34.499 | 1.198 | -42.694 |
 | Children discharged from HHS Care | naive | full | 14 | 61 | 40.279 | 55.527 | 52.864 | 35.685 | 1.058 | 25.721 |
-| Children discharged from HHS Care | seasonal_naive | capped | 1 | 63 | 33.127 | 47.84 | 23.051 | 19.532 | 0.871 | 14.365 |
-| Children discharged from HHS Care | seasonal_naive | capped | 7 | 49 | 34.469 | 47.287 | 41.915 | 29.201 | 0.925 | 8.959 |
+| Children discharged from HHS Care | seasonal_naive | capped | 1 | 62 | 33.629 | 48.223 | 23.13 | 19.525 | 0.884 | 14.629 |
+| Children discharged from HHS Care | seasonal_naive | capped | 7 | 49 | 34.306 | 47.267 | 40.895 | 27.586 | 0.92 | 9.204 |
 | Children discharged from HHS Care | seasonal_naive | capped | 14 | 61 | 32.689 | 43.344 | 35.914 | 29.825 | 0.867 | 5.934 |
-| Children discharged from HHS Care | seasonal_naive | full | 1 | 63 | 33.127 | 47.84 | 23.051 | 19.532 | 0.871 | 14.365 |
-| Children discharged from HHS Care | seasonal_naive | full | 7 | 49 | 34.469 | 47.287 | 41.915 | 29.201 | 0.925 | 8.959 |
+| Children discharged from HHS Care | seasonal_naive | full | 1 | 62 | 33.629 | 48.223 | 23.13 | 19.525 | 0.884 | 14.629 |
+| Children discharged from HHS Care | seasonal_naive | full | 7 | 49 | 34.306 | 47.267 | 40.895 | 27.586 | 0.92 | 9.204 |
 | Children discharged from HHS Care | seasonal_naive | full | 14 | 61 | 32.689 | 43.344 | 35.914 | 29.825 | 0.867 | 5.934 |
 
 The same restriction applied to the **recent-regime** scope that governs Day-8 champion selection:
@@ -213,34 +213,34 @@ The same restriction applied to the **recent-regime** scope that governs Day-8 c
 | Children in HHS Care | naive | full | 1 | 15 | 10.133 | 13.967 | 0.444 | 0.444 | 0.037 | 0.0 |
 | Children in HHS Care | naive | full | 7 | 14 | 70.214 | 86.874 | 3.13 | 3.079 | 0.256 | 26.5 |
 | Children in HHS Care | naive | full | 14 | 14 | 147.643 | 176.41 | 6.728 | 6.531 | 0.542 | 43.929 |
-| Children in HHS Care | seasonal_naive | capped | 1 | 15 | 58.067 | 83.612 | 2.502 | 2.457 | 0.209 | 25.667 |
-| Children in HHS Care | seasonal_naive | capped | 7 | 14 | 111.286 | 143.531 | 4.959 | 4.814 | 0.404 | 47.429 |
+| Children in HHS Care | seasonal_naive | capped | 1 | 15 | 56.4 | 82.519 | 2.435 | 2.389 | 0.203 | 27.333 |
+| Children in HHS Care | seasonal_naive | capped | 7 | 14 | 110.571 | 143.262 | 4.931 | 4.785 | 0.401 | 48.143 |
 | Children in HHS Care | seasonal_naive | capped | 14 | 14 | 152.643 | 181.303 | 6.965 | 6.757 | 0.561 | 46.786 |
-| Children in HHS Care | seasonal_naive | full | 1 | 15 | 58.067 | 83.612 | 2.502 | 2.457 | 0.209 | 25.667 |
-| Children in HHS Care | seasonal_naive | full | 7 | 14 | 111.286 | 143.531 | 4.959 | 4.814 | 0.404 | 47.429 |
+| Children in HHS Care | seasonal_naive | full | 1 | 15 | 56.4 | 82.519 | 2.435 | 2.389 | 0.203 | 27.333 |
+| Children in HHS Care | seasonal_naive | full | 7 | 14 | 110.571 | 143.262 | 4.931 | 4.785 | 0.401 | 48.143 |
 | Children in HHS Care | seasonal_naive | full | 14 | 14 | 152.643 | 181.303 | 6.965 | 6.757 | 0.561 | 46.786 |
 
 ### Children discharged from HHS Care -- post-2025-02-05 origins, common support
 
 | target | model | window_rule | horizon | n_scored | MAE | RMSE | MAPE | sMAPE | MASE | ME_bias |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Children discharged from HHS Care | moving_average | capped | 1 | 15 | 4.246 | 7.956 | 28.471 | 23.907 | 0.122 | 1.027 |
+| Children discharged from HHS Care | moving_average | capped | 1 | 14 | 4.466 | 8.23 | 29.748 | 24.896 | 0.128 | 1.017 |
 | Children discharged from HHS Care | moving_average | capped | 7 | 13 | 6.61 | 8.495 | 89.42 | 48.601 | 0.196 | 0.987 |
 | Children discharged from HHS Care | moving_average | capped | 14 | 12 | 7.685 | 10.722 | 107.085 | 55.823 | 0.226 | 6.423 |
-| Children discharged from HHS Care | moving_average | full | 1 | 15 | 4.246 | 7.956 | 28.471 | 23.907 | 0.122 | 1.027 |
+| Children discharged from HHS Care | moving_average | full | 1 | 14 | 4.466 | 8.23 | 29.748 | 24.896 | 0.128 | 1.017 |
 | Children discharged from HHS Care | moving_average | full | 7 | 13 | 6.61 | 8.495 | 89.42 | 48.601 | 0.196 | 0.987 |
 | Children discharged from HHS Care | moving_average | full | 14 | 12 | 7.685 | 10.722 | 107.085 | 55.823 | 0.226 | 6.423 |
-| Children discharged from HHS Care | naive | capped | 1 | 15 | 4.133 | 5.379 | 46.455 | 36.242 | 0.121 | -1.067 |
+| Children discharged from HHS Care | naive | capped | 1 | 14 | 4.143 | 5.464 | 47.175 | 36.632 | 0.121 | -1.429 |
 | Children discharged from HHS Care | naive | capped | 7 | 13 | 8.462 | 11.916 | 90.709 | 61.219 | 0.248 | -1.231 |
 | Children discharged from HHS Care | naive | capped | 14 | 12 | 9.333 | 10.97 | 138.935 | 77.81 | 0.277 | 4.167 |
-| Children discharged from HHS Care | naive | full | 1 | 15 | 4.133 | 5.379 | 46.455 | 36.242 | 0.121 | -1.067 |
+| Children discharged from HHS Care | naive | full | 1 | 14 | 4.143 | 5.464 | 47.175 | 36.632 | 0.121 | -1.429 |
 | Children discharged from HHS Care | naive | full | 7 | 13 | 8.462 | 11.916 | 90.709 | 61.219 | 0.248 | -1.231 |
 | Children discharged from HHS Care | naive | full | 14 | 12 | 9.333 | 10.97 | 138.935 | 77.81 | 0.277 | 4.167 |
-| Children discharged from HHS Care | seasonal_naive | capped | 1 | 15 | 6.333 | 13.163 | 39.516 | 30.381 | 0.182 | 2.467 |
-| Children discharged from HHS Care | seasonal_naive | capped | 7 | 13 | 10.308 | 15.611 | 103.0 | 61.125 | 0.301 | 4.923 |
+| Children discharged from HHS Care | seasonal_naive | capped | 1 | 14 | 6.643 | 13.615 | 41.04 | 31.123 | 0.191 | 2.786 |
+| Children discharged from HHS Care | seasonal_naive | capped | 7 | 13 | 9.692 | 15.372 | 99.154 | 55.037 | 0.282 | 5.846 |
 | Children discharged from HHS Care | seasonal_naive | capped | 14 | 12 | 5.333 | 7.059 | 64.135 | 57.857 | 0.157 | -1.0 |
-| Children discharged from HHS Care | seasonal_naive | full | 1 | 15 | 6.333 | 13.163 | 39.516 | 30.381 | 0.182 | 2.467 |
-| Children discharged from HHS Care | seasonal_naive | full | 7 | 13 | 10.308 | 15.611 | 103.0 | 61.125 | 0.301 | 4.923 |
+| Children discharged from HHS Care | seasonal_naive | full | 1 | 14 | 6.643 | 13.615 | 41.04 | 31.123 | 0.191 | 2.786 |
+| Children discharged from HHS Care | seasonal_naive | full | 7 | 13 | 9.692 | 15.372 | 99.154 | 55.037 | 0.282 | 5.846 |
 | Children discharged from HHS Care | seasonal_naive | full | 14 | 12 | 5.333 | 7.059 | 64.135 | 57.857 | 0.157 | -1.0 |
 
 ## 7. Interpolation handling and contamination check
@@ -262,8 +262,8 @@ Residual check on what remains: fold-level flagged folds **3 of 65**; the table 
 | Children discharged from HHS Care | naive | 1 | 39.631 | 55 | 38.127 | 10 | 47.9 | -3.794 | 24.278 | 27.004 |
 | Children discharged from HHS Care | naive | 7 | 51.561 | 48 | 56.688 | 9 | 24.222 | 9.942 | 35.23 | 41.164 |
 | Children discharged from HHS Care | naive | 14 | 39.063 | 55 | 40.818 | 8 | 27.0 | 4.492 | 37.158 | 20.213 |
-| Children discharged from HHS Care | seasonal_naive | 1 | 33.127 | 55 | 32.472 | 10 | 36.6 | -1.978 | 19.474 | 19.842 |
-| Children discharged from HHS Care | seasonal_naive | 7 | 34.469 | 48 | 33.905 | 9 | 37.857 | -1.638 | 26.563 | 45.025 |
+| Children discharged from HHS Care | seasonal_naive | 1 | 33.629 | 55 | 32.472 | 10 | 40.444 | -3.441 | 19.474 | 19.824 |
+| Children discharged from HHS Care | seasonal_naive | 7 | 34.306 | 48 | 33.905 | 9 | 36.714 | -1.17 | 26.563 | 33.719 |
 | Children discharged from HHS Care | seasonal_naive | 14 | 32.689 | 55 | 33.436 | 8 | 25.833 | 2.288 | 31.328 | 16.044 |
 | Children in HHS Care | moving_average | 1 | 178.554 | 55 | 167.608 | 10 | 238.757 | -6.13 | 2.571 | 3.182 |
 | Children in HHS Care | moving_average | 7 | 468.792 | 48 | 503.872 | 9 | 281.698 | 7.483 | 7.311 | 7.465 |
@@ -271,8 +271,8 @@ Residual check on what remains: fold-level flagged folds **3 of 65**; the table 
 | Children in HHS Care | naive | 1 | 48.231 | 55 | 45.455 | 10 | 63.5 | -5.756 | 0.671 | 0.853 |
 | Children in HHS Care | naive | 7 | 382.614 | 48 | 416.667 | 9 | 201.0 | 8.9 | 5.96 | 5.23 |
 | Children in HHS Care | naive | 14 | 602.508 | 55 | 652.018 | 8 | 262.125 | 8.217 | 10.304 | 4.607 |
-| Children in HHS Care | seasonal_naive | 1 | 236.569 | 55 | 218.364 | 10 | 336.7 | -7.696 | 3.381 | 4.394 |
-| Children in HHS Care | seasonal_naive | 7 | 464.211 | 48 | 492.104 | 9 | 315.444 | 6.009 | 7.259 | 8.057 |
+| Children in HHS Care | seasonal_naive | 1 | 236.185 | 55 | 218.364 | 10 | 334.2 | -7.545 | 3.381 | 4.292 |
+| Children in HHS Care | seasonal_naive | 7 | 464.035 | 48 | 492.104 | 9 | 314.333 | 6.049 | 7.259 | 8.012 |
 | Children in HHS Care | seasonal_naive | 14 | 617.857 | 55 | 665.236 | 8 | 292.125 | 7.668 | 10.465 | 5.112 |
 
 `MAE_shift_pct_if_dropped` is the percentage change in aggregate MAE from excluding the gap-adjacent points entirely. Largest shift across all target/model/horizon cells: **9.94%**. Fold-level flagged folds: fold 57 (2025-05-26), fold 61 (2025-07-21), fold 64 (2025-09-01). Reported as a measured number, not waved off as negligible.
@@ -283,7 +283,7 @@ Residual check on what remains: fold-level flagged folds **3 of 65**; the table 
 |---|---|---|---|---|---|
 | Children discharged from HHS Care | moving_average | 390 | 20 | 0 | 0 |
 | Children discharged from HHS Care | naive | 390 | 20 | 0 | 0 |
-| Children discharged from HHS Care | seasonal_naive | 390 | 20 | 0 | 24 |
+| Children discharged from HHS Care | seasonal_naive | 390 | 20 | 0 | 26 |
 | Children in HHS Care | moving_average | 390 | 0 | 20 | 0 |
 | Children in HHS Care | naive | 390 | 0 | 20 | 0 |
 | Children in HHS Care | seasonal_naive | 390 | 0 | 20 | 0 |
