@@ -143,8 +143,10 @@ def persist_ml_fits(df: pd.DataFrame, features: pd.DataFrame, columns: list,
 
     try:
         provenance = read_provenance()
-    except Exception:  # noqa: BLE001
+    except Exception as exc:  # noqa: BLE001
         provenance = None
+        print("  WARNING: no provenance record available (%s) -- artifacts will not "
+              "be traceable to a data version" % type(exc).__name__)
 
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     written = []

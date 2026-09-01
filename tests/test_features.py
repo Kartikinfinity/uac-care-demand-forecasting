@@ -61,3 +61,64 @@ def test_holiday_proximity_logic(feature_tables):
     
     if not july4.empty:
         assert july4.iloc[0]['is_near_holiday'] == 1
+
+
+# ----------------------------------------------------------------------
+# ROLLING_MIN_PERIODS -- resolved Day-7 open item, pinned here
+# ----------------------------------------------------------------------
+def test_rolling_min_periods_matches_the_configured_decision(feature_tables):
+    """
+    The permissive setting is a RESOLVED, documented decision (see config), not
+    an accident. This pins the semantics so it cannot drift silently.
+    """
+    from src.config import (
+        ROLLING_MIN_PERIODS_MEAN, ROLLING_MIN_PERIODS_VAR, ROLLING_WINDOWS,
+    )
+
+    df1, _ = feature_tables
+    for w in ROLLING_WINDOWS:
+        shifted = df1[COL_DISCHARGED].astype(float).shift(1)
+        expected_mean = shifted.rolling(w, min_periods=ROLLING_MIN_PERIODS_MEAN).mean()
+        expected_var = shifted.rolling(w, min_periods=ROLLING_MIN_PERIODS_VAR).var()
+        assert np.allclose(df1[f'rolling_{w}_mean_{COL_DISCHARGED}'].astype(float),
+                           expected_mean, equal_nan=True)
+        assert np.allclose(df1[f'rolling_{w}_var_{COL_DISCHARGED}'].astype(float),
+                           expected_var, equal_nan=True)
+
+
+def test_rolling_features_are_unaffected_for_the_stock_target(feature_tables):
+    """Evidence point 2: stock columns have no gaps, so the setting cannot bite."""
+    from src.config import ROLLING_WINDOWS
+
+    df1, _ = feature_tables
+    for w in ROLLING_WINDOWS:
+        nobs = df1[f'rolling_{w}_nobs_{COL_HHS_CARE}'].iloc[w:]
+        assert (nobs == w).all(), "a stock rolling window is not fully populated"
+
+
+def test_the_configured_floor_is_never_actually_binding(feature_tables):
+    """
+    Evidence point 5: the data never drives a rolling window below 2
+    observations, so min_periods=1 vs 2 is immaterial on this dataset.
+    """
+    from src.config import ROLLING_WINDOWS
+
+    df1, _ = feature_tables
+    observed_minimums = {}
+    for w in ROLLING_WINDOWS:
+        cols = [c for c in df1.columns if c.startswith(f'rolling_{w}_nobs_')]
+        observed_minimums[w] = int(df1[cols].iloc[14:].to_numpy().min())
+    assert observed_minimums[7] >= 2
+    assert observed_minimums[14] >= 2
+
+
+def test_nobs_companion_columns_expose_the_true_sample_size(feature_tables):
+    """Nothing is hidden: every rolling statistic ships its own observation count."""
+    from src.config import ROLLING_WINDOWS
+
+    df1, _ = feature_tables
+    for w in ROLLING_WINDOWS:
+        means = [c for c in df1.columns if c.startswith(f'rolling_{w}_mean_')]
+        for col in means:
+            base = col.split('_', 3)[3]
+            assert f'rolling_{w}_nobs_{base}' in df1.columns

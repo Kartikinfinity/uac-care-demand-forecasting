@@ -137,8 +137,10 @@ def persist_development_fits(df: pd.DataFrame, dev_end: int) -> list:
 
     try:
         provenance = read_provenance()
-    except Exception:  # noqa: BLE001
+    except Exception as exc:  # noqa: BLE001
         provenance = None
+        print("  WARNING: no provenance record available (%s) -- artifacts will not "
+              "be traceable to a data version" % type(exc).__name__)
 
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     written = []
@@ -164,14 +166,19 @@ def persist_development_fits(df: pd.DataFrame, dev_end: int) -> list:
                         "params": np.asarray(model.result_.params).tolist(),
                         "param_names": list(getattr(model.result_, "param_names", [])),
                     }
-                except Exception:  # noqa: BLE001
-                    pass
+                except Exception as exc:  # noqa: BLE001
+                    # Never silent: a missing summary is recorded on the artifact
+                    # so a downstream reader sees WHY the field is empty.
+                    summary["summary_error"] = "%s: %s" % (type(exc).__name__, str(exc)[:120])
+                    print("  WARNING: could not read summary stats for %s/%s -- %s"
+                          % (target, family, summary["summary_error"]))
                 # A retained SARIMAX filter is ~27 MB per model; slimming takes
                 # it to ~3.5 MB with no loss of anything recorded above.
                 try:
                     model.result_.remove_data()
-                except Exception:  # noqa: BLE001
-                    pass
+                except Exception as exc:  # noqa: BLE001
+                    print("  WARNING: could not slim %s/%s (artifact stays large) -- %s: %s"
+                          % (target, family, type(exc).__name__, str(exc)[:120]))
 
             joblib.dump(
                 {

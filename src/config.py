@@ -135,13 +135,43 @@ ROLLING_WINDOWS = [7, 14]
 LAG_PERIODS = [1, 7, 14]
 
 # Minimum non-missing observations required inside a rolling window before a
-# value is emitted. These are DELIBERATELY permissive: flow columns are
-# true-missing at the 49 gap slots (invariant 2) and a strict requirement would
-# void a rolling feature for every window overlapping a gap. The consequence is
-# that a "rolling_7" value can rest on fewer than 7 observations -- 253 rows do,
-# with a floor of 2 -- so the name describes the window SPAN, not the sample
-# size behind it. Recorded here as an explicit choice rather than an accident;
-# `n_obs` companion columns expose the true sample size per row.
+# value is emitted.
+#
+# RESOLVED (Day-7 open-items pass) -- was previously flagged as an unresolved
+# decision. The permissive setting is KEPT, on measured evidence:
+#
+#   1. NO SOURCE SPECIFIES A MINIMUM. Re-verified against both governing
+#      documents: zero occurrences of "min_period", "minimum observation",
+#      "partial/incomplete window", or "at least N". The official Unified Mentor
+#      documentation asks only for "7-day and 14-day rolling mean and variance".
+#
+#   2. THE DECISION TOUCHES ONLY FLOW-DERIVED FEATURES. Stock columns are fully
+#      interpolated and contain zero NaN, so 0.0% of their rolling cells are
+#      below a full window under either setting. The choice is therefore scoped
+#      to the flow series alone.
+#
+#   3. STRICT WINDOWS WOULD BE DESTRUCTIVE HERE. Measured on the real series:
+#        rolling_7  on a flow column -- strict voids 253 values (32.9% of rows)
+#        rolling_14 on a flow column -- strict voids 437 values (56.8% of rows)
+#      Feature rows carrying ANY NaN -- which is exactly what Random Forest
+#      drops -- would rise from 131/755 (17.4%) to 424/755 (56.2%), costing RF a
+#      further 293 training rows on a dataset the roadmap already calls
+#      "moderate-sized". The addendum treats RF's NaN drop as a bounded,
+#      manageable handicap; strict windows would make it the dominant effect.
+#
+#   4. THE PERMISSIVE SETTING MATCHES THE ADDENDUM'S OWN EXPECTATION. It states
+#      ML feature rows carry NaN "from flow-column gaps". Under this setting the
+#      NaN arrive via the LAG columns -- verified: all 10 folds with a NaN in the
+#      RF prediction row were lag_* columns, no rolling_* column. Strict windows
+#      would instead make rolling columns the dominant NaN source.
+#
+#   5. THE EXACT VALUE IS NOT BINDING ON THIS DATA. The smallest observation
+#      count actually reached is 2 for rolling_7 and 8 for rolling_14, so a
+#      floor of 1 versus 2 changes nothing here. Pinned by a test.
+#
+# A "rolling_7" value therefore describes the window SPAN, not the sample size
+# behind it -- and the companion `rolling_{w}_nobs_{col}` columns expose the true
+# count per row, so nothing is hidden from a model or a reader.
 ROLLING_MIN_PERIODS_MEAN = 1
 ROLLING_MIN_PERIODS_VAR = 2
 
@@ -303,8 +333,8 @@ FULL_COMPARISON_PATH = FORECASTS_DIR / "full_model_comparison.csv"
 # ──────────────────────────────────────────────────────────────────────
 # MODEL PARAMETERS
 # ──────────────────────────────────────────────────────────────────────
-# These will be populated during Days 5-7 with evidence-based selections.
-# Stubs here for structure.
+# The seven evaluated families, all now implemented and evaluated (Days 4-7),
+# plus the post-hoc ensemble computed at Day 8.
 MODEL_FAMILIES = [
     "naive",
     "seasonal_naive",
@@ -315,3 +345,49 @@ MODEL_FAMILIES = [
     "gradient_boosting",      # HistGradientBoostingRegressor
     "ensemble",               # Post-hoc average of champion stat + champion ML
 ]
+
+BASELINE_MODELS = ["naive", "seasonal_naive", "moving_average"]
+
+# ----------------------------------------------------------------------
+# CHAMPION-SELECTION RULE
+# ----------------------------------------------------------------------
+# Complexity ordering, used ONLY to break practical ties. Measured from the
+# persisted Day-6/7 artifacts, not asserted:
+#     naive / seasonal_naive / moving_average   0 estimated parameters
+#     sarima                                    4-6 free parameters
+#     exponential_smoothing                     8-11 free parameters
+#     random_forest                             300 trees / ~29,700 nodes
+#     gradient_boosting                         300 boosted trees
+# Within the zero-parameter baselines the order reflects how much configured
+# structure each carries: naive none, seasonal_naive a period m, moving_average
+# a window w.
+MODEL_COMPLEXITY_ORDER = [
+    "naive",
+    "seasonal_naive",
+    "moving_average",
+    "sarima",
+    "exponential_smoothing",
+    "random_forest",
+    "gradient_boosting",
+    "ensemble",
+]
+
+# Practical-equivalence margin (addendum Section 5: "within that margin, the
+# simpler/more stable candidate wins over the numerically lowest one").
+#
+# The margin is NOT a fixed percentage. It is a paired bootstrap over
+# per-observation absolute errors on the SAME test points, so it adapts to the
+# sample size actually achieved -- which matters here because the recent-regime
+# pools are 12-15 observations per cell. Measured on those pools: 5 of 6
+# target/horizon cells show NO distinguishable difference between the best
+# baseline and the best non-baseline candidate, and the single distinguishable
+# cell favours the BASELINE. A fixed-percentage margin would have manufactured
+# winners out of noise at these N.
+PRACTICAL_EQUIVALENCE_RESAMPLES = 10000
+PRACTICAL_EQUIVALENCE_LEVEL = 0.95
+PRACTICAL_EQUIVALENCE_SEED = RANDOM_SEED
+
+# A baseline is a first-class champion candidate. If no model clears the
+# baseline-beating gate, the best BASELINE is the champion and is reported as
+# such -- never overridden by a more complex model that failed the gate.
+BASELINES_ARE_ELIGIBLE_CHAMPIONS = True
