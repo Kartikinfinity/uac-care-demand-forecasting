@@ -445,15 +445,26 @@ def test_naive_forecast_equals_the_last_training_value(baseline_run, master):
         assert row.y_pred == pytest.approx(y[row.train_cutoff_pos])
 
 
-def test_seasonal_naive_h1_forecast_equals_the_value_m_periods_before(baseline_run, master):
+def test_seasonal_naive_forecast_equals_the_value_m_periods_before_the_target(baseline_run, master):
+    """
+    Seasonal naive predicts the observation one seasonal cycle before the TARGET
+    date. The lookback is driven by the effective lead (the true forecast
+    distance), not the nominal horizon -- they differ when the window was pulled
+    back off an interpolated origin.
+    """
     y = master[TARGET_1].astype(float).to_numpy()
     sn = baseline_run[
-        (baseline_run["model"] == "seasonal_naive")
-        & (baseline_run["horizon"] == 1)
-        & (baseline_run["window_rule"] == "full")
+        (baseline_run["model"] == "seasonal_naive") & (baseline_run["window_rule"] == "full")
     ]
+    assert len(sn) > 0
     for row in sn.itertuples():
-        assert row.y_pred == pytest.approx(y[row.train_cutoff_pos - SEASONAL_PERIOD_M + 1])
+        lead = row.effective_lead
+        offset = -(SEASONAL_PERIOD_M - (lead - 1) % SEASONAL_PERIOD_M)
+        expected = y[row.train_cutoff_pos + 1 + offset]
+        assert row.y_pred == pytest.approx(expected)
+        # And that source observation is always one or more full cycles before
+        # the scored date -- never at or after it.
+        assert row.train_cutoff_pos + 1 + offset < row.test_pos
 
 
 def test_capped_rule_changes_the_training_window_on_post_cutoff_folds(baseline_run):
@@ -651,3 +662,49 @@ def test_effective_lead_is_honest_about_gap_widened_horizons(real_folds):
         for h in fold.horizons:
             assert fold.effective_lead[h] == fold.test_positions[h] - fold.train_cutoff_pos
             assert fold.effective_lead[h] >= h
+
+
+def test_models_are_asked_to_forecast_to_the_date_they_are_scored_on(master, real_folds, cutoff_pos):
+    """
+    REGRESSION. A model's last observation is at `train_cutoff_pos` and it is
+    scored at `origin + h`. When the origin fell in an interpolated gap those
+    differ, and asking the model for `h` steps would produce a forecast for the
+    wrong date which the harness would then grade as if it were right.
+    """
+    asked = {}
+
+    class Spy:
+        def fit(self, y):
+            self._n = len(y)
+            return self
+
+        def predict(self, horizons):
+            asked["leads"] = list(horizons)
+            return np.zeros(len(horizons))
+
+    leaky_folds = [f for f in real_folds if f.train_cutoff_pos != f.origin_pos]
+    assert leaky_folds, "fixture no longer exercises a pulled-back window"
+
+    for fold in leaky_folds:
+        run_walk_forward(master, TARGET_1, {"spy": lambda: Spy()}, [fold],
+                         cutoff_pos, window_rules=["full"])
+        for lead, h in zip(asked["leads"], fold.horizons):
+            assert lead == fold.test_positions[h] - fold.train_cutoff_pos
+            assert lead > h, "this fold should require a longer lead than nominal"
+
+
+def test_nominal_horizon_is_used_whenever_the_origin_is_a_real_observation(master, real_folds, cutoff_pos):
+    asked = {}
+
+    class Spy:
+        def fit(self, y):
+            return self
+
+        def predict(self, horizons):
+            asked["leads"] = list(horizons)
+            return np.zeros(len(horizons))
+
+    clean = [f for f in real_folds if f.train_cutoff_pos == f.origin_pos][0]
+    run_walk_forward(master, TARGET_1, {"spy": lambda: Spy()}, [clean],
+                     cutoff_pos, window_rules=["full"])
+    assert asked["leads"] == list(clean.horizons)

@@ -159,6 +159,148 @@ BASELINE_METRICS_REPORT_PATH = DOCS_DIR / "day5_baseline_metrics.md"
 EARLY_WARNING_PERCENTILE = 90  # 90th percentile, trailing-only
 
 # ──────────────────────────────────────────────────────────────────────
+# STATISTICAL MODEL SPECIFICATIONS (Day 6)
+# ──────────────────────────────────────────────────────────────────────
+# Specifications are PRE-REGISTERED: chosen once from diagnostics computed on
+# the development portion only (the 60-observation holdout is never touched),
+# then held fixed while COEFFICIENTS are refit at every walk-forward origin.
+# The alternative -- re-searching orders inside each fold -- is not required by
+# any source document and would cost ~2,000 extra fits.
+#
+# Evidence chain (all recomputed on pos 0..705, never the holdout):
+#   d=1        ADF/KPSS agree both targets are non-stationary in level and
+#              stationary after one difference (Day 3, docs/eda_findings.md).
+#   m=5        Kruskal-Wallis within-week seasonality, p<1e-5 both targets
+#              (Day 3), confirmed against the level rather than assumed from
+#              the reporting schedule.
+#   D=1        Seasonal ACF at lag 5 decays slowly (HHS +0.628 at lag 5,
+#              +0.493 at lag 10). One seasonal difference flips it to -0.321 /
+#              -0.137 and lowers the sd (128.6 -> 111.0); same pattern for
+#              Discharged (+0.384 -> -0.387). A negative seasonal ACF after
+#              seasonal differencing is the classic seasonal-MA signature,
+#              which is why Q=1 is selected for both targets below.
+#
+# Order search: full grid p,q in {0,1,2} x P,Q in {0,1} x D in {0,1} with
+# d=1, m=5 -- 72 candidates per target, 72/72 converged for both.
+SARIMA_ORDERS = {
+    # AIC-best was (2,1,2)(1,1,1,5) at 8177.8; this is (2,1,2)(0,1,1,5) at
+    # 8179.4 -- delta-AIC 1.66, inside the conventional 2-point
+    # indistinguishability band, AND the BIC optimum (8206.7). The addendum's
+    # practical-equivalence rule ("within that margin, the simpler/more stable
+    # candidate wins over the numerically lowest one") selects the simpler model.
+    TARGET_1: {"order": (2, 1, 2), "seasonal_order": (0, 1, 1, 5)},
+    # AIC and BIC agree outright: 6351.1 / 6369.3, best on both criteria.
+    TARGET_2: {"order": (0, 1, 2), "seasonal_order": (0, 1, 1, 5)},
+}
+
+# Exponential Smoothing -> ETSModel (state-space), additive throughout.
+# Multiplicative error/seasonal components are excluded on evidence, not taste:
+# `Children discharged from HHS Care` reaches 0 (2025-11-30) and multiplicative
+# forms are undefined at zero.
+ETS_SPECS = {
+    # AIC and BIC both select damped additive trend + additive seasonal.
+    TARGET_1: {"error": "add", "trend": "add", "damped_trend": True,
+               "seasonal": "add", "seasonal_periods": 5},
+    # AIC is a dead heat between additive trend (6914.74) and no trend
+    # (6914.82) -- delta 0.08 -- and BIC prefers no trend (6955.3 vs 6964.2).
+    # Practical equivalence again selects the simpler specification; a flow
+    # series of daily discharges carrying no persistent trend is also
+    # substantively sensible.
+    TARGET_2: {"error": "add", "trend": None, "damped_trend": False,
+               "seasonal": "add", "seasonal_periods": 5},
+}
+
+# ETSModel needs this explicitly: the classic `ExponentialSmoothing` class
+# silently returns an ALL-NaN forecast on the masked (flow) series rather than
+# raising. Verified live and pinned by a regression test.
+ETS_MISSING_POLICY = "drop"
+
+# Nominal level for the NATIVE SARIMAX/ETS confidence intervals. Addendum
+# Section 6: these are a SECONDARY DIAGNOSTIC only -- the primary intervals are
+# the empirical residual-quantile ones built at Day 9.
+NATIVE_CI_ALPHA = 0.05
+
+# Day-6 artifacts
+STATISTICAL_PREDICTIONS_PATH = FORECASTS_DIR / "statistical_predictions.csv"
+STATISTICAL_METRICS_PATH = FORECASTS_DIR / "statistical_metrics.csv"
+STATISTICAL_METRICS_REPORT_PATH = DOCS_DIR / "day6_statistical_metrics.md"
+
+# ──────────────────────────────────────────────────────────────────────
+# MACHINE-LEARNING MODEL PARAMETERS (Day 7)
+# ──────────────────────────────────────────────────────────────────────
+# Deliberately modest and FIXED -- the roadmap requires tuning to be "light and
+# time-boxed, no exhaustive search", and Part 5 warns these families "can overfit
+# with too many correlated lag/rolling features on ~700 rows". No hyperparameter
+# search is run: a search inside the walk-forward would need a nested inner loop
+# to stay leakage-free, which is beyond the frozen scope.
+#
+# RANDOM_SEED is threaded into every stochastic fit (addendum Section 3).
+RANDOM_FOREST_PARAMS = {
+    "n_estimators": 300,
+    "max_depth": 8,          # shallow: ~145-700 training rows depending on window
+    "min_samples_leaf": 5,   # guards against memorising single observations
+    "max_features": "sqrt",  # decorrelates highly-collinear lag/rolling features
+    "n_jobs": -1,
+    "random_state": RANDOM_SEED,
+}
+
+HIST_GRADIENT_BOOSTING_PARAMS = {
+    "max_iter": 300,
+    "max_depth": 4,
+    "learning_rate": 0.05,
+    "min_samples_leaf": 5,
+    "l2_regularization": 1.0,
+    "early_stopping": False,  # an internal validation split would be a RANDOM
+                              # split of a time series -- not permitted here
+    "random_state": RANDOM_SEED,
+}
+
+# Random Forest drops feature rows containing NaN, and the count is logged
+# (addendum Sections 2 and 4).
+#
+# NOTE, recorded honestly: scikit-learn gained native missing-value support for
+# tree ensembles in 1.4, and RandomForestRegressor on the installed 1.9.0 no
+# longer raises on NaN input. The addendum was written when it did. The drop is
+# therefore retained as the governing METHODOLOGICAL rule -- not as a technical
+# necessity -- and HistGradientBoostingRegressor keeps its NaN rows, exactly as
+# the addendum specifies. This preserves the deliberate contrast between the two
+# families rather than silently collapsing it.
+RANDOM_FOREST_DROPS_NAN_ROWS = True
+
+# What Random Forest does when the PREDICTION row itself contains a NaN.
+#
+# No source document specifies this. The addendum's rule is about TRAINING rows
+# ("ML feature rows with NaN inputs are dropped"); at prediction time there is
+# no row to drop, only a forecast to produce or withhold. Measured: 10 of the 65
+# folds have a NaN in the feature row at their training cutoff, always from a
+# flow-derived lag.
+#
+# Set False, i.e. RF forecasts anyway, because:
+#   * abstaining would be an ADDITIONAL handicap invented here rather than one
+#     the sources impose;
+#   * common support would then drop those 10 folds for EVERY model, shrinking
+#     the whole 7-way comparison by 15% to accommodate one family;
+#   * scikit-learn >= 1.4 gives trees defined, deterministic missing-value
+#     handling at predict time.
+# The specified handicap -- the ~20% of training pairs RF loses to the row drop
+# -- is retained and logged.
+RANDOM_FOREST_ABSTAINS_ON_NAN_PREDICTION_ROW = False
+
+# Minimum usable training pairs before an ML model refuses to fit for a given
+# fold/horizon. Independent of, and additional to, the ~60-80 usable-row
+# training-window floor: direct multi-horizon fitting loses a further `lead`
+# rows off the end of the window, because a pair needs its label to fall at or
+# before the training cutoff.
+ML_MIN_TRAINING_PAIRS = 30
+
+# Day-7 artifacts
+ML_PREDICTIONS_PATH = FORECASTS_DIR / "ml_predictions.csv"
+ML_METRICS_PATH = FORECASTS_DIR / "ml_metrics.csv"
+ML_RESIDUALS_PATH = FORECASTS_DIR / "oos_residuals.csv"
+ML_METRICS_REPORT_PATH = DOCS_DIR / "day7_ml_metrics.md"
+FULL_COMPARISON_PATH = FORECASTS_DIR / "full_model_comparison.csv"
+
+# ──────────────────────────────────────────────────────────────────────
 # MODEL PARAMETERS
 # ──────────────────────────────────────────────────────────────────────
 # These will be populated during Days 5-7 with evidence-based selections.

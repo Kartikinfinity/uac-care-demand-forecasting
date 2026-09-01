@@ -332,6 +332,7 @@ def run_walk_forward(
     date_col: str = "parsed_date",
     seasonal_m: int = SEASONAL_PERIOD_M,
     window_rules: Sequence = WINDOW_RULES,
+    features: pd.DataFrame = None,
 ) -> pd.DataFrame:
     """
     Fit every model at every fold origin under every window rule, and return one
@@ -339,6 +340,14 @@ def run_walk_forward(
 
     `model_factories` maps a model name to a zero-argument callable returning a
     FRESH estimator exposing `.fit(y) -> self` and `.predict(horizons) -> array`.
+
+    `features` is an OPTIONAL design matrix aligned row-for-row with `df` on the
+    period-position index. A model that sets `requires_features = True` is
+    handed `.fit(y_train, X_train)` instead, where X_train is sliced by exactly
+    the same [train_start .. train_cutoff] bounds as y_train -- so the feature
+    matrix inherits every leakage guarantee the target already has, including
+    the pull-back off an interpolated origin. Models that do not ask for
+    features never see them.
     A fresh instance per fold is what makes this a genuine refit-at-each-origin
     harness rather than one model reused across origins.
 
@@ -348,6 +357,11 @@ def run_walk_forward(
     """
     y = df[target_col].astype(float).to_numpy()
     dates = pd.to_datetime(df[date_col]).reset_index(drop=True)
+    if features is not None and len(features) != len(df):
+        raise ValueError(
+            "features must align row-for-row with df on the period-position "
+            "index (%d vs %d rows)" % (len(features), len(df))
+        )
 
     is_imputed = df["is_imputed"].to_numpy(dtype=bool)
 
@@ -381,10 +395,51 @@ def run_walk_forward(
                     # An all-missing tail in a flow target legitimately yields a
                     # NaN forecast; that is recorded, not silenced into a number.
                     warnings.simplefilter("ignore", category=RuntimeWarning)
-                    model.fit(y_train)
-                    preds = np.asarray(model.predict(list(fold.horizons)), dtype=float)
+                    if getattr(model, "requires_features", False):
+                        if features is None:
+                            raise ValueError(
+                                "model %r requires a feature matrix but none was "
+                                "passed to run_walk_forward" % model_name
+                            )
+                        model.fit(
+                            y_train,
+                            features.iloc[
+                                window.train_start_pos : window.train_end_pos + 1
+                            ],
+                        )
+                    else:
+                        model.fit(y_train)
+                    # Ask for the TRUE forecast distance, not the nominal
+                    # horizon. A model's last observation sits at
+                    # `train_cutoff_pos`; the point it is scored against sits at
+                    # `origin + h`. Those coincide for every fold with a real
+                    # origin, but when the origin fell in an interpolated gap
+                    # the window was pulled back, and asking for `h` would
+                    # produce a forecast for the WRONG DATE and then score it as
+                    # if it were right. `effective_lead` is exactly
+                    # (test_pos - train_cutoff_pos).
+                    leads = [fold.effective_lead[h] for h in fold.horizons]
+                    preds = np.asarray(model.predict(leads), dtype=float)
 
-                for h, y_hat in zip(fold.horizons, preds):
+                # Optional extras a model MAY expose. Baselines expose
+                # neither, so these stay NaN/blank for them -- the columns are
+                # additive and change no existing behaviour.
+                interval = getattr(model, "last_interval_", None)
+                lo_arr, hi_arr = (
+                    (np.asarray(interval[0], dtype=float),
+                     np.asarray(interval[1], dtype=float))
+                    if interval is not None
+                    else (np.full(len(fold.horizons), np.nan),
+                          np.full(len(fold.horizons), np.nan))
+                )
+                # `failed_` covers both the estimation and forecast stages when a
+                # model distinguishes them; `fit_failed_` is the simple fallback.
+                fit_failed = bool(
+                    getattr(model, "failed_", getattr(model, "fit_failed_", False))
+                )
+                failure_reason = str(getattr(model, "failure_reason_", ""))
+
+                for i, (h, y_hat) in enumerate(zip(fold.horizons, preds)):
                     test_pos = fold.test_positions[h]
                     test_imputed = fold.test_is_imputed[h]
                     test_adjacent = (
@@ -418,6 +473,10 @@ def run_walk_forward(
                             "train_n_usable": window.n_usable_rows,
                             "fallback_applied": window.fallback_applied,
                             "flips_at_upper_floor": window.flips_at_upper_floor,
+                            "y_pred_lo": lo_arr[i] if i < lo_arr.size else np.nan,
+                            "y_pred_hi": hi_arr[i] if i < hi_arr.size else np.nan,
+                            "fit_failed": fit_failed,
+                            "failure_reason": failure_reason,
                             "mase_scale": scale,
                             "origin_is_imputed": fold.origin_is_imputed,
                             "origin_adjacent_to_gap": fold.origin_adjacent_to_gap,

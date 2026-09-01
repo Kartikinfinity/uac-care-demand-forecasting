@@ -27,7 +27,9 @@ pip install -r requirements-dev.txt      # runtime + test tooling
 python -m src.data.clean               # -> data/interim/master_series.parquet
 python -m src.eda                      # -> docs/eda_findings.md, reports/figures/
 python -m src.features.build_features  # -> data/processed/features_target*.parquet
-python -m src.evaluation.run_baselines # -> forecasts/*.csv, docs/day5_baseline_metrics.md
+python -m src.evaluation.run_baselines   # -> forecasts/baseline_*.csv, docs/day5_baseline_metrics.md
+python -m src.evaluation.run_statistical # -> forecasts/statistical_*.csv, docs/day6_statistical_metrics.md, models/stat_*.pkl
+python -m src.evaluation.run_ml          # -> forecasts/full_model_comparison.csv, oos_residuals.csv, docs/day7_ml_metrics.md, models/ml_*.pkl
 
 # Run the test suite
 python -m pytest -q

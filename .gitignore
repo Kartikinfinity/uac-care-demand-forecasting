@@ -32,3 +32,11 @@ build/
 data/interim/
 data/processed/
 forecasts/
+models/*.pkl
+
+# Serialized model artifacts are regenerable from the raw CSV by
+#   python -m src.evaluation.run_statistical
+# and are excluded for the same reason data/interim, data/processed and
+# forecasts are: they are outputs, not sources. A single SARIMAX result is
+# ~3.5 MB even after slimming. Provenance (raw-CSV and master-series hashes)
+# is embedded in each artifact so a regenerated file is traceable.
