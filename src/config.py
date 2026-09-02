@@ -188,6 +188,31 @@ BASELINE_METRICS_REPORT_PATH = DOCS_DIR / "day5_baseline_metrics.md"
 # ──────────────────────────────────────────────────────────────────────
 EARLY_WARNING_PERCENTILE = 90  # 90th percentile, trailing-only
 
+# Length of the trailing window the threshold percentile is taken over.
+#
+# The addendum fixes the PERCENTILE ("fixed at the 90th percentile as a stated
+# convention, never searched or tuned") but not the window "recent observed
+# load" is measured over. No source specifies it. Deliberately set equal to
+# FINAL_TEST_WINDOW rather than chosen independently, so no new free parameter
+# enters the system: that length was already frozen as covering "multiple full
+# weekly cycles across all three horizons".
+#
+# A window is essential, not cosmetic. `Children in HHS Care` falls ~5.8x across
+# the series, so a full-history percentile would sit at 2023 levels and could
+# never fire in 2025 -- the threshold has to track the regime it is monitoring.
+# Like the percentile, this is a STATED CONVENTION and is never tuned against
+# the window used to report Surge Lead Time or Capacity Breach Probability.
+EARLY_WARNING_TRAILING_WINDOW = FINAL_TEST_WINDOW
+
+# Tier mapping (addendum Section 8): the LONGEST horizon gives the earliest,
+# least confident notice.
+EARLY_WARNING_TIERS = {14: "Watch", 7: "Warning", 1: "Alert"}
+
+# Qualitative labels for the dashboard's Capacity Breach card. Addendum Section
+# 8 requires a tier label rather than a bare percentage, so a data-derived proxy
+# can never read as an official capacity figure.
+CAPACITY_TIER_LABELS = ["Normal", "Elevated", "High"]
+
 # ──────────────────────────────────────────────────────────────────────
 # STATISTICAL MODEL SPECIFICATIONS (Day 6)
 # ──────────────────────────────────────────────────────────────────────
@@ -391,3 +416,48 @@ PRACTICAL_EQUIVALENCE_SEED = RANDOM_SEED
 # baseline-beating gate, the best BASELINE is the champion and is reported as
 # such -- never overridden by a more complex model that failed the gate.
 BASELINES_ARE_ELIGIBLE_CHAMPIONS = True
+
+# The scope champion selection is decided on. Addendum Section 5: "If the two
+# rankings disagree, the restricted (recent-regime) ranking governs champion
+# selection." Common support is applied so every candidate is compared on
+# identical test points.
+SELECTION_SCOPE = "post_cutoff_common_support"
+
+# The capped rule IS the deployed configuration: forecasts generated after
+# 2025-02-05 train on post-cutoff data by the addendum's own training rule, so
+# champions must be chosen under the same rule they will run under.
+SELECTION_WINDOW_RULE = "capped"
+
+# Bias tie-break. |mean signed error| / MAE is bounded in [0, 1] and equals 1
+# only when every error points the same way, so it measures what fraction of a
+# model's typical error is a fixed directional offset. Above this share, and
+# only when a bootstrap CI on the signed error also excludes zero, a candidate
+# is passed over IN FAVOUR OF a practically-equivalent alternative -- never
+# eliminated outright, since the roadmap asks for "acceptable" bias, not none.
+BIAS_RATIO_TIE_BREAK_THRESHOLD = 0.5
+
+# ----------------------------------------------------------------------
+# DAY-8 ARTIFACTS
+# ----------------------------------------------------------------------
+MODEL_REGISTRY_PATH = MODELS_DIR / "model_registry.json"
+CHAMPION_METRICS_PATH = FORECASTS_DIR / "champion_selection.csv"
+ENSEMBLE_PREDICTIONS_PATH = FORECASTS_DIR / "ensemble_predictions.csv"
+IMBALANCE_CORRELATION_PATH = FORECASTS_DIR / "imbalance_residual_correlation.csv"
+SELECTION_RATIONALE_PATH = DOCS_DIR / "model_selection_rationale.md"
+
+# ----------------------------------------------------------------------
+# DERIVED IMBALANCE SIGNAL (addendum Section 6)
+# ----------------------------------------------------------------------
+# Transferred Out is a DERIVED-signal component, not a third target: its forward
+# value uses the same baseline treatment required for every series, never a full
+# champion-selection track.
+IMBALANCE_COMPONENT = COL_TRANSFERRED
+IMBALANCE_BASELINE_MODELS = ["seasonal_naive", "moving_average"]
+
+# Below this |correlation| the simplified independence form of
+# Var(A-B) = Var(A) + Var(B) - 2*Cov(A,B) may be used. The addendum sets the
+# pre-registered EXPECTATION of near-independence from the raw-series proxy
+# (0.657 raw / 0.074 first-difference / 0.112 detrended) but is explicit that
+# this "is a prior, not the final answer" -- the decision is made from the
+# measured paired out-of-sample residual correlation at Day 8.
+IMBALANCE_INDEPENDENCE_THRESHOLD = 0.2

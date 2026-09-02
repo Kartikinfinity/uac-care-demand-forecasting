@@ -30,6 +30,7 @@ python -m src.features.build_features  # -> data/processed/features_target*.parq
 python -m src.evaluation.run_baselines   # -> forecasts/baseline_*.csv, docs/day5_baseline_metrics.md
 python -m src.evaluation.run_statistical # -> forecasts/statistical_*.csv, docs/day6_statistical_metrics.md, models/stat_*.pkl
 python -m src.evaluation.run_ml          # -> forecasts/full_model_comparison.csv, oos_residuals.csv, docs/day7_ml_metrics.md, models/ml_*.pkl
+python -m src.evaluation.run_selection   # -> models/model_registry.json, docs/model_selection_rationale.md, forecasts/champion_selection.csv
 
 # Run the test suite
 python -m pytest -q

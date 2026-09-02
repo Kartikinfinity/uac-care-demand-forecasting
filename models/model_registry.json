@@ -1,0 +1,1008 @@
+{
+  "generated_at_utc": "2026-09-02T14:31:04+00:00",
+  "selection_rule": {
+    "gate": "must beat BOTH naive and seasonal-naive on MAE, strictly",
+    "ranking_scope": "post_cutoff_common_support",
+    "window_rule": "capped",
+    "practical_equivalence": "paired bootstrap over per-observation absolute errors, 10000 resamples at the 95% level; a candidate whose interval spans zero is tied with the numerical leader",
+    "tie_break": "prefer un-biased, then prefer lower complexity rank",
+    "baselines_eligible": true
+  },
+  "provenance": {
+    "raw_csv_filename": "HHS_Unaccompanied_Alien_Children_Program (1).csv",
+    "raw_csv_sha256": "061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198",
+    "master_series_sha256": "3c6b093d73744140ac7d1d68d308e9f3f0f070fdc3d26e8c6e3d03bf24243c6d",
+    "generated_at_utc": "2026-08-31T14:30:55+00:00",
+    "n_period_positions": 769,
+    "n_real_observations": 720,
+    "n_gap_slots": 49,
+    "data_as_of": "2025-12-21",
+    "series_starts": "2023-01-12"
+  },
+  "entries": [
+    {
+      "target": "Children in HHS Care",
+      "horizon": 1,
+      "champion": "naive",
+      "champion_mae": 10.133333333333333,
+      "numerical_leader": null,
+      "numerical_leader_mae": null,
+      "gate_cleared_by": [],
+      "tied_with_best": [
+        "naive"
+      ],
+      "bias_screened_out": [],
+      "reason": "no candidate beat both naive and seasonal-naive; the best baseline is the champion and is preserved as the result",
+      "champion_full_dev": "naive",
+      "champion_full_dev_mae": 49.63492063492063,
+      "full_dev_numerical_leader": "sarima",
+      "full_dev_n": 63,
+      "rankings_agree": true,
+      "governing_scope_note": "both scopes select the same champion",
+      "n_scored": 15,
+      "selection_scope": "post_cutoff_common_support",
+      "window_rule": "capped",
+      "full_dev_ranking": [
+        {
+          "model": "sarima",
+          "MAE": 44.84928150844271
+        },
+        {
+          "model": "exponential_smoothing",
+          "MAE": 48.72106496744707
+        },
+        {
+          "model": "naive",
+          "MAE": 49.63492063492063
+        },
+        {
+          "model": "ensemble",
+          "MAE": 61.2879928038087
+        },
+        {
+          "model": "gradient_boosting",
+          "MAE": 106.64271772984986
+        },
+        {
+          "model": "moving_average",
+          "MAE": 180.68480725623573
+        },
+        {
+          "model": "seasonal_naive",
+          "MAE": 241.57142857142858
+        },
+        {
+          "model": "random_forest",
+          "MAE": 295.0184494907781
+        }
+      ],
+      "bias_diagnostics": {
+        "ensemble": {
+          "n": 15,
+          "bias": 16.062371968947218,
+          "mae": 18.70117521629777,
+          "bias_ratio": 0.8588963946473868,
+          "ci_low": 4.069919828194817,
+          "ci_high": 29.7504193516002,
+          "significant": true
+        },
+        "exponential_smoothing": {
+          "n": 15,
+          "bias": 24.703577925592178,
+          "mae": 28.57449164513141,
+          "bias_ratio": 0.8645325429543113,
+          "ci_low": 8.476325438950477,
+          "ci_high": 42.80448824403036,
+          "significant": true
+        },
+        "gradient_boosting": {
+          "n": 15,
+          "bias": 21.94654239282125,
+          "mae": 34.16342617749277,
+          "bias_ratio": 0.6423987535325092,
+          "ci_low": 0.1891681651532951,
+          "ci_high": 46.61121276248086,
+          "significant": true
+        },
+        "moving_average": {
+          "n": 15,
+          "bias": 16.133333333333304,
+          "mae": 42.97142857142856,
+          "bias_ratio": 0.37544326241134696,
+          "ci_low": -10.942857142857155,
+          "ci_high": 46.80976190476191,
+          "significant": false
+        },
+        "naive": {
+          "n": 15,
+          "bias": 0.0,
+          "mae": 10.133333333333333,
+          "bias_ratio": 0.0,
+          "ci_low": -7.0,
+          "ci_high": 7.0,
+          "significant": false
+        },
+        "random_forest": {
+          "n": 15,
+          "bias": 50.41946729569963,
+          "mae": 103.19228731137916,
+          "bias_ratio": 0.4885972450979852,
+          "ci_low": -18.810094381149394,
+          "ci_high": 143.86841829164513,
+          "significant": false
+        },
+        "sarima": {
+          "n": 15,
+          "bias": 10.178201545073156,
+          "mae": 11.440269132834858,
+          "bias_ratio": 0.8896820019610004,
+          "ci_low": 4.065121744476487,
+          "ci_high": 17.141398929263563,
+          "significant": true
+        },
+        "seasonal_naive": {
+          "n": 15,
+          "bias": 27.333333333333332,
+          "mae": 56.4,
+          "bias_ratio": 0.4846335697399527,
+          "ci_low": -8.6,
+          "ci_high": 70.06666666666666,
+          "significant": false
+        }
+      },
+      "stability_diagnostics": {
+        "ensemble": {
+          "n": 15,
+          "error_median": 8.424501938353387,
+          "error_iqr": 12.173437144044101,
+          "error_p90": 63.888916491749114,
+          "tail_ratio": 7.583702509567769
+        },
+        "exponential_smoothing": {
+          "n": 15,
+          "error_median": 12.782822560159275,
+          "error_iqr": 41.263602948367065,
+          "error_p90": 76.70706483207505,
+          "tail_ratio": 6.000792428360147
+        },
+        "gradient_boosting": {
+          "n": 15,
+          "error_median": 18.835998687205574,
+          "error_iqr": 15.601665945070408,
+          "error_p90": 101.98998519093064,
+          "tail_ratio": 5.414631147761108
+        },
+        "moving_average": {
+          "n": 15,
+          "error_median": 30.14285714285711,
+          "error_iqr": 33.857142857142776,
+          "error_p90": 95.42857142857127,
+          "tail_ratio": 3.1658767772511833
+        },
+        "naive": {
+          "n": 15,
+          "error_median": 6.0,
+          "error_iqr": 6.5,
+          "error_p90": 25.399999999999995,
+          "tail_ratio": 4.2333333333333325
+        },
+        "random_forest": {
+          "n": 15,
+          "error_median": 65.6794696915722,
+          "error_iqr": 38.972275759277636,
+          "error_p90": 164.2817499958294,
+          "tail_ratio": 2.501264866590565
+        },
+        "sarima": {
+          "n": 15,
+          "error_median": 8.72315491167842,
+          "error_iqr": 15.492016977247886,
+          "error_p90": 21.34252878636862,
+          "tail_ratio": 2.4466525015846714
+        },
+        "seasonal_naive": {
+          "n": 15,
+          "error_median": 35.0,
+          "error_iqr": 30.0,
+          "error_p90": 137.79999999999995,
+          "tail_ratio": 3.937142857142856
+        }
+      },
+      "bootstrap_evidence": {}
+    },
+    {
+      "target": "Children in HHS Care",
+      "horizon": 7,
+      "champion": "naive",
+      "champion_mae": 70.21428571428571,
+      "numerical_leader": "exponential_smoothing",
+      "numerical_leader_mae": 61.51765499257791,
+      "gate_cleared_by": [
+        "exponential_smoothing",
+        "sarima"
+      ],
+      "tied_with_best": [
+        "naive",
+        "sarima",
+        "exponential_smoothing"
+      ],
+      "bias_screened_out": [
+        "exponential_smoothing"
+      ],
+      "reason": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "champion_full_dev": "sarima",
+      "champion_full_dev_mae": 306.2304963515491,
+      "full_dev_numerical_leader": "exponential_smoothing",
+      "full_dev_n": 55,
+      "rankings_agree": false,
+      "governing_scope_note": "rankings DISAGREE -- addendum Section 5 makes the recent-regime ranking governing",
+      "n_scored": 14,
+      "selection_scope": "post_cutoff_common_support",
+      "window_rule": "capped",
+      "full_dev_ranking": [
+        {
+          "model": "exponential_smoothing",
+          "MAE": 293.46046558760634
+        },
+        {
+          "model": "sarima",
+          "MAE": 306.2304963515491
+        },
+        {
+          "model": "naive",
+          "MAE": 379.96363636363634
+        },
+        {
+          "model": "ensemble",
+          "MAE": 405.3406776906968
+        },
+        {
+          "model": "seasonal_naive",
+          "MAE": 468.23636363636365
+        },
+        {
+          "model": "moving_average",
+          "MAE": 472.19480519480527
+        },
+        {
+          "model": "gradient_boosting",
+          "MAE": 621.7419947330003
+        },
+        {
+          "model": "random_forest",
+          "MAE": 658.2447048573443
+        }
+      ],
+      "bias_diagnostics": {
+        "exponential_smoothing": {
+          "n": 14,
+          "bias": 42.87992085630617,
+          "mae": 61.51765499257791,
+          "bias_ratio": 0.6970343856813076,
+          "ci_low": 9.446273048711827,
+          "ci_high": 76.91776282931642,
+          "significant": true
+        },
+        "naive": {
+          "n": 14,
+          "bias": 26.5,
+          "mae": 70.21428571428571,
+          "bias_ratio": 0.3774160732451679,
+          "ci_low": -15.214285714285714,
+          "ci_high": 70.57321428571426,
+          "significant": false
+        },
+        "sarima": {
+          "n": 14,
+          "bias": -29.92786028469587,
+          "mae": 62.385141836353945,
+          "bias_ratio": 0.47972737423922773,
+          "ci_low": -68.86673982691138,
+          "ci_high": 8.758817543685623,
+          "significant": false
+        }
+      },
+      "stability_diagnostics": {
+        "exponential_smoothing": {
+          "n": 14,
+          "error_median": 45.11196994323723,
+          "error_iqr": 67.1846064257241,
+          "error_p90": 111.00342671346571,
+          "tail_ratio": 2.4606202489746587
+        },
+        "naive": {
+          "n": 14,
+          "error_median": 54.0,
+          "error_iqr": 78.5,
+          "error_p90": 150.60000000000002,
+          "tail_ratio": 2.788888888888889
+        },
+        "sarima": {
+          "n": 14,
+          "error_median": 42.14065792164092,
+          "error_iqr": 81.84684587827758,
+          "error_p90": 141.74024033061022,
+          "tail_ratio": 3.36350326077422
+        }
+      },
+      "bootstrap_evidence": {
+        "moving_average": {
+          "n": 14,
+          "mean_difference": 44.2170388849731,
+          "ci_low": 2.374601433714846,
+          "ci_high": 88.71613930922098,
+          "distinguishable": true
+        },
+        "naive": {
+          "n": 14,
+          "mean_difference": 8.696630721707802,
+          "ci_low": -22.813093573411404,
+          "ci_high": 35.0252599909567,
+          "distinguishable": false
+        },
+        "sarima": {
+          "n": 14,
+          "mean_difference": 0.8674868437760291,
+          "ci_low": -33.533200392755695,
+          "ci_high": 34.82577723916236,
+          "distinguishable": false
+        },
+        "seasonal_naive": {
+          "n": 14,
+          "mean_difference": 49.05377357885066,
+          "ci_low": 3.431099637018127,
+          "ci_high": 97.2279354085623,
+          "distinguishable": true
+        }
+      }
+    },
+    {
+      "target": "Children in HHS Care",
+      "horizon": 14,
+      "champion": "naive",
+      "champion_mae": 147.64285714285714,
+      "numerical_leader": "exponential_smoothing",
+      "numerical_leader_mae": 108.74263902776781,
+      "gate_cleared_by": [
+        "exponential_smoothing"
+      ],
+      "tied_with_best": [
+        "naive",
+        "exponential_smoothing"
+      ],
+      "bias_screened_out": [],
+      "reason": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "champion_full_dev": "sarima",
+      "champion_full_dev_mae": 554.8022213439326,
+      "full_dev_numerical_leader": "exponential_smoothing",
+      "full_dev_n": 60,
+      "rankings_agree": false,
+      "governing_scope_note": "rankings DISAGREE -- addendum Section 5 makes the recent-regime ranking governing",
+      "n_scored": 14,
+      "selection_scope": "post_cutoff_common_support",
+      "window_rule": "capped",
+      "full_dev_ranking": [
+        {
+          "model": "exponential_smoothing",
+          "MAE": 518.199343064008
+        },
+        {
+          "model": "sarima",
+          "MAE": 554.8022213439326
+        },
+        {
+          "model": "naive",
+          "MAE": 606.25
+        },
+        {
+          "model": "seasonal_naive",
+          "MAE": 625.2666666666667
+        },
+        {
+          "model": "ensemble",
+          "MAE": 670.2475155321284
+        },
+        {
+          "model": "moving_average",
+          "MAE": 684.4642857142858
+        },
+        {
+          "model": "random_forest",
+          "MAE": 1036.213602914008
+        },
+        {
+          "model": "gradient_boosting",
+          "MAE": 1105.8176983753158
+        }
+      ],
+      "bias_diagnostics": {
+        "exponential_smoothing": {
+          "n": 14,
+          "bias": -6.401820782809215,
+          "mae": 108.74263902776781,
+          "bias_ratio": 0.05887130237086197,
+          "ci_low": -70.10308265905154,
+          "ci_high": 62.98318668813534,
+          "significant": false
+        },
+        "naive": {
+          "n": 14,
+          "bias": 43.92857142857143,
+          "mae": 147.64285714285714,
+          "bias_ratio": 0.2975326560232221,
+          "ci_low": -41.214285714285715,
+          "ci_high": 135.57142857142858,
+          "significant": false
+        }
+      },
+      "stability_diagnostics": {
+        "exponential_smoothing": {
+          "n": 14,
+          "error_median": 95.32632919451135,
+          "error_iqr": 89.74421258165427,
+          "error_p90": 190.95025201498666,
+          "tail_ratio": 2.003121840822767
+        },
+        "naive": {
+          "n": 14,
+          "error_median": 126.0,
+          "error_iqr": 29.5,
+          "error_p90": 272.4000000000001,
+          "tail_ratio": 2.1619047619047627
+        }
+      },
+      "bootstrap_evidence": {
+        "moving_average": {
+          "n": 14,
+          "mean_difference": 71.09409566610972,
+          "ci_low": 17.042988153978502,
+          "ci_high": 149.00692219259705,
+          "distinguishable": true
+        },
+        "naive": {
+          "n": 14,
+          "mean_difference": 38.90021811508934,
+          "ci_low": -0.3099393495366475,
+          "ci_high": 96.34082492914455,
+          "distinguishable": false
+        },
+        "seasonal_naive": {
+          "n": 14,
+          "mean_difference": 43.90021811508934,
+          "ci_low": 4.063033414513476,
+          "ci_high": 100.28685889062136,
+          "distinguishable": true
+        }
+      }
+    },
+    {
+      "target": "Children discharged from HHS Care",
+      "horizon": 1,
+      "champion": "naive",
+      "champion_mae": 4.142857142857143,
+      "numerical_leader": "ensemble",
+      "numerical_leader_mae": 3.1687188340044625,
+      "gate_cleared_by": [
+        "ensemble",
+        "exponential_smoothing"
+      ],
+      "tied_with_best": [
+        "naive",
+        "moving_average",
+        "exponential_smoothing",
+        "ensemble"
+      ],
+      "bias_screened_out": [],
+      "reason": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "champion_full_dev": "sarima",
+      "champion_full_dev_mae": 23.921470966209466,
+      "full_dev_numerical_leader": "ensemble",
+      "full_dev_n": 60,
+      "rankings_agree": false,
+      "governing_scope_note": "rankings DISAGREE -- addendum Section 5 makes the recent-regime ranking governing",
+      "n_scored": 14,
+      "selection_scope": "post_cutoff_common_support",
+      "window_rule": "capped",
+      "full_dev_ranking": [
+        {
+          "model": "ensemble",
+          "MAE": 23.195682890796608
+        },
+        {
+          "model": "sarima",
+          "MAE": 23.921470966209466
+        },
+        {
+          "model": "exponential_smoothing",
+          "MAE": 25.969711667238926
+        },
+        {
+          "model": "gradient_boosting",
+          "MAE": 26.508207268813365
+        },
+        {
+          "model": "random_forest",
+          "MAE": 29.355653997430256
+        },
+        {
+          "model": "seasonal_naive",
+          "MAE": 33.11666666666667
+        },
+        {
+          "model": "moving_average",
+          "MAE": 34.585317460317455
+        },
+        {
+          "model": "naive",
+          "MAE": 39.8
+        }
+      ],
+      "bias_diagnostics": {
+        "ensemble": {
+          "n": 14,
+          "bias": 0.33693626840586094,
+          "mae": 3.1687188340044625,
+          "bias_ratio": 0.10633201809832346,
+          "ci_low": -2.9727902369874446,
+          "ci_high": 3.226207673698693,
+          "significant": false
+        },
+        "exponential_smoothing": {
+          "n": 14,
+          "bias": -1.4224951519185223,
+          "mae": 3.817078528133061,
+          "bias_ratio": 0.37266593847474944,
+          "ci_low": -4.988042012410613,
+          "ci_high": 1.2608583547354282,
+          "significant": false
+        },
+        "moving_average": {
+          "n": 14,
+          "bias": 1.0170068027210888,
+          "mae": 4.465986394557823,
+          "bias_ratio": 0.22772277227722781,
+          "ci_low": -2.6938775510204076,
+          "ci_high": 5.826658163265305,
+          "significant": false
+        },
+        "naive": {
+          "n": 14,
+          "bias": -1.4285714285714286,
+          "mae": 4.142857142857143,
+          "bias_ratio": 0.3448275862068965,
+          "ci_low": -4.142857142857143,
+          "ci_high": 1.4285714285714286,
+          "significant": false
+        }
+      },
+      "stability_diagnostics": {
+        "ensemble": {
+          "n": 14,
+          "error_median": 0.8853632869655215,
+          "error_iqr": 2.7955304090308033,
+          "error_p90": 10.25226649735028,
+          "tail_ratio": 11.579728511771386
+        },
+        "exponential_smoothing": {
+          "n": 14,
+          "error_median": 2.0862112021223,
+          "error_iqr": 3.5149583903966564,
+          "error_p90": 5.076361438585526,
+          "tail_ratio": 2.4332921966008763
+        },
+        "moving_average": {
+          "n": 14,
+          "error_median": 2.142857142857143,
+          "error_iqr": 2.071428571428572,
+          "error_p90": 10.500000000000005,
+          "tail_ratio": 4.900000000000003
+        },
+        "naive": {
+          "n": 14,
+          "error_median": 3.5,
+          "error_iqr": 5.75,
+          "error_p90": 9.700000000000001,
+          "tail_ratio": 2.771428571428572
+        }
+      },
+      "bootstrap_evidence": {
+        "exponential_smoothing": {
+          "n": 14,
+          "mean_difference": 0.6483596941285988,
+          "ci_low": -1.043897661709902,
+          "ci_high": 2.0290992278958764,
+          "distinguishable": false
+        },
+        "moving_average": {
+          "n": 14,
+          "mean_difference": 1.2972675605533601,
+          "ci_low": -0.5761178647569872,
+          "ci_high": 3.698301851464733,
+          "distinguishable": false
+        },
+        "naive": {
+          "n": 14,
+          "mean_difference": 0.9741383088526799,
+          "ci_low": -0.8493195831762417,
+          "ci_high": 2.7310103006048108,
+          "distinguishable": false
+        },
+        "seasonal_naive": {
+          "n": 14,
+          "mean_difference": 3.4741383088526803,
+          "ci_low": 0.5187048929180417,
+          "ci_high": 8.495119990975821,
+          "distinguishable": true
+        }
+      }
+    },
+    {
+      "target": "Children discharged from HHS Care",
+      "horizon": 7,
+      "champion": "naive",
+      "champion_mae": 8.461538461538462,
+      "numerical_leader": "moving_average",
+      "numerical_leader_mae": 6.609890109890111,
+      "gate_cleared_by": [
+        "ensemble",
+        "exponential_smoothing"
+      ],
+      "tied_with_best": [
+        "naive",
+        "seasonal_naive",
+        "moving_average",
+        "exponential_smoothing",
+        "ensemble"
+      ],
+      "bias_screened_out": [],
+      "reason": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "champion_full_dev": "seasonal_naive",
+      "champion_full_dev_mae": 35.34782608695652,
+      "full_dev_numerical_leader": "gradient_boosting",
+      "full_dev_n": 46,
+      "rankings_agree": false,
+      "governing_scope_note": "rankings DISAGREE -- addendum Section 5 makes the recent-regime ranking governing",
+      "n_scored": 13,
+      "selection_scope": "post_cutoff_common_support",
+      "window_rule": "capped",
+      "full_dev_ranking": [
+        {
+          "model": "gradient_boosting",
+          "MAE": 32.576347359229864
+        },
+        {
+          "model": "ensemble",
+          "MAE": 32.83948828652247
+        },
+        {
+          "model": "exponential_smoothing",
+          "MAE": 34.29357854348791
+        },
+        {
+          "model": "sarima",
+          "MAE": 34.52159037542898
+        },
+        {
+          "model": "seasonal_naive",
+          "MAE": 35.34782608695652
+        },
+        {
+          "model": "random_forest",
+          "MAE": 37.45196359942975
+        },
+        {
+          "model": "moving_average",
+          "MAE": 41.607660455486545
+        },
+        {
+          "model": "naive",
+          "MAE": 45.17391304347826
+        }
+      ],
+      "bias_diagnostics": {
+        "ensemble": {
+          "n": 13,
+          "bias": 2.7337906026472156,
+          "mae": 8.359629717133991,
+          "bias_ratio": 0.32702292986063813,
+          "ci_low": -3.1015762801958795,
+          "ci_high": 9.55055810366708,
+          "significant": false
+        },
+        "exponential_smoothing": {
+          "n": 13,
+          "bias": 1.6797458966107848,
+          "mae": 6.779117715194301,
+          "bias_ratio": 0.24778237628856992,
+          "ci_low": -2.921281639163299,
+          "ci_high": 7.2958071113879015,
+          "significant": false
+        },
+        "moving_average": {
+          "n": 13,
+          "bias": 0.9871794871794873,
+          "mae": 6.609890109890111,
+          "bias_ratio": 0.14934885009697976,
+          "ci_low": -3.2179487179487176,
+          "ci_high": 5.800686813186809,
+          "significant": false
+        },
+        "naive": {
+          "n": 13,
+          "bias": -1.2307692307692308,
+          "mae": 8.461538461538462,
+          "bias_ratio": 0.14545454545454545,
+          "ci_low": -7.694230769230752,
+          "ci_high": 5.076923076923077,
+          "significant": false
+        },
+        "seasonal_naive": {
+          "n": 13,
+          "bias": 5.846153846153846,
+          "mae": 9.692307692307692,
+          "bias_ratio": 0.6031746031746031,
+          "ci_low": -1.1538461538461537,
+          "ci_high": 14.001923076923049,
+          "significant": false
+        }
+      },
+      "stability_diagnostics": {
+        "ensemble": {
+          "n": 13,
+          "error_median": 4.812530928461234,
+          "error_iqr": 5.612286943801189,
+          "error_p90": 24.367238635906244,
+          "tail_ratio": 5.063289773744366
+        },
+        "exponential_smoothing": {
+          "n": 13,
+          "error_median": 4.538853907593394,
+          "error_iqr": 4.079660056224107,
+          "error_p90": 11.59281220678324,
+          "tail_ratio": 2.5541276372409216
+        },
+        "moving_average": {
+          "n": 13,
+          "error_median": 6.0,
+          "error_iqr": 5.000000000000002,
+          "error_p90": 9.561904761904763,
+          "tail_ratio": 1.593650793650794
+        },
+        "naive": {
+          "n": 13,
+          "error_median": 6.0,
+          "error_iqr": 9.0,
+          "error_p90": 21.800000000000008,
+          "tail_ratio": 3.6333333333333346
+        },
+        "seasonal_naive": {
+          "n": 13,
+          "error_median": 4.0,
+          "error_iqr": 6.0,
+          "error_p90": 30.200000000000003,
+          "tail_ratio": 7.550000000000001
+        }
+      },
+      "bootstrap_evidence": {
+        "ensemble": {
+          "n": 13,
+          "mean_difference": 1.7497396072438833,
+          "ci_low": -0.8999819592902352,
+          "ci_high": 5.331567602066184,
+          "distinguishable": false
+        },
+        "exponential_smoothing": {
+          "n": 13,
+          "mean_difference": 0.16922760530418984,
+          "ci_low": -1.0895903174904333,
+          "ci_high": 1.6005162652096814,
+          "distinguishable": false
+        },
+        "naive": {
+          "n": 13,
+          "mean_difference": 1.8516483516483515,
+          "ci_low": -0.8589743589743593,
+          "ci_high": 5.4139194139194124,
+          "distinguishable": false
+        },
+        "seasonal_naive": {
+          "n": 13,
+          "mean_difference": 3.0824175824175817,
+          "ci_low": -1.406684981684981,
+          "ci_high": 8.45242673992674,
+          "distinguishable": false
+        }
+      }
+    },
+    {
+      "target": "Children discharged from HHS Care",
+      "horizon": 14,
+      "champion": "seasonal_naive",
+      "champion_mae": 5.333333333333333,
+      "numerical_leader": null,
+      "numerical_leader_mae": null,
+      "gate_cleared_by": [],
+      "tied_with_best": [
+        "seasonal_naive"
+      ],
+      "bias_screened_out": [],
+      "reason": "no candidate beat both naive and seasonal-naive; the best baseline is the champion and is preserved as the result",
+      "champion_full_dev": "seasonal_naive",
+      "champion_full_dev_mae": 32.53448275862069,
+      "full_dev_numerical_leader": null,
+      "full_dev_n": 58,
+      "rankings_agree": true,
+      "governing_scope_note": "both scopes select the same champion",
+      "n_scored": 12,
+      "selection_scope": "post_cutoff_common_support",
+      "window_rule": "capped",
+      "full_dev_ranking": [
+        {
+          "model": "seasonal_naive",
+          "MAE": 32.53448275862069
+        },
+        {
+          "model": "exponential_smoothing",
+          "MAE": 32.992372128342154
+        },
+        {
+          "model": "ensemble",
+          "MAE": 33.065035344730475
+        },
+        {
+          "model": "sarima",
+          "MAE": 36.35216715654397
+        },
+        {
+          "model": "gradient_boosting",
+          "MAE": 38.80712325636943
+        },
+        {
+          "model": "naive",
+          "MAE": 39.98275862068966
+        },
+        {
+          "model": "moving_average",
+          "MAE": 41.91912972085387
+        },
+        {
+          "model": "random_forest",
+          "MAE": 49.14316284606288
+        }
+      ],
+      "bias_diagnostics": {
+        "ensemble": {
+          "n": 12,
+          "bias": 4.282317991836368,
+          "mae": 7.516569515515196,
+          "bias_ratio": 0.5697170741249842,
+          "ci_low": -1.2448727286994619,
+          "ci_high": 10.917668693252834,
+          "significant": false
+        },
+        "exponential_smoothing": {
+          "n": 12,
+          "bias": 2.10007460605734,
+          "mae": 7.329325292778953,
+          "bias_ratio": 0.286530413396495,
+          "ci_low": -3.242820569693856,
+          "ci_high": 7.655634778011259,
+          "significant": false
+        },
+        "gradient_boosting": {
+          "n": 12,
+          "bias": 6.464561377615393,
+          "mae": 8.256186428158033,
+          "bias_ratio": 0.782996051974767,
+          "ci_low": 0.29541669959677846,
+          "ci_high": 14.853219892105818,
+          "significant": true
+        },
+        "moving_average": {
+          "n": 12,
+          "bias": 6.4226190476190474,
+          "mae": 7.68452380952381,
+          "bias_ratio": 0.8357862122385746,
+          "ci_low": 1.8432043650793655,
+          "ci_high": 11.462351190476191,
+          "significant": true
+        },
+        "naive": {
+          "n": 12,
+          "bias": 4.166666666666667,
+          "mae": 9.333333333333334,
+          "bias_ratio": 0.44642857142857145,
+          "ci_low": -1.6666666666666667,
+          "ci_high": 9.833333333333334,
+          "significant": false
+        },
+        "random_forest": {
+          "n": 12,
+          "bias": 10.214529005392004,
+          "mae": 12.008534934177794,
+          "bias_ratio": 0.8506057617670059,
+          "ci_low": 1.2112496047976167,
+          "ci_high": 22.048803737032607,
+          "significant": true
+        },
+        "sarima": {
+          "n": 12,
+          "bias": -14.268789890870027,
+          "mae": 18.072567584690862,
+          "bias_ratio": 0.7895275435548523,
+          "ci_low": -21.54728180858284,
+          "ci_high": -6.129047943522946,
+          "significant": true
+        },
+        "seasonal_naive": {
+          "n": 12,
+          "bias": -1.0,
+          "mae": 5.333333333333333,
+          "bias_ratio": 0.1875,
+          "ci_low": -4.5,
+          "ci_high": 3.3333333333333335,
+          "significant": false
+        }
+      },
+      "stability_diagnostics": {
+        "ensemble": {
+          "n": 12,
+          "error_median": 5.016883323827459,
+          "error_iqr": 6.876683948108468,
+          "error_p90": 16.90379431962283,
+          "tail_ratio": 3.369381591821964
+        },
+        "exponential_smoothing": {
+          "n": 12,
+          "error_median": 4.663702862731228,
+          "error_iqr": 10.467580007542454,
+          "error_p90": 16.088347606563154,
+          "tail_ratio": 3.449693962093729
+        },
+        "gradient_boosting": {
+          "n": 12,
+          "error_median": 2.619439724553767,
+          "error_iqr": 7.205345156502859,
+          "error_p90": 18.055708242608105,
+          "tail_ratio": 6.892965725975609
+        },
+        "moving_average": {
+          "n": 12,
+          "error_median": 5.071428571428571,
+          "error_iqr": 6.845238095238096,
+          "error_p90": 20.180952380952384,
+          "tail_ratio": 3.9793427230046956
+        },
+        "naive": {
+          "n": 12,
+          "error_median": 8.0,
+          "error_iqr": 5.25,
+          "error_p90": 15.8,
+          "tail_ratio": 1.975
+        },
+        "random_forest": {
+          "n": 12,
+          "error_median": 4.518585417871606,
+          "error_iqr": 7.062585700637651,
+          "error_p90": 33.15090253774147,
+          "tail_ratio": 7.336566529565923
+        },
+        "sarima": {
+          "n": 12,
+          "error_median": 18.559984551223334,
+          "error_iqr": 10.59852642356028,
+          "error_p90": 28.550336376173547,
+          "tail_ratio": 1.5382737144730934
+        },
+        "seasonal_naive": {
+          "n": 12,
+          "error_median": 4.0,
+          "error_iqr": 4.5,
+          "error_p90": 8.9,
+          "tail_ratio": 2.225
+        }
+      },
+      "bootstrap_evidence": {}
+    }
+  ]
+}

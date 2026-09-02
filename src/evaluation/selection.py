@@ -68,6 +68,8 @@ from src.config import (  # noqa: E402
 )
 
 __all__ = [
+    "bias_diagnostics",
+    "stability_diagnostics",
     "complexity_rank",
     "paired_absolute_errors",
     "paired_bootstrap_difference",
@@ -181,6 +183,95 @@ def passes_baseline_gate(metrics_row: dict, baseline_maes: dict) -> bool:
     return mae < min(refs)
 
 
+def bias_diagnostics(predictions: pd.DataFrame, model: str, **kwargs) -> dict:
+    """
+    Roadmap Part 6 criterion (b): "acceptable bias (no large systematic
+    over/under-forecast)".
+
+    Two numbers, because either alone misleads:
+
+      * `bias_ratio` = |mean signed error| / mean absolute error. Bounded in
+        [0, 1] by construction, and equal to 1 only when EVERY error points the
+        same way. So it measures what fraction of a model's typical error is a
+        fixed directional offset rather than scatter -- which for capacity
+        planning is the difference between noisy forecasts and systematic
+        over- or under-provisioning.
+      * `significant`, from a bootstrap CI on the mean signed error. At n=12-15
+        a large ratio can still be chance, so the ratio is only treated as
+        meaningful when the interval excludes zero.
+
+    Reported for every candidate. Used as a TIE-BREAK among practically
+    equivalent candidates, never as a hard gate -- the roadmap asks for
+    "acceptable" bias, and a gate would risk disqualifying the only candidate.
+    """
+    sub = predictions[predictions["model"] == model]
+    errors = (sub["y_pred"] - sub["y_true"]).dropna().to_numpy(dtype=float)
+    if errors.size == 0:
+        return {"n": 0, "bias": float("nan"), "mae": float("nan"),
+                "bias_ratio": float("nan"), "ci_low": float("nan"),
+                "ci_high": float("nan"), "significant": False}
+
+    mae = float(np.abs(errors).mean())
+    bias = float(errors.mean())
+    rng = np.random.default_rng(kwargs.get("seed", PRACTICAL_EQUIVALENCE_SEED))
+    n = errors.size
+    idx = rng.integers(0, n, size=(kwargs.get("resamples", PRACTICAL_EQUIVALENCE_RESAMPLES), n))
+    boot = errors[idx].mean(axis=1)
+    level = kwargs.get("level", PRACTICAL_EQUIVALENCE_LEVEL)
+    tail = (1.0 - level) / 2.0 * 100.0
+    lo, hi = np.percentile(boot, [tail, 100.0 - tail])
+    return {
+        "n": int(n),
+        "bias": bias,
+        "mae": mae,
+        "bias_ratio": float(abs(bias) / mae) if mae > 0 else float("nan"),
+        "ci_low": float(lo),
+        "ci_high": float(hi),
+        "significant": bool(lo > 0 or hi < 0),
+    }
+
+
+def stability_diagnostics(predictions: pd.DataFrame, model: str) -> dict:
+    """
+    Roadmap Part 6 criterion (c), SUBSTITUTED -- with the reason recorded.
+
+    The roadmap's [ENG-REC] definition is "the variance of forecasts made for
+    the same target date from different, rolling forecast origins". That is NOT
+    COMPUTABLE under the frozen fold design, and the arithmetic says so before
+    the data does: fold origins are spaced 10 period-positions apart, so two
+    folds share a test date only if their origin gap equals a horizon gap --
+    6, 7 or 13 -- and none of those is a multiple of 10. Confirmed empirically:
+    0 of 195 test positions are forecast from more than one origin.
+
+    Since the definition is an engineering recommendation rather than a
+    documentation requirement, it is replaced by a computable measure of the
+    same property -- does this model behave consistently across origins, or does
+    it occasionally blow up? Dispersion of absolute error across folds:
+
+      * `error_iqr`  -- interquartile range of |error|, robust to one bad fold
+      * `error_p90`  -- 90th percentile |error|, the tail that matters
+      * `tail_ratio` -- p90 / median |error|; a model with an ordinary median
+                        but a fat tail is unstable in the way that hurts.
+
+    Substitution disclosed here and in docs/model_selection_rationale.md rather
+    than silently reinterpreting the roadmap.
+    """
+    sub = predictions[predictions["model"] == model]
+    abs_err = (sub["y_pred"] - sub["y_true"]).abs().dropna().to_numpy(dtype=float)
+    if abs_err.size == 0:
+        return {"n": 0, "error_iqr": float("nan"), "error_p90": float("nan"),
+                "error_median": float("nan"), "tail_ratio": float("nan")}
+    q1, med, q3 = np.percentile(abs_err, [25, 50, 75])
+    p90 = float(np.percentile(abs_err, 90))
+    return {
+        "n": int(abs_err.size),
+        "error_median": float(med),
+        "error_iqr": float(q3 - q1),
+        "error_p90": p90,
+        "tail_ratio": float(p90 / med) if med > 0 else float("nan"),
+    }
+
+
 def select_champion(predictions: pd.DataFrame, metrics: pd.DataFrame) -> dict:
     """
     Apply the rule to ONE target/horizon/window-rule cell.
@@ -205,13 +296,23 @@ def select_champion(predictions: pd.DataFrame, metrics: pd.DataFrame) -> dict:
         if not BASELINES_ARE_ELIGIBLE_CHAMPIONS:
             return {"champion": None, "reason": "no non-baseline candidate cleared the gate"}
         best_baseline = min(baseline_maes, key=lambda m: baseline_maes[m])
+        # A baseline champion carries the SAME evidence trail as any other. The
+        # Day-8 checkpoint is that every selection claim traces to a metric row,
+        # and "the baseline won" is a claim like any other -- it does not get to
+        # skip its diagnostics because the answer happens to be simple.
         return {
             "champion": best_baseline,
             "champion_mae": baseline_maes[best_baseline],
+            "numerical_leader": None,
+            "numerical_leader_mae": None,
             "gate_cleared_by": [],
             "reason": "no candidate beat both naive and seasonal-naive; the best "
                       "baseline is the champion and is preserved as the result",
             "tied_with_best": [best_baseline],
+            "bootstrap_evidence": {},
+            "bias_diagnostics": {m: bias_diagnostics(predictions, m) for m in finite},
+            "bias_screened_out": [],
+            "stability_diagnostics": {m: stability_diagnostics(predictions, m) for m in finite},
         }
 
     leader = min(viable, key=lambda m: finite[m])
@@ -230,7 +331,15 @@ def select_champion(predictions: pd.DataFrame, metrics: pd.DataFrame) -> dict:
         if not stats["distinguishable"]:
             tied.append(model)
 
-    champion = min(tied, key=complexity_rank)
+    # Tie-break, in order: prefer a candidate whose bias is not a significant
+    # systematic offset, then prefer the simpler model. Bias only ever chooses
+    # BETWEEN practically-equivalent candidates -- it can never eliminate the
+    # last one standing.
+    bias = {m: bias_diagnostics(predictions, m) for m in tied}
+    unbiased = [m for m in tied
+                if not (bias[m]["significant"] and bias[m]["bias_ratio"] > 0.5)]
+    preference = unbiased if unbiased else tied
+    champion = min(preference, key=complexity_rank)
     return {
         "champion": champion,
         "champion_mae": finite[champion],
@@ -239,6 +348,9 @@ def select_champion(predictions: pd.DataFrame, metrics: pd.DataFrame) -> dict:
         "gate_cleared_by": sorted(m for m in viable if m not in BASELINE_MODELS),
         "tied_with_best": sorted(tied, key=complexity_rank),
         "bootstrap_evidence": evidence,
+        "bias_diagnostics": bias,
+        "bias_screened_out": sorted(set(tied) - set(unbiased), key=complexity_rank),
+        "stability_diagnostics": {m: stability_diagnostics(predictions, m) for m in tied},
         "reason": ("champion is the simplest candidate not distinguishable from the "
                    "numerical leader" if champion != leader else
                    "champion is the numerical leader and no simpler candidate ties it"),
