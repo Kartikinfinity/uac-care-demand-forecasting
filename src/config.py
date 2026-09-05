@@ -440,6 +440,33 @@ BIAS_RATIO_TIE_BREAK_THRESHOLD = 0.5
 # DAY-8 ARTIFACTS
 # ----------------------------------------------------------------------
 MODEL_REGISTRY_PATH = MODELS_DIR / "model_registry.json"
+
+# ----------------------------------------------------------------------
+# UNCERTAINTY (Day 9) -- addendum Section 6
+# ----------------------------------------------------------------------
+# Nominal level for the PRIMARY intervals: empirical quantiles of out-of-sample
+# walk-forward residuals, restricted to folds with origin on or after the
+# training cutoff. Matched to NATIVE_CI_ALPHA so the primary and the secondary
+# diagnostic are quoted at the same level and are directly comparable.
+EMPIRICAL_INTERVAL_ALPHA = NATIVE_CI_ALPHA
+
+# Below this many residuals an interval is NOT emitted. At the 95% level the
+# 2.5th and 97.5th percentiles of n<10 are just the sample min and max, which
+# is not an interval estimate in any meaningful sense -- better to return
+# nothing and say so than to publish a band with no information in it.
+MIN_RESIDUALS_FOR_INTERVAL = 10
+
+# ----------------------------------------------------------------------
+# DAY-9 ARTIFACTS
+# ----------------------------------------------------------------------
+FORWARD_FORECASTS_PATH = FORECASTS_DIR / "forward_forecasts.csv"
+INTERVAL_COVERAGE_PATH = FORECASTS_DIR / "interval_coverage.csv"
+HOLDOUT_EVALUATION_PATH = FORECASTS_DIR / "holdout_evaluation.csv"
+IMBALANCE_FORECAST_PATH = FORECASTS_DIR / "imbalance_forecast.csv"
+EARLY_WARNING_BACKTEST_PATH = FORECASTS_DIR / "early_warning_backtest.csv"
+KPI_SUMMARY_PATH = FORECASTS_DIR / "kpi_summary.csv"
+FORECAST_PROVENANCE_PATH = FORECASTS_DIR / "provenance.json"
+DAY9_REPORT_PATH = DOCS_DIR / "day9_forecast_generation.md"
 CHAMPION_METRICS_PATH = FORECASTS_DIR / "champion_selection.csv"
 ENSEMBLE_PREDICTIONS_PATH = FORECASTS_DIR / "ensemble_predictions.csv"
 IMBALANCE_CORRELATION_PATH = FORECASTS_DIR / "imbalance_residual_correlation.csv"

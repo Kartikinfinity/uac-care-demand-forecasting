@@ -31,12 +31,11 @@ python -m src.evaluation.run_baselines   # -> forecasts/baseline_*.csv, docs/day
 python -m src.evaluation.run_statistical # -> forecasts/statistical_*.csv, docs/day6_statistical_metrics.md, models/stat_*.pkl
 python -m src.evaluation.run_ml          # -> forecasts/full_model_comparison.csv, oos_residuals.csv, docs/day7_ml_metrics.md, models/ml_*.pkl
 python -m src.evaluation.run_selection   # -> models/model_registry.json, docs/model_selection_rationale.md, forecasts/champion_selection.csv
+python -m src.forecast.generate          # -> forecasts/{forward_forecasts,interval_coverage,holdout_evaluation,
+                                         #      imbalance_forecast,early_warning_backtest,kpi_summary}.csv + provenance.json
 
 # Run the test suite
 python -m pytest -q
-
-# Generate forecast artifacts (available from Day 9)
-python src/forecast/generate.py
 
 # Run the dashboard (available from Day 10)
 streamlit run app/Home.py
