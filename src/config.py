@@ -208,6 +208,17 @@ EARLY_WARNING_TRAILING_WINDOW = FINAL_TEST_WINDOW
 # least confident notice.
 EARLY_WARNING_TIERS = {14: "Watch", 7: "Warning", 1: "Alert"}
 
+# Percentiles the Day-11 sensitivity control may display.
+#
+# EARLY_WARNING_PERCENTILE (90) remains the FROZEN operating point and the only
+# one the reported Surge Lead Time and Capacity Breach figures are quoted at.
+# This grid exists so a reader can see how sensitive the signal is to that
+# choice -- which is disclosure, not tuning. The invariant is "never tune the
+# early-warning percentile against the same window used to report the final
+# numbers", so the grid is precomputed offline and the frozen point is marked
+# in the artifact itself; the app only ever displays what was already computed.
+EARLY_WARNING_SENSITIVITY_PERCENTILES = [75, 80, 85, 90, 95]
+
 # Qualitative labels for the dashboard's Capacity Breach card. Addendum Section
 # 8 requires a tier label rather than a bare percentage, so a data-derived proxy
 # can never read as an official capacity figure.
@@ -464,6 +475,7 @@ INTERVAL_COVERAGE_PATH = FORECASTS_DIR / "interval_coverage.csv"
 HOLDOUT_EVALUATION_PATH = FORECASTS_DIR / "holdout_evaluation.csv"
 IMBALANCE_FORECAST_PATH = FORECASTS_DIR / "imbalance_forecast.csv"
 EARLY_WARNING_BACKTEST_PATH = FORECASTS_DIR / "early_warning_backtest.csv"
+EARLY_WARNING_SENSITIVITY_PATH = FORECASTS_DIR / "early_warning_sensitivity.csv"
 KPI_SUMMARY_PATH = FORECASTS_DIR / "kpi_summary.csv"
 FORECAST_PROVENANCE_PATH = FORECASTS_DIR / "provenance.json"
 DAY9_REPORT_PATH = DOCS_DIR / "day9_forecast_generation.md"

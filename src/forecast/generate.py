@@ -54,6 +54,8 @@ from src.config import (  # noqa: E402
     DAY9_REPORT_PATH,
     EARLY_WARNING_BACKTEST_PATH,
     EARLY_WARNING_PERCENTILE,
+    EARLY_WARNING_SENSITIVITY_PATH,
+    EARLY_WARNING_SENSITIVITY_PERCENTILES,
     EARLY_WARNING_TIERS,
     EARLY_WARNING_TRAILING_WINDOW,
     EMPIRICAL_INTERVAL_ALPHA,
@@ -73,6 +75,7 @@ from src.config import (  # noqa: E402
     MODEL_REGISTRY_PATH,
     MOVING_AVERAGE_WINDOW,
     SEASONAL_PERIOD_M,
+    SELECTION_SCOPE,
     SELECTION_WINDOW_RULE,
     TARGET_1,
     TARGET_2,
@@ -520,11 +523,12 @@ def early_warning_backtest(df, registry, cutoff_pos, dev_end) -> tuple:
     folds = generate_folds(df["parsed_date"], df["is_imputed"], dev_end, FORECAST_HORIZONS)
 
     champions = {(e["target"], int(e["horizon"])): e["champion"] for e in registry["entries"]}
-    rows, per_target = [], {}
+    rows, per_target, sensitivity = [], {}, []
 
     for target in TARGETS:
         y = df[target].astype(float).to_numpy()
         results = []
+        origin_forecasts = []
         for fold in folds:
             forecasts = {}
             for horizon in FORECAST_HORIZONS:
@@ -539,6 +543,7 @@ def early_warning_backtest(df, registry, cutoff_pos, dev_end) -> tuple:
                 )
             outcome = backtest_origin(y, is_observed, fold.origin_pos, forecasts)
             results.append(outcome)
+            origin_forecasts.append((fold.origin_pos, forecasts))
             rows.append({
                 "target": target, "fold_id": fold.fold_id,
                 "origin_pos": fold.origin_pos,
@@ -553,13 +558,29 @@ def early_warning_backtest(df, registry, cutoff_pos, dev_end) -> tuple:
             })
         per_target[target] = summarise_backtest(results)
 
-    return pd.DataFrame(rows), per_target
+        # Percentile sensitivity. The FORECASTS do not depend on the threshold
+        # percentile -- only the threshold and the outcome classification do --
+        # so the whole grid is replayed from the forecasts already computed
+        # above, at no additional fitting cost.
+        for percentile in EARLY_WARNING_SENSITIVITY_PERCENTILES:
+            replay = [backtest_origin(y, is_observed, origin, fc, percentile=percentile)
+                      for origin, fc in origin_forecasts]
+            summary = summarise_backtest(replay)
+            sensitivity.append({
+                "target": target,
+                "percentile": percentile,
+                "is_frozen_operating_point": percentile == EARLY_WARNING_PERCENTILE,
+                **{k: v for k, v in summary.items() if k != "lead_time_units"},
+            })
+
+    return pd.DataFrame(rows), per_target, pd.DataFrame(sensitivity)
 
 
 # ----------------------------------------------------------------------
 # 5. KPIs
 # ----------------------------------------------------------------------
-def build_kpis(df, registry, forwards, backtest_summary, holdout, cutoff_pos) -> pd.DataFrame:
+def build_kpis(df, registry, forwards, backtest_summary, holdout, cutoff_pos,
+               comparison) -> pd.DataFrame:
     """
     The four KPIs the official documentation names, each with its formula
     recorded alongside the number so a reader never has to guess what it means.
@@ -572,6 +593,7 @@ def build_kpis(df, registry, forwards, backtest_summary, holdout, cutoff_pos) ->
     is_imputed = df["is_imputed"].to_numpy(dtype=bool)
     is_observed = ~is_imputed
     last_real = int(np.flatnonzero(is_observed)[-1])
+    champions = {(e["target"], int(e["horizon"])): e["champion"] for e in registry["entries"]}
 
     rows = []
     for target in TARGETS:
@@ -588,8 +610,27 @@ def build_kpis(df, registry, forwards, backtest_summary, holdout, cutoff_pos) ->
         stability = (float(hold["abs_error"].quantile(0.9) / hold["abs_error"].median())
                      if len(hold) and hold["abs_error"].median() > 0 else float("nan"))
 
+        # Forecast Accuracy (%) -- named by the official documentation but never
+        # defined there. Stated explicitly as 100 - sMAPE for the champion at
+        # h=1 on the governing scope. sMAPE rather than MAPE because the flow
+        # target reaches values near zero, where MAPE is unstable (19-121% on
+        # this data); the formula travels with the number so it can never be
+        # read as a different accuracy measure.
+        cell = comparison[
+            (comparison["fold_scope"] == SELECTION_SCOPE)
+            & (comparison["window_rule"] == SELECTION_WINDOW_RULE)
+            & (comparison["target"] == target) & (comparison["horizon"] == 1)
+        ]
+        champion_h1 = champions.get((target, 1))
+        champ_row = cell[cell["model"] == champion_h1]
+        accuracy = (100.0 - float(champ_row["sMAPE"].iloc[0])) if len(champ_row) else float("nan")
+
         rows.append({
             "target": target,
+            "forecast_accuracy_pct": accuracy,
+            "forecast_accuracy_formula": ("100 - sMAPE for the champion at h=1 on the "
+                                          "governing scope; sMAPE not MAPE because the "
+                                          "flow target reaches near-zero values"),
             "capacity_tier": tier,
             "capacity_tier_formula": ("qualitative label from the forward h=1 forecast "
                                       "against the trailing %dth-percentile threshold"
@@ -650,10 +691,12 @@ def main() -> None:
                                    transferred_residuals=transferred)
     imbalance.to_csv(IMBALANCE_FORECAST_PATH, index=False)
 
-    backtest, summary = early_warning_backtest(df, registry, cutoff_pos, dev_end)
+    backtest, summary, sensitivity = early_warning_backtest(df, registry, cutoff_pos, dev_end)
     backtest.to_csv(EARLY_WARNING_BACKTEST_PATH, index=False)
+    sensitivity.to_csv(EARLY_WARNING_SENSITIVITY_PATH, index=False)
 
-    kpis = build_kpis(df, registry, forwards, summary, holdout, cutoff_pos)
+    comparison = pd.read_csv(Path("forecasts") / "full_model_comparison.csv")
+    kpis = build_kpis(df, registry, forwards, summary, holdout, cutoff_pos, comparison)
     kpis.to_csv(KPI_SUMMARY_PATH, index=False)
 
     data_provenance = read_provenance()

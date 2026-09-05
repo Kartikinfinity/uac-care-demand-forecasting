@@ -27,6 +27,8 @@ if str(project_root) not in sys.path:
 
 from src.config import (  # noqa: E402
     CHAMPION_METRICS_PATH,
+    EARLY_WARNING_PERCENTILE,
+    EARLY_WARNING_SENSITIVITY_PATH,
     EARLY_WARNING_BACKTEST_PATH,
     FORECAST_HORIZONS,
     FORECAST_PROVENANCE_PATH,
@@ -116,6 +118,18 @@ def load_imbalance() -> pd.DataFrame:
 @st.cache_data(show_spinner=False)
 def load_early_warning() -> pd.DataFrame:
     return pd.read_csv(_require(EARLY_WARNING_BACKTEST_PATH, GENERATE))
+
+
+@st.cache_data(show_spinner=False)
+def load_sensitivity() -> pd.DataFrame:
+    """
+    Early-warning KPIs replayed across a grid of threshold percentiles.
+
+    Precomputed offline so the sensitivity control remains a pure lookup. The
+    frozen operating point (the 90th percentile) is flagged in the artifact
+    itself, so the app cannot present a tuned percentile as the reported one.
+    """
+    return pd.read_csv(_require(EARLY_WARNING_SENSITIVITY_PATH, GENERATE))
 
 
 @st.cache_data(show_spinner=False)
@@ -210,6 +224,15 @@ def coverage_note(coverage: pd.DataFrame, target: str, model: str, horizon: int)
         % (row["empirical_coverage"] * 100, row["nominal_coverage"] * 100,
            row["n"], row["band_low"] * 100, row["band_high"] * 100)
     )
+
+
+VARIABLE_LABELS = {
+    "Children apprehended and placed in CBP custody*": "Apprehended (CBP intake)",
+    "Children in CBP custody": "In CBP custody",
+    "Children transferred out of CBP custody": "Transferred out of CBP",
+    "Children in HHS Care": "In HHS care",
+    "Children discharged from HHS Care": "Discharged from HHS care",
+}
 
 
 def provenance_caption(provenance: dict) -> str:

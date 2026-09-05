@@ -233,3 +233,146 @@ def test_forecast_dates_land_on_reporting_days_only():
             "h=%d projected onto %s, a non-reporting day" % (horizon, date.date())
         )
         assert date > history["parsed_date"].iloc[last_pos]
+
+
+# ======================================================================
+# DAY 11 -- the complete 8-page app
+# ======================================================================
+PART8_PAGES = {
+    "Home.py": "Executive Overview",
+    "pages/1_Historical_Trends.py": "Historical Trends",
+    "pages/2_Care_Load_Forecast.py": "Care Load Forecast",
+    "pages/3_Discharge_Demand_Forecast.py": "Discharge Demand Forecast",
+    "pages/4_Intake_vs_Exit_Pressure.py": "Intake vs Exit Pressure",
+    "pages/5_Model_Comparison.py": "Model Comparison",
+    "pages/6_Scenario_Comparison.py": "Scenario Comparison",
+    "pages/7_Methodology.py": "Methodology",
+}
+
+
+def test_all_eight_part8_pages_exist():
+    """Part 8 caps the app at exactly 8 pages; Day 11's DoD is all of them."""
+    for relative in PART8_PAGES:
+        assert (APP / relative).exists(), "missing %s" % relative
+    actual = len(list((APP / "pages").glob("*.py")))
+    assert actual == 7, "expected 7 sub-pages plus Home, found %d" % actual
+
+
+def test_every_page_is_syntactically_valid():
+    for path in APP.rglob("*.py"):
+        ast.parse(path.read_text(encoding="utf-8"))
+
+
+def test_documented_core_modules_and_capabilities_are_all_covered():
+    """
+    Part 8's mapping table, asserted rather than assumed:
+      Future Care Load Forecast Chart  -> page 2
+      Discharge Demand Forecast Panel  -> page 3
+      Model Selection & Comparison     -> page 5
+      Confidence Interval Visualization-> pages 2 & 3 (built in)
+      Forecast horizon selector        -> pages 2, 3, 6
+      Model toggle                     -> pages 2, 3, 5, 6
+      Scenario comparison view         -> page 6
+    """
+    def source(rel):
+        return (APP / rel).read_text(encoding="utf-8")
+
+    # Horizon selector and model toggle on the two forecast pages come via the
+    # shared renderer, so assert them there.
+    renderer = (APP / "lib" / "forecast_page.py").read_text(encoding="utf-8")
+    assert "Forecast horizon" in renderer and "st.selectbox" in renderer
+    assert '"Model"' in renderer
+    assert "interval_sufficient" in renderer, "no CI visualisation in the renderer"
+
+    comparison = source("pages/5_Model_Comparison.py")
+    assert "Horizon" in comparison and "Target" in comparison
+
+    scenario = source("pages/6_Scenario_Comparison.py")
+    assert "multiselect" in scenario, "scenario view must allow multiple selections"
+    assert "Models to overlay" in scenario and "Horizons" in scenario
+
+
+def test_the_capacity_proxy_caveat_appears_on_every_page_that_shows_it():
+    """
+    The roadmap makes this a hard requirement: every place the proxy appears must
+    state plainly that it stands in for an absent official figure.
+    """
+    for relative in ("Home.py", "pages/4_Intake_vs_Exit_Pressure.py"):
+        text = (APP / relative).read_text(encoding="utf-8").lower()
+        assert "proxy" in text
+        assert "not an official" in text or "no capacity figure" in text \
+               or "no official capacity" in text
+
+
+def test_the_early_warning_page_reads_its_disclaimer_from_the_artifact():
+    """
+    Not from a second in-app copy that could drift from what the pipeline
+    actually recorded.
+    """
+    text = (APP / "pages" / "4_Intake_vs_Exit_Pressure.py").read_text(encoding="utf-8")
+    assert 'provenance["early_warning"]["disclaimer"]' in text
+    assert "from src.signals" not in text
+
+
+def test_the_percentile_control_is_disclosure_not_tuning():
+    """
+    The addendum freezes the percentile. The page may show a sensitivity grid,
+    but it must mark the frozen operating point and say the figures are quoted
+    only at it.
+    """
+    text = (APP / "pages" / "4_Intake_vs_Exit_Pressure.py").read_text(encoding="utf-8")
+    assert "is_frozen_operating_point" in text
+    assert "FROZEN operating point" in text
+    assert "not a tuning control" in text
+
+
+def test_sensitivity_artifact_flags_exactly_one_frozen_point_per_target():
+    from src.config import EARLY_WARNING_PERCENTILE, EARLY_WARNING_SENSITIVITY_PATH
+
+    if not EARLY_WARNING_SENSITIVITY_PATH.exists():
+        pytest.skip("run `python -m src.forecast.generate` first")
+    grid = pd.read_csv(EARLY_WARNING_SENSITIVITY_PATH)
+    for target, sub in grid.groupby("target"):
+        frozen = sub[sub["is_frozen_operating_point"]]
+        assert len(frozen) == 1, "%s has %d frozen points" % (target, len(frozen))
+        assert int(frozen.iloc[0]["percentile"]) == EARLY_WARNING_PERCENTILE
+    assert grid["percentile"].nunique() >= 3, "sensitivity grid is too thin to disclose"
+
+
+def test_overview_kpis_are_wired_to_computed_values_not_hardcoded():
+    """
+    Day-11 task: "wire KPI cards on the Overview page to the real, computed KPI
+    values". Every card must read from the artifact and carry its formula.
+    """
+    from src.config import KPI_SUMMARY_PATH
+
+    home = (APP / "Home.py").read_text(encoding="utf-8")
+    for field in ("forecast_accuracy_pct", "median_surge_lead_time_periods",
+                  "capacity_tier", "forecast_stability_index"):
+        assert field in home, "Overview does not read %s" % field
+    for formula in ("forecast_accuracy_formula", "surge_lead_time_formula",
+                    "capacity_tier_formula", "stability_formula"):
+        assert formula in home, "%s is shown without its formula" % formula
+
+    if KPI_SUMMARY_PATH.exists():
+        kpis = pd.read_csv(KPI_SUMMARY_PATH)
+        assert kpis["forecast_accuracy_pct"].between(0, 100).all()
+        assert kpis["forecast_accuracy_formula"].str.contains("sMAPE").all()
+
+
+def test_methodology_page_documents_every_source_verification_finding():
+    """
+    The page exists so a reader who never opens the research paper still meets
+    the limitations. All eight audit findings must be named there.
+    """
+    text = (APP / "pages" / "7_Methodology.py").read_text(encoding="utf-8").lower()
+    for marker in ("1,170", "720", "sunday-thursday", "string-typed", "kpi table",
+                   "capacity threshold", "asterisk", "5.8x", "reconcile"):
+        assert marker in text, "methodology page does not mention %r" % marker
+
+
+def test_methodology_page_carries_the_provenance_readout():
+    """Addendum Day 10-11 requires it on this page specifically."""
+    text = (APP / "pages" / "7_Methodology.py").read_text(encoding="utf-8")
+    assert "raw_csv_sha256" in text and "master_series_sha256" in text
+    assert "manual only" in text.lower()
