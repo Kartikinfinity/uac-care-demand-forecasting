@@ -130,6 +130,32 @@ def build_model(name: str, target: str):
     )
 
 
+def load_all_residuals() -> pd.DataFrame:
+    """
+    Every candidate's out-of-sample residuals, including the ensemble's.
+
+    Day 7 persisted residuals for the seven fitted models; the ensemble was
+    constructed at Day 8, AFTER that file was written, so it has none there.
+    Without this it would be the one candidate the dashboard could show a point
+    forecast for but no interval -- silently, which is worse than not offering
+    it at all. Its residuals are derived here from the Day-8 ensemble
+    predictions using the same definition, rather than mutating a prior day's
+    artifact.
+    """
+    from src.config import ENSEMBLE_PREDICTIONS_PATH
+    from src.evaluation.run_ml import build_residuals
+
+    residuals = pd.read_csv(ML_RESIDUALS_PATH)
+    if ENSEMBLE_PREDICTIONS_PATH.exists():
+        ensemble = pd.read_csv(ENSEMBLE_PREDICTIONS_PATH)
+        if len(ensemble):
+            residuals = pd.concat(
+                [residuals, build_residuals(ensemble)[residuals.columns]],
+                ignore_index=True,
+            )
+    return residuals
+
+
 def residual_pool(residuals: pd.DataFrame, target: str, model: str, horizon: int):
     """
     The out-of-sample residuals an interval is built from.
@@ -154,38 +180,92 @@ def residual_pool(residuals: pd.DataFrame, target: str, model: str, horizon: int
 # ----------------------------------------------------------------------
 def forward_forecasts(df, registry, residuals, cutoff_pos) -> pd.DataFrame:
     """
-    The product output: what each champion predicts beyond the last observation.
+    The product output: what EVERY candidate predicts beyond the last
+    observation, with the champion flagged.
+
+    All models, not only the champions, because the documented User Capability
+    "model toggle" (Part 8, pages 3/4/6/7) lets a reader switch between them --
+    and the app is forbidden from fitting anything in a page callback. If only
+    champion forecasts existed here, that control could not be honoured without
+    breaking the no-live-training rule, so the single producer emits the whole
+    set and the dashboard just filters it.
 
     Trained on everything available up to the last REAL observation, under the
-    same capped-window rule the champion was selected under -- a forecast issued
-    today must use the training rule it was validated with, not a different one.
+    same capped-window rule the champions were selected under -- a forecast
+    issued today must use the training rule it was validated with, not a
+    different one.
     """
+    from src.evaluation.run_ml import load_features
+    from src.evaluation.run_selection import ENSEMBLE, family_champion, ML_FAMILY, STATISTICAL_FAMILY
+    from src.evaluation.run_ml import model_factories_for
+
     is_imputed = df["is_imputed"].to_numpy(dtype=bool)
     dates = pd.to_datetime(df["parsed_date"])
     last_real = int(np.flatnonzero(~is_imputed)[-1])
+    start = cutoff_pos if last_real >= cutoff_pos else 0
+
+    features, feature_columns = load_features()
+    champions = {(e["target"], int(e["horizon"])): e["champion"] for e in registry["entries"]}
+    comparison = pd.read_csv(Path("forecasts") / "full_model_comparison.csv")
 
     rows = []
-    for entry in registry["entries"]:
-        target, horizon, champion = entry["target"], int(entry["horizon"]), entry["champion"]
+    for target in TARGETS:
         y = df[target].astype(float).to_numpy()
-
-        start = cutoff_pos if last_real >= cutoff_pos else 0
         y_train = y[start : last_real + 1]
-        model = build_model(champion, target)
-        model.fit(y_train)
-        point = float(np.atleast_1d(model.predict([horizon]))[0])
+        X_train = features.iloc[start : last_real + 1]
+        factories = model_factories_for(target, feature_columns)
 
-        # Both targets are counts of children: a negative lower bound is
-        # impossible and must never reach a stakeholder. Clipped for
-        # publication only -- the coverage calculations below stay unclipped.
-        interval = empirical_interval(
-            point, residual_pool(residuals, target, champion, horizon),
-            alpha=EMPIRICAL_INTERVAL_ALPHA, lower_bound=0.0,
-        )
-        rows.append({
+        # Statistical and baseline families fit ONCE and read every horizon off
+        # one path; the ML families fit per horizon. Both contracts are honoured
+        # by the model classes themselves, so this loop just drives them.
+        fitted = {}
+        for name, factory in factories.items():
+            model = factory()
+            if getattr(model, "requires_features", False):
+                model.fit(y_train, X_train)
+            else:
+                model.fit(y_train)
+            fitted[name] = model
+
+        per_model_points = {}
+        for name, model in fitted.items():
+            preds = np.asarray(model.predict(list(FORECAST_HORIZONS)), dtype=float)
+            per_model_points[name] = dict(zip(FORECAST_HORIZONS, preds))
+
+        # The ensemble is a POST-HOC average of the two family champions -- the
+        # same definition Day 8 evaluated, recomputed here on the same rule.
+        for horizon in FORECAST_HORIZONS:
+            stat = family_champion(comparison, target, horizon, STATISTICAL_FAMILY)
+            ml = family_champion(comparison, target, horizon, ML_FAMILY)
+            if stat and ml:
+                a = per_model_points[stat][horizon]
+                b = per_model_points[ml][horizon]
+                per_model_points.setdefault(ENSEMBLE, {})[horizon] = (
+                    (a + b) / 2.0 if np.isfinite(a) and np.isfinite(b) else np.nan
+                )
+
+        for name, points in per_model_points.items():
+            for horizon, point in points.items():
+                interval = empirical_interval(
+                    point, residual_pool(residuals, target, name, horizon),
+                    alpha=EMPIRICAL_INTERVAL_ALPHA, lower_bound=0.0,
+                )
+                rows.append(_forward_row(target, horizon, name, champions, last_real,
+                                         dates, point, interval, start))
+    return pd.DataFrame(rows).sort_values(
+        ["target", "horizon", "is_champion", "model"], ascending=[True, True, False, True]
+    ).reset_index(drop=True)
+
+
+def _forward_row(target, horizon, name, champions, last_real, dates, point,
+                 interval, start) -> dict:
+    """One forward-forecast record. Split out only to keep the loop readable."""
+    return {
             "target": target,
             "horizon": horizon,
-            "champion": champion,
+            "model": name,
+            "is_champion": champions.get((target, horizon)) == name,
+            "champion": champions.get((target, horizon)),
             "origin_pos": last_real,
             "origin_date": dates.iloc[last_real].date(),
             "forecast_pos": last_real + horizon,
@@ -201,8 +281,7 @@ def forward_forecasts(df, registry, residuals, cutoff_pos) -> pd.DataFrame:
             "nominal_coverage": interval["nominal_coverage"],
             "train_start_pos": start,
             "train_n_positions": last_real - start + 1,
-        })
-    return pd.DataFrame(rows)
+    }
 
 
 # ----------------------------------------------------------------------
@@ -548,7 +627,7 @@ def main() -> None:
     validate_master_series(df)
 
     registry = read_registry(MODEL_REGISTRY_PATH)
-    residuals = pd.read_csv(ML_RESIDUALS_PATH)
+    residuals = load_all_residuals()
     correlations = pd.read_csv(IMBALANCE_CORRELATION_PATH)
 
     holdout_start, dev_end = resolve_split_boundaries(df["is_imputed"], FINAL_TEST_WINDOW)

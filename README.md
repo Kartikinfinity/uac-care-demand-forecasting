@@ -37,7 +37,7 @@ python -m src.forecast.generate          # -> forecasts/{forward_forecasts,inter
 # Run the test suite
 python -m pytest -q
 
-# Run the dashboard (available from Day 10)
+# Run the dashboard (reads pre-generated artifacts only, never trains)
 streamlit run app/Home.py
 ```
 

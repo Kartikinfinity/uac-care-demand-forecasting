@@ -203,11 +203,50 @@ def artifacts():
     }
 
 
-def test_a_forward_forecast_exists_for_every_target_and_horizon(artifacts):
+def test_a_forward_forecast_exists_for_every_model_target_and_horizon(artifacts):
+    """
+    Every candidate, not just champions -- the documented "model toggle" needs
+    them, and the app may never fit anything in a page callback.
+    """
     fwd = artifacts["forward"]
-    assert len(fwd) == 2 * len(FORECAST_HORIZONS)
     for target in (TARGET_1, TARGET_2):
-        assert set(fwd[fwd["target"] == target]["horizon"]) == set(FORECAST_HORIZONS)
+        sub = fwd[fwd["target"] == target]
+        assert set(sub["horizon"]) == set(FORECAST_HORIZONS)
+        for horizon in FORECAST_HORIZONS:
+            models = set(sub[sub["horizon"] == horizon]["model"])
+            assert {"naive", "seasonal_naive", "moving_average", "sarima",
+                    "exponential_smoothing", "random_forest", "gradient_boosting",
+                    "ensemble"} <= models
+
+
+def test_exactly_one_champion_is_flagged_per_target_and_horizon(artifacts):
+    fwd = artifacts["forward"]
+    counts = fwd.groupby(["target", "horizon"])["is_champion"].sum()
+    assert (counts == 1).all(), "champion flag is not unique per cell"
+
+
+def test_the_flagged_champion_matches_the_registry(artifacts):
+    from src.models.registry import read_registry
+
+    registry = read_registry()
+    fwd = artifacts["forward"]
+    for entry in registry["entries"]:
+        row = fwd[(fwd["target"] == entry["target"])
+                  & (fwd["horizon"] == entry["horizon"])
+                  & fwd["is_champion"]]
+        assert len(row) == 1
+        assert row.iloc[0]["model"] == entry["champion"]
+
+
+def test_the_ensemble_also_gets_an_interval(artifacts):
+    """
+    REGRESSION. The ensemble was built at Day 8, after Day 7 persisted its
+    residuals, so it initially had an empty pool and was the one candidate the
+    dashboard could show a point forecast for but no band.
+    """
+    ens = artifacts["forward"][artifacts["forward"]["model"] == "ensemble"]
+    assert len(ens) > 0
+    assert (ens["n_residuals"] > 0).all(), "ensemble residual pool is empty"
 
 
 def test_no_published_interval_bound_is_negative(artifacts):
