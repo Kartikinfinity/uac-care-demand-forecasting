@@ -73,11 +73,54 @@ def _get(url: str, timeout: int = TIMEOUT):
         return response.status, response.read()
 
 
+PLACEHOLDER_MARKERS = ("<", ">", "your-app", "your_app", "YOUR-APP", "example.com")
+
+
+def looks_like_a_placeholder(url: str) -> bool:
+    """
+    The README shows `https://<your-app>.streamlit.app`. Pasted verbatim, that
+    fails with a bare DNS error that reads like the deployment is broken. Catch
+    it here and say what actually happened.
+    """
+    return any(marker in url for marker in PLACEHOLDER_MARKERS)
+
+
 def check_reachable(result: Result, base: str) -> bool:
+    if looks_like_a_placeholder(base):
+        return result.record(
+            "app is reachable and healthy", False,
+            "the URL is still the documentation placeholder -- replace it with "
+            "your real app address, e.g. https://uac-forecasting.streamlit.app",
+        )
     try:
         status, _ = _get(base.rstrip("/") + "/_stcore/health")
         return result.record("app is reachable and healthy", status == 200,
                              "HTTP %d" % status)
+    except urllib.error.HTTPError as exc:
+        # streamlit.app resolves by wildcard, so a name with no app behind it
+        # does NOT fail DNS -- it redirects, and urllib gives up on the loop.
+        # Measured against a deliberately non-existent app name.
+        hint = ""
+        if "streamlit.app" in base and exc.code in (301, 302, 303, 307, 308):
+            hint = (" -- resolves, but redirects to sign-in. Either no app "
+                    "exists at this address, or it is deployed PRIVATE. A "
+                    "private app cannot be smoke-tested: set Sharing to "
+                    "'anyone with the link' in the app settings.")
+        return result.record("app is reachable and healthy", False,
+                             "HTTP %d%s" % (exc.code, hint))
+    except urllib.error.URLError as exc:
+        reason = str(getattr(exc, "reason", exc))
+        hint = ""
+        if "getaddrinfo" in reason or "Name or service not known" in reason:
+            hint = (" -- the hostname does not resolve. Is the app deployed yet, "
+                    "and is the address spelled correctly?")
+        elif "infinite loop" in reason or "redirect" in reason.lower():
+            hint = (" -- resolves, but redirects to sign-in. Either no app "
+                    "exists at this address, or it is deployed PRIVATE. A "
+                    "private app cannot be smoke-tested: set Sharing to "
+                    "'anyone with the link' in the app settings.")
+        return result.record("app is reachable and healthy", False,
+                             "%s%s" % (reason, hint))
     except Exception as exc:  # noqa: BLE001
         return result.record("app is reachable and healthy", False,
                              "%s: %s" % (type(exc).__name__, exc))

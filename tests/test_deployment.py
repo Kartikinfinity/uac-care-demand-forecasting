@@ -343,3 +343,36 @@ def test_assigning_na_into_the_comparison_column_works_on_this_pandas():
     frame.loc[frame["model"] == "naive", "beats"] = pd.NA
     assert pd.isna(frame.loc[0, "beats"])
     assert bool(frame.loc[1, "beats"]) is True
+
+
+def test_a_documentation_placeholder_url_is_named_as_such():
+    """
+    Pasting the README's `https://<your-app>.streamlit.app` verbatim produced a
+    bare "getaddrinfo failed", which reads like the deployment is broken rather
+    than like the URL was never filled in. Reported for real.
+    """
+    import scripts.smoke_test as smoke
+
+    assert smoke.looks_like_a_placeholder("https://<your-app>.streamlit.app")
+    assert smoke.looks_like_a_placeholder("https://your-app.streamlit.app")
+    assert not smoke.looks_like_a_placeholder("https://uac-forecasting.streamlit.app")
+    assert not smoke.looks_like_a_placeholder("http://localhost:8501")
+
+    result = smoke.Result()
+    ok = smoke.check_reachable(result, "https://<your-app>.streamlit.app")
+    assert ok is False
+    detail = result.checks[-1][2]
+    assert "placeholder" in detail, detail
+
+
+def test_placeholder_detection_does_not_make_a_network_call(monkeypatch):
+    """It must fail fast on the URL itself, not wait for a DNS timeout."""
+    import scripts.smoke_test as smoke
+
+    def explode(*args, **kwargs):
+        raise AssertionError("network call attempted for a placeholder URL")
+
+    monkeypatch.setattr(smoke, "_get", explode)
+    result = smoke.Result()
+    smoke.check_reachable(result, "https://<your-app>.streamlit.app")
+    assert result.failed
