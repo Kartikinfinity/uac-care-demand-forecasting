@@ -478,6 +478,10 @@ EARLY_WARNING_BACKTEST_PATH = FORECASTS_DIR / "early_warning_backtest.csv"
 EARLY_WARNING_SENSITIVITY_PATH = FORECASTS_DIR / "early_warning_sensitivity.csv"
 KPI_SUMMARY_PATH = FORECASTS_DIR / "kpi_summary.csv"
 FORECAST_PROVENANCE_PATH = FORECASTS_DIR / "provenance.json"
+# A copy served as a static file by the deployed app, so the deployment smoke
+# test can fetch it from a live URL and compare hashes automatically rather
+# than relying on a human to read the Methodology page.
+STATIC_PROVENANCE_PATH = PROJECT_ROOT / "app" / "static" / "provenance.json"
 DAY9_REPORT_PATH = DOCS_DIR / "day9_forecast_generation.md"
 CHAMPION_METRICS_PATH = FORECASTS_DIR / "champion_selection.csv"
 ENSEMBLE_PREDICTIONS_PATH = FORECASTS_DIR / "ensemble_predictions.csv"

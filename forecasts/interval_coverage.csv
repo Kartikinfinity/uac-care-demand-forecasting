@@ -1,0 +1,7 @@
+target,horizon,champion,evidence,n,n_covered,empirical_coverage,nominal_coverage,band_low,band_high,covers_nominal,note
+Children in HHS Care,1,naive,primary_pooled_folds_leave_one_out,15,13,0.8667,0.95,0.6212,0.9626,True,N is small (15); the band is wide and this is not a precise calibration estimate
+Children in HHS Care,7,naive,primary_pooled_folds_leave_one_out,14,10,0.7143,0.95,0.4535,0.8828,False,N is small (14); the band is wide and this is not a precise calibration estimate
+Children in HHS Care,14,naive,primary_pooled_folds_leave_one_out,14,12,0.8571,0.95,0.6006,0.9599,True,N is small (14); the band is wide and this is not a precise calibration estimate
+Children discharged from HHS Care,1,naive,primary_pooled_folds_leave_one_out,15,12,0.8,0.95,0.5481,0.9295,False,N is small (15); the band is wide and this is not a precise calibration estimate
+Children discharged from HHS Care,7,naive,primary_pooled_folds_leave_one_out,14,12,0.8571,0.95,0.6006,0.9599,True,N is small (14); the band is wide and this is not a precise calibration estimate
+Children discharged from HHS Care,14,seasonal_naive,primary_pooled_folds_leave_one_out,12,10,0.8333,0.95,0.552,0.953,True,N is small (12); the band is wide and this is not a precise calibration estimate

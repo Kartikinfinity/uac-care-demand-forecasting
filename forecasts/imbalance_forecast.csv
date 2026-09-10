@@ -1,0 +1,4 @@
+horizon,origin_date,transferred_model,transferred_forecast,discharged_model,discharged_forecast,net_pressure,variance,std,lower_1sd,upper_1sd,uncertainty_form,measured_correlation,n_paired_residuals,var_transferred,var_discharged,interpretation
+1,2025-12-21,seasonal_naive,9.0,naive,14.0,-5.0,63.67582417582417,7.979713289073998,-12.979713289073999,2.979713289073998,independence,-0.15317141932697156,14,33.71978021978022,29.95604395604395,exits exceed intake -- net relief
+7,2025-12-21,seasonal_naive,15.0,naive,14.0,1.0,204.75641025641028,14.309312011987519,-13.309312011987519,15.309312011987519,independence,0.15287106069334166,13,52.56410256410256,152.1923076923077,intake exceeds exits -- net inflow pressure
+14,2025-12-21,seasonal_naive,6.0,seasonal_naive,16.0,-10.0,81.27272727272728,9.015138782776852,-19.01513878277685,-0.9848612172231483,independence,0.1600607127398115,12,28.0,53.27272727272727,exits exceed intake -- net relief

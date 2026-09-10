@@ -66,7 +66,13 @@ if cell.empty:
     st.stop()
 
 ref = cell[cell["model"].isin(["naive", "seasonal_naive"])]["MAE"].min()
-cell["beats_both_baselines"] = cell["MAE"] < ref
+# Nullable "boolean", not plain bool: the baselines themselves are not gated
+# against each other, so their cell is blank rather than True/False. pandas 2
+# silently upcast a bool column on assigning pd.NA; pandas 3 raises
+# "TypeError: Invalid value 'nan' for dtype 'bool'". Declaring the nullable
+# dtype up front works on both, and was caught by the clean-environment
+# deployment test, which resolves pandas 3 where development ran on pandas 2.
+cell["beats_both_baselines"] = pd.array(cell["MAE"] < ref, dtype="boolean")
 cell.loc[cell["model"].isin(BASELINES), "beats_both_baselines"] = pd.NA
 cell["family"] = cell["model"].map(
     lambda m: "baseline" if m in BASELINES

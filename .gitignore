@@ -8,6 +8,7 @@ __pycache__/
 venv/
 env/
 .env/
+.venv/
 
 # IDE
 .vscode/
@@ -22,21 +23,56 @@ Thumbs.db
 # Jupyter
 .ipynb_checkpoints/
 
+# Test / tooling caches
+.pytest_cache/
+
 # Distribution
 dist/
 build/
 *.egg-info/
 
-# Data artifacts
-*.parquet
-data/interim/
-data/processed/
-forecasts/
-models/*.pkl
+# ----------------------------------------------------------------------
+# GENERATED ARTIFACTS
+# ----------------------------------------------------------------------
+# Committing generated files is normally bad practice, and the large
+# intermediates below stay ignored for exactly that reason. The SMALL set the
+# dashboard actually reads is committed deliberately: Streamlit Community Cloud
+# has no build step that could run the offline pipeline, and the architecture
+# requires the app to read pre-generated artifacts rather than train anything.
+# Without them a deployment would start with nothing to serve.
+#
+# Safe to commit because they are deterministic (verified byte-identical across
+# independent runs) and every one carries the raw-CSV and master-series SHA-256,
+# so a stale copy is detectable rather than silently served. A test asserts the
+# committed artifacts match the current data hash.
 
-# Serialized model artifacts are regenerable from the raw CSV by
-#   python -m src.evaluation.run_statistical
-# and are excluded for the same reason data/interim, data/processed and
-# forecasts are: they are outputs, not sources. A single SARIMAX result is
-# ~3.5 MB even after slimming. Provenance (raw-CSV and master-series hashes)
-# is embedded in each artifact so a regenerated file is traceable.
+*.parquet
+data/raw/*
+!data/raw/.gitkeep
+data/processed/
+
+# Interim data: everything except the two files the deployed app reads.
+data/interim/*
+!data/interim/.gitkeep
+!data/interim/master_series.parquet
+!data/interim/provenance.json
+
+# Forecast artifacts: dashboard-consumed set committed (~128 KB total),
+# multi-megabyte intermediates ignored.
+forecasts/*
+!forecasts/.gitkeep
+!forecasts/forward_forecasts.csv
+!forecasts/interval_coverage.csv
+!forecasts/holdout_evaluation.csv
+!forecasts/imbalance_forecast.csv
+!forecasts/early_warning_backtest.csv
+!forecasts/early_warning_sensitivity.csv
+!forecasts/kpi_summary.csv
+!forecasts/champion_selection.csv
+!forecasts/full_model_comparison.csv
+!forecasts/provenance.json
+
+# Serialized models: regenerable, and a slimmed SARIMAX result is still
+# megabytes. The dashboard reads model METADATA from the registry JSON, never
+# a pickle, so nothing on the deployed path needs these.
+models/*.pkl

@@ -62,6 +62,7 @@ from src.config import (  # noqa: E402
     FINAL_TEST_WINDOW,
     FORECAST_HORIZONS,
     FORECAST_PROVENANCE_PATH,
+    STATIC_PROVENANCE_PATH,
     FORWARD_FORECASTS_PATH,
     HOLDOUT_EVALUATION_PATH,
     IMBALANCE_BASELINE_MODELS,
@@ -723,8 +724,12 @@ def main() -> None:
         "holdout_use": "single confirmatory coverage check; never fed back into selection",
         "refresh_policy": "manual only -- replace the CSV and re-run this script",
     }
-    FORECAST_PROVENANCE_PATH.write_text(json.dumps(sidecar, indent=2, default=str) + "\n",
-                                        encoding="utf-8")
+    payload = json.dumps(sidecar, indent=2, default=str) + "\n"
+    FORECAST_PROVENANCE_PATH.write_text(payload, encoding="utf-8")
+    # Second copy under app/static/, served by the deployed app so the smoke
+    # test can verify a LIVE deployment is serving this exact data version.
+    STATIC_PROVENANCE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    STATIC_PROVENANCE_PATH.write_text(payload, encoding="utf-8")
 
     _write_report(df, forwards, coverage, holdout, imbalance, backtest, summary, kpis,
                   sidecar, holdout_start, dev_end)

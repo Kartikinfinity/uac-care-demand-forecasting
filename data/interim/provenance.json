@@ -1,0 +1,11 @@
+{
+  "raw_csv_filename": "HHS_Unaccompanied_Alien_Children_Program (1).csv",
+  "raw_csv_sha256": "061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198",
+  "master_series_sha256": "3c6b093d73744140ac7d1d68d308e9f3f0f070fdc3d26e8c6e3d03bf24243c6d",
+  "generated_at_utc": "2026-08-31T14:30:55+00:00",
+  "n_period_positions": 769,
+  "n_real_observations": 720,
+  "n_gap_slots": 49,
+  "data_as_of": "2025-12-21",
+  "series_starts": "2023-01-12"
+}

@@ -1,0 +1,131 @@
+target,fold_id,origin_pos,origin_date,threshold,highest_tier,earliest_tier,fired_horizons,outcome,lead_time,forecast_h1,forecast_h7,forecast_h14
+Children in HHS Care,0,49,2023-03-22,7968.1,Alert,Watch,"1,7,14",true_positive,1.0,8097.0,8097.0,8097.0
+Children in HHS Care,1,59,2023-04-05,8080.8,Alert,Watch,"1,7,14",true_positive,1.0,8175.0,8175.0,8175.0
+Children in HHS Care,2,69,2023-04-19,8089.8,,,,false_negative,,7356.0,7356.0,7356.0
+Children in HHS Care,3,79,2023-05-03,8176.5,Alert,Watch,"1,7,14",true_positive,1.0,8704.0,8704.0,8704.0
+Children in HHS Care,4,89,2023-05-17,8596.4,,,,true_negative,,8569.0,8569.0,8569.0
+Children in HHS Care,5,99,2023-05-31,8594.8,,,,true_negative,,7053.0,7053.0,7053.0
+Children in HHS Care,6,109,2023-06-14,8593.2,,,,true_negative,,6065.0,6065.0,6065.0
+Children in HHS Care,7,119,2023-06-28,8594.8,,,,true_negative,,5999.0,5999.0,5999.0
+Children in HHS Care,8,129,2023-07-12,8596.4,,,,true_negative,,6521.0,6521.0,6521.0
+Children in HHS Care,9,139,2023-07-26,8571.4,,,,false_negative,,7647.0,7647.0,7647.0
+Children in HHS Care,10,149,2023-08-09,8274.2,Alert,Watch,"1,7,14",true_positive,1.0,8888.0,8888.0,8888.0
+Children in HHS Care,11,159,2023-08-23,9255.400000000001,Alert,Watch,"1,7,14",true_positive,1.0,10071.0,10071.0,10071.0
+Children in HHS Care,12,169,2023-09-06,10057.5,Alert,Watch,"1,7,14",true_positive,1.0,10356.0,10356.0,10356.0
+Children in HHS Care,13,179,2023-09-20,10666.4,Alert,Watch,"1,7,14",true_positive,1.0,11064.0,11064.0,11064.0
+Children in HHS Care,14,189,2023-10-04,10970.5,,,,false_negative,,10963.0,10963.0,10963.0
+Children in HHS Care,15,199,2023-10-18,10988.8,,,,true_negative,,10511.0,10511.0,10511.0
+Children in HHS Care,16,209,2023-11-01,10988.8,,,,true_negative,,9250.0,9250.0,9250.0
+Children in HHS Care,17,219,2023-11-15,10987.2,,,,true_negative,,9762.0,9762.0,9762.0
+Children in HHS Care,18,229,2023-11-29,10987.2,,,,false_negative,,10398.0,10398.0,10398.0
+Children in HHS Care,19,239,2023-12-13,10994.4,Alert,Watch,"1,7,14",true_positive,1.0,11192.0,11192.0,11192.0
+Children in HHS Care,20,249,2023-12-27,11199.0,Alert,Watch,"1,7,14",true_positive,1.0,11206.0,11206.0,11206.0
+Children in HHS Care,21,259,2024-01-10,11211.5,,,,true_negative,,9144.0,9144.0,9144.0
+Children in HHS Care,22,269,2024-01-24,11212.6,,,,true_negative,,8212.0,8212.0,8212.0
+Children in HHS Care,23,279,2024-02-07,11211.5,,,,true_negative,,8160.0,8160.0,8160.0
+Children in HHS Care,24,289,2024-02-21,11211.5,,,,true_negative,,8573.0,8573.0,8573.0
+Children in HHS Care,25,299,2024-03-06,11211.5,,,,true_negative,,8870.0,8870.0,8870.0
+Children in HHS Care,26,309,2024-03-20,9670.0,,,,true_negative,,8365.0,8365.0,8365.0
+Children in HHS Care,27,319,2024-04-03,8769.9,,,,true_negative,,7346.0,7346.0,7346.0
+Children in HHS Care,28,329,2024-04-17,8730.6,,,,true_negative,,6725.0,6725.0,6725.0
+Children in HHS Care,29,339,2024-05-01,8730.6,,,,true_negative,,7508.0,7508.0,7508.0
+Children in HHS Care,30,349,2024-05-15,8727.3,,,,true_negative,,7589.0,7589.0,7589.0
+Children in HHS Care,31,359,2024-05-29,8451.0,,,,true_negative,,7491.0,7491.0,7491.0
+Children in HHS Care,32,369,2024-06-12,7745.2,,,,true_negative,,7548.0,7548.0,7548.0
+Children in HHS Care,33,379,2024-06-26,7571.4,,,,true_negative,,7268.0,7268.0,7268.0
+Children in HHS Care,34,389,2024-07-10,7572.1,,,,true_negative,,6649.0,6649.0,6649.0
+Children in HHS Care,35,399,2024-07-24,7572.8,,,,true_negative,,5927.0,5927.0,5927.0
+Children in HHS Care,36,409,2024-08-07,7554.0,,,,true_negative,,6038.0,6038.0,6038.0
+Children in HHS Care,37,419,2024-08-21,7546.6,,,,true_negative,,6028.0,6028.0,6028.0
+Children in HHS Care,38,429,2024-09-04,7291.4,,,,true_negative,,6375.0,6375.0,6375.0
+Children in HHS Care,39,439,2024-09-17,6650.2,,,,true_negative,,6227.0,6227.0,6227.0
+Children in HHS Care,40,449,2024-10-01,6356.5,,,,true_negative,,6040.0,6040.0,6040.0
+Children in HHS Care,41,459,2024-10-15,6339.5,,,,true_negative,,6013.0,6013.0,6013.0
+Children in HHS Care,42,469,2024-10-29,6342.2,,,,true_negative,,6106.0,6106.0,6106.0
+Children in HHS Care,43,479,2024-11-12,6344.9,,,,true_negative,,5975.0,5975.0,5975.0
+Children in HHS Care,44,489,2024-11-26,6317.6,,,,false_negative,,5826.0,5826.0,5826.0
+Children in HHS Care,45,499,2024-12-10,6254.2,Alert,Watch,"1,7,14",true_positive,1.0,6310.0,6310.0,6310.0
+Children in HHS Care,46,509,2024-12-24,6491.0,Alert,Watch,"1,7,14",true_positive,1.0,6622.0,6622.0,6622.0
+Children in HHS Care,47,519,2025-01-07,6566.8,,,,true_negative,,5703.0,5703.0,5703.0
+Children in HHS Care,48,529,2025-01-21,6562.1,,,,true_negative,,4728.0,4728.0,4728.0
+Children in HHS Care,49,539,2025-02-04,6557.400000000001,,,,true_negative,,3359.0,3359.0,3359.0
+Children in HHS Care,50,549,2025-02-18,6562.1,,,,true_negative,,2536.0,2536.0,2536.0
+Children in HHS Care,51,559,2025-03-04,6562.1,,,,true_negative,,2272.0,2272.0,2272.0
+Children in HHS Care,52,569,2025-03-18,6005.000000000002,,,,true_negative,,2109.0,2109.0,2109.0
+Children in HHS Care,53,579,2025-04-01,4885.4,,,,true_negative,,2191.0,2191.0,2191.0
+Children in HHS Care,54,589,2025-04-14,3945.6000000000004,,,,true_negative,,2282.0,2282.0,2282.0
+Children in HHS Care,55,599,2025-04-28,2712.8,,,,true_negative,,2307.0,2307.0,2307.0
+Children in HHS Care,56,609,2025-05-12,2393.9,,,,false_negative,,2392.0,2392.0,2392.0
+Children in HHS Care,57,619,2025-05-26,2394.0,Alert,Watch,"1,7,14",true_positive,1.0,2473.0,2473.0,2473.0
+Children in HHS Care,58,629,2025-06-09,2506.4,Alert,Watch,"1,7,14",true_positive,1.0,2516.0,2516.0,2516.0
+Children in HHS Care,59,639,2025-06-23,2515.5,,,,true_negative,,2495.0,2495.0,2495.0
+Children in HHS Care,60,649,2025-07-07,2516.0,,,,true_negative,,2317.0,2317.0,2317.0
+Children in HHS Care,61,659,2025-07-21,2516.0,,,,true_negative,,2121.0,2121.0,2121.0
+Children in HHS Care,62,669,2025-08-04,2516.0,,,,true_negative,,2040.0,2040.0,2040.0
+Children in HHS Care,63,679,2025-08-18,2515.0,,,,true_negative,,1985.0,1985.0,1985.0
+Children in HHS Care,64,689,2025-09-01,2487.1,,,,true_negative,,2010.0,2010.0,2010.0
+Children discharged from HHS Care,0,49,2023-03-22,343.1,,,,false_negative,,246.0,246.0,221.0
+Children discharged from HHS Care,1,59,2023-04-05,352.1,,,,false_negative,,260.0,260.0,259.0
+Children discharged from HHS Care,2,69,2023-04-19,348.0,,,,false_negative,,229.0,229.0,234.0
+Children discharged from HHS Care,3,79,2023-05-03,346.0,,,,false_negative,,267.0,267.0,245.0
+Children discharged from HHS Care,4,89,2023-05-17,344.79999999999995,,,,false_negative,,307.0,307.0,272.0
+Children discharged from HHS Care,5,99,2023-05-31,351.3,,,,true_negative,,210.0,210.0,168.0
+Children discharged from HHS Care,6,109,2023-06-14,351.2,,,,true_negative,,167.0,167.0,146.0
+Children discharged from HHS Care,7,119,2023-06-28,335.30000000000007,,,,true_negative,,174.0,174.0,155.0
+Children discharged from HHS Care,8,129,2023-07-12,324.79999999999995,,,,true_negative,,210.0,210.0,143.0
+Children discharged from HHS Care,9,139,2023-07-26,318.2,,,,false_negative,,215.0,215.0,136.0
+Children discharged from HHS Care,10,149,2023-08-09,306.6,,,,false_negative,,251.0,251.0,207.0
+Children discharged from HHS Care,11,159,2023-08-23,307.4,,,,false_negative,,285.0,285.0,230.0
+Children discharged from HHS Care,12,169,2023-09-06,381.4000000000001,,,,false_negative,,291.0,291.0,243.0
+Children discharged from HHS Care,13,179,2023-09-20,403.40000000000003,,,,false_negative,,364.0,364.0,260.0
+Children discharged from HHS Care,14,189,2023-10-04,427.5,,,,false_negative,,330.0,330.0,287.0
+Children discharged from HHS Care,15,199,2023-10-18,431.6,,,,false_negative,,393.0,393.0,315.0
+Children discharged from HHS Care,16,209,2023-11-01,439.40000000000003,,,,true_negative,,279.0,279.0,295.0
+Children discharged from HHS Care,17,219,2023-11-15,437.59999999999997,,,,true_negative,,316.0,316.0,247.0
+Children discharged from HHS Care,18,229,2023-11-29,427.4,,,,false_negative,,284.0,284.0,223.0
+Children discharged from HHS Care,19,239,2023-12-13,430.4,,,,false_negative,,335.0,335.0,259.0
+Children discharged from HHS Care,20,249,2023-12-27,430.5,,,,false_negative,,335.0,335.0,288.0
+Children discharged from HHS Care,21,259,2024-01-10,417.5,,,,false_negative,,349.0,349.0,286.0
+Children discharged from HHS Care,22,269,2024-01-24,414.6,,,,true_negative,,243.0,243.0,202.0
+Children discharged from HHS Care,23,279,2024-02-07,414.0,,,,true_negative,,222.0,222.0,178.0
+Children discharged from HHS Care,24,289,2024-02-21,403.5,,,,true_negative,,231.0,231.0,192.0
+Children discharged from HHS Care,25,299,2024-03-06,369.0,,,,false_negative,,232.0,232.0,214.0
+Children discharged from HHS Care,26,309,2024-03-20,360.2,,,,false_negative,,227.0,227.0,197.0
+Children discharged from HHS Care,27,319,2024-04-03,355.5,,,,true_negative,,163.0,163.0,132.0
+Children discharged from HHS Care,28,329,2024-04-17,342.0,,,,true_negative,,227.0,227.0,163.0
+Children discharged from HHS Care,29,339,2024-05-01,331.6,,,,false_negative,,190.0,190.0,135.0
+Children discharged from HHS Care,30,349,2024-05-15,329.3,,,,true_negative,,265.0,265.0,186.0
+Children discharged from HHS Care,31,359,2024-05-29,306.0,,,,false_negative,,141.0,141.0,151.0
+Children discharged from HHS Care,32,369,2024-06-12,291.6,,,,false_negative,,212.0,212.0,156.0
+Children discharged from HHS Care,33,379,2024-06-26,290.8,,,,true_negative,,187.0,187.0,202.0
+Children discharged from HHS Care,34,389,2024-07-10,279.30000000000007,,,,true_negative,,177.0,177.0,130.0
+Children discharged from HHS Care,35,399,2024-07-24,281.4,,,,true_negative,,177.0,177.0,170.0
+Children discharged from HHS Care,36,409,2024-08-07,270.0,,,,true_negative,,174.0,174.0,143.0
+Children discharged from HHS Care,37,419,2024-08-21,263.8,,,,true_negative,,156.0,156.0,112.0
+Children discharged from HHS Care,38,429,2024-09-04,255.0,,,,false_negative,,114.0,114.0,112.0
+Children discharged from HHS Care,39,439,2024-09-17,235.8,,,,true_negative,,160.0,160.0,164.0
+Children discharged from HHS Care,40,449,2024-10-01,220.5,,,,true_negative,,137.0,137.0,138.0
+Children discharged from HHS Care,41,459,2024-10-15,210.0,,,,true_negative,,107.0,107.0,106.0
+Children discharged from HHS Care,42,469,2024-10-29,210.0,,,,true_negative,,126.0,126.0,156.0
+Children discharged from HHS Care,43,479,2024-11-12,196.4,,,,false_negative,,138.0,138.0,145.0
+Children discharged from HHS Care,44,489,2024-11-26,208.2,,,,false_negative,,112.0,112.0,129.0
+Children discharged from HHS Care,45,499,2024-12-10,195.0,,,,false_negative,,149.0,149.0,174.0
+Children discharged from HHS Care,46,509,2024-12-24,210.0,Watch,Watch,14,true_positive,3.0,155.0,155.0,231.0
+Children discharged from HHS Care,47,519,2025-01-07,210.4,,,,false_negative,,133.0,133.0,190.0
+Children discharged from HHS Care,48,529,2025-01-21,212.50000000000003,,,,true_negative,,54.0,54.0,127.0
+Children discharged from HHS Care,49,539,2025-02-04,212.0,,,,true_negative,,74.0,74.0,102.0
+Children discharged from HHS Care,50,549,2025-02-18,212.50000000000003,,,,true_negative,,9.0,9.0,15.0
+Children discharged from HHS Care,51,559,2025-03-04,200.60000000000008,,,,true_negative,,30.0,30.0,25.0
+Children discharged from HHS Care,52,569,2025-03-18,181.3,,,,true_negative,,8.0,8.0,8.0
+Children discharged from HHS Care,53,579,2025-04-01,169.20000000000002,,,,true_negative,,12.0,12.0,5.0
+Children discharged from HHS Care,54,589,2025-04-14,108.60000000000007,,,,true_negative,,13.0,13.0,3.0
+Children discharged from HHS Care,55,599,2025-04-28,52.60000000000004,,,,true_negative,,8.0,8.0,4.0
+Children discharged from HHS Care,56,609,2025-05-12,30.1,,,,true_negative,,7.0,7.0,3.0
+Children discharged from HHS Care,57,619,2025-05-26,17.4,,,,false_negative,,15.0,15.0,9.0
+Children discharged from HHS Care,58,629,2025-06-09,16.0,,,,false_negative,,9.0,9.0,13.0
+Children discharged from HHS Care,59,639,2025-06-23,16.9,Alert,Warning,"1,7",true_positive,2.0,17.0,17.0,7.0
+Children discharged from HHS Care,60,649,2025-07-07,20.0,,,,false_negative,,20.0,20.0,8.0
+Children discharged from HHS Care,61,659,2025-07-21,24.200000000000003,,,,false_negative,,16.0,16.0,
+Children discharged from HHS Care,62,669,2025-08-04,26.300000000000004,,,,true_negative,,14.0,14.0,5.0
+Children discharged from HHS Care,63,679,2025-08-18,25.60000000000001,,,,true_negative,,14.0,14.0,3.0
+Children discharged from HHS Care,64,689,2025-09-01,25.799999999999997,,,,true_negative,,5.0,5.0,

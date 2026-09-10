@@ -1,0 +1,66 @@
+{
+  "generated_at_utc": "2026-09-10T15:17:09+00:00",
+  "data_as_of": "2025-12-21",
+  "raw_csv_sha256": "061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198",
+  "master_series_sha256": "3c6b093d73744140ac7d1d68d308e9f3f0f070fdc3d26e8c6e3d03bf24243c6d",
+  "registry_generated_at_utc": "2026-09-02T14:31:04+00:00",
+  "winning_configuration": [
+    {
+      "target": "Children in HHS Care",
+      "horizon": 1,
+      "champion": "naive",
+      "window_rule": "capped",
+      "selection_scope": "post_cutoff_common_support"
+    },
+    {
+      "target": "Children in HHS Care",
+      "horizon": 7,
+      "champion": "naive",
+      "window_rule": "capped",
+      "selection_scope": "post_cutoff_common_support"
+    },
+    {
+      "target": "Children in HHS Care",
+      "horizon": 14,
+      "champion": "naive",
+      "window_rule": "capped",
+      "selection_scope": "post_cutoff_common_support"
+    },
+    {
+      "target": "Children discharged from HHS Care",
+      "horizon": 1,
+      "champion": "naive",
+      "window_rule": "capped",
+      "selection_scope": "post_cutoff_common_support"
+    },
+    {
+      "target": "Children discharged from HHS Care",
+      "horizon": 7,
+      "champion": "naive",
+      "window_rule": "capped",
+      "selection_scope": "post_cutoff_common_support"
+    },
+    {
+      "target": "Children discharged from HHS Care",
+      "horizon": 14,
+      "champion": "seasonal_naive",
+      "window_rule": "capped",
+      "selection_scope": "post_cutoff_common_support"
+    }
+  ],
+  "nominal_interval_coverage": 0.95,
+  "early_warning": {
+    "percentile": 90,
+    "trailing_window_periods": 60,
+    "tiers": {
+      "14": "Watch",
+      "7": "Warning",
+      "1": "Alert"
+    },
+    "is_proxy": true,
+    "disclaimer": "Relative, data-derived proxy for unusually high load by this programme's own recent standards. No official capacity threshold exists in the source documentation or the dataset; this is not an official capacity figure and does not indicate that capacity has been or will be breached."
+  },
+  "holdout_touched": true,
+  "holdout_use": "single confirmatory coverage check; never fed back into selection",
+  "refresh_policy": "manual only -- replace the CSV and re-run this script"
+}

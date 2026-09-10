@@ -2,6 +2,14 @@
 headless = true
 port = 8501
 
+# Serves files from app/static/ at /app/static/<name>. Enabled so the deployment
+# smoke test can fetch the provenance sidecar from a LIVE url and compare it to
+# the local artifact automatically. Without this the addendum's requirement --
+# "confirm the deployed app's provenance readout matches the local run" -- could
+# only be checked by a human reading the Methodology page, which is exactly the
+# kind of manual step that stops being done.
+enableStaticServing = true
+
 [browser]
 gatherUsageStats = false
 

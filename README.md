@@ -90,8 +90,50 @@ path matches the path the code actually uses.
 ## Refresh Policy
 
 This dashboard reads from pre-generated forecast artifacts. It is **not** a continuously live system.
-To update forecasts with new data, replace the CSV, run `generate.py`, and redeploy.
+To update forecasts with new data, replace the CSV, re-run the pipeline above, and redeploy.
+Nothing retrains on a schedule, and no page trains anything at any time.
+
+## Deployment
+
+The app is a pure consumer of pre-generated artifacts, so a deployment needs no
+build step — but it does need those artifacts present in the clone. The ~128 KB
+the dashboard actually reads is therefore committed (see `.gitignore` for the
+allow-list and the reasoning); the ~3.4 MB of regenerable intermediates is not.
+
+**Deploy to Streamlit Community Cloud**
+
+1. Push to GitHub (`master`).
+2. At [share.streamlit.io](https://share.streamlit.io), create an app pointing at
+   this repository, branch `master`, main file **`app/Home.py`**.
+3. Set the Python version in the advanced settings to the newest the platform
+   offers. Development and the clean-environment verification both ran on 3.14
+   and every dependency resolved; the lower bounds in `requirements.txt` are
+   satisfiable on 3.11+.
+
+   A fresh install resolves **pandas 3.x** while development ran on pandas 2.3.
+   That difference already broke one page (`pd.NA` into a plain `bool` column),
+   caught by the clean-environment test and fixed. If you pin a different Python
+   or pandas version, re-run the smoke test.
+4. Deploy, then verify against the live URL:
+
+```bash
+python scripts/smoke_test.py --url https://<your-app>.streamlit.app
+```
+
+**What the smoke test proves.** It checks that every one of the eight pages
+responds, and — the part that matters — that the *deployed* app is serving the
+same data version this repository holds. The app publishes its provenance
+sidecar as a static file, so the test fetches
+`/app/static/provenance.json` from the live URL and compares the raw-CSV and
+master-series SHA-256 against the local artifact. A dashboard reading stale
+pre-generated files fails silently otherwise: nothing errors, the numbers are
+simply from a different vintage than the code implies. Exit code is non-zero if
+any check fails, so it can gate a deploy.
+
+Run it with `--skip-live` to check only that the committed artifacts describe the
+committed data.
 
 ## Hosting
 
-Deployed on Streamlit Community Cloud. Free-tier instances may experience cold-start delays of ~30 seconds on first load.
+Streamlit Community Cloud. Free-tier instances sleep after inactivity and may
+take ~30 seconds to wake on first load.

@@ -1,0 +1,31 @@
+target,horizon,champion,fold_id,origin_pos,origin_date,test_pos,test_date,y_true,point_forecast,lower,upper,covered,abs_error
+Children in HHS Care,1,naive,66,709,2025-09-29,710,2025-09-30,2159.0,2148.0,2122.05,2174.1,True,11.0
+Children in HHS Care,1,naive,67,719,2025-10-13,720,2025-10-14,2235.0,2223.0,2197.05,2249.1,True,12.0
+Children in HHS Care,1,naive,68,729,2025-10-27,730,2025-10-28,2286.0,2282.0,2256.05,2308.1,True,4.0
+Children in HHS Care,1,naive,69,739,2025-11-10,740,2025-11-11,2294.0,2294.0,2268.05,2320.1,True,0.0
+Children in HHS Care,1,naive,70,749,2025-11-24,750,2025-11-25,2375.0,2371.0,2345.05,2397.1,True,4.0
+Children in HHS Care,7,naive,66,709,2025-09-29,716,2025-10-08,2192.0,2148.0,1992.975,2222.675,True,44.0
+Children in HHS Care,7,naive,67,719,2025-10-13,726,2025-10-22,2261.0,2223.0,2067.975,2297.675,True,38.0
+Children in HHS Care,7,naive,68,729,2025-10-27,736,2025-11-05,2272.0,2282.0,2126.975,2356.675,True,10.0
+Children in HHS Care,7,naive,69,739,2025-11-10,746,2025-11-19,2340.0,2294.0,2138.975,2368.675,True,46.0
+Children in HHS Care,7,naive,70,749,2025-11-24,756,2025-12-03,2419.0,2371.0,2215.975,2445.675,True,48.0
+Children in HHS Care,14,naive,66,709,2025-09-29,723,2025-10-19,2237.0,2148.0,1776.0,2282.05,True,89.0
+Children in HHS Care,14,naive,67,719,2025-10-13,733,2025-11-02,2277.0,2223.0,1851.0,2357.05,True,54.0
+Children in HHS Care,14,naive,68,729,2025-10-27,743,2025-11-16,2340.0,2282.0,1910.0,2416.05,True,58.0
+Children in HHS Care,14,naive,69,739,2025-11-10,753,2025-11-30,2415.0,2294.0,1922.0,2428.05,True,121.0
+Children in HHS Care,14,naive,70,749,2025-11-24,763,2025-12-14,2462.0,2371.0,1999.0,2505.05,True,91.0
+Children discharged from HHS Care,1,naive,66,709,2025-09-29,710,2025-09-30,7.0,13.0,5.05,23.0,True,6.0
+Children discharged from HHS Care,1,naive,67,719,2025-10-13,720,2025-10-14,8.0,6.0,-1.9500000000000002,16.0,True,2.0
+Children discharged from HHS Care,1,naive,68,729,2025-10-27,730,2025-10-28,6.0,11.0,3.05,21.0,True,5.0
+Children discharged from HHS Care,1,naive,69,739,2025-11-10,740,2025-11-11,14.0,4.0,-3.95,14.0,True,10.0
+Children discharged from HHS Care,1,naive,70,749,2025-11-24,750,2025-11-25,11.0,13.0,5.05,23.0,True,2.0
+Children discharged from HHS Care,7,naive,66,709,2025-09-29,716,2025-10-08,17.0,13.0,-6.125,38.724999999999994,True,4.0
+Children discharged from HHS Care,7,naive,67,719,2025-10-13,726,2025-10-22,12.0,6.0,-13.125,31.724999999999994,True,6.0
+Children discharged from HHS Care,7,naive,68,729,2025-10-27,736,2025-11-05,7.0,11.0,-8.125,36.724999999999994,True,4.0
+Children discharged from HHS Care,7,naive,69,739,2025-11-10,746,2025-11-19,10.0,4.0,-15.125,29.724999999999994,True,6.0
+Children discharged from HHS Care,7,naive,70,749,2025-11-24,756,2025-12-03,7.0,13.0,-6.125,38.724999999999994,True,6.0
+Children discharged from HHS Care,14,seasonal_naive,66,709,2025-09-29,723,2025-10-19,7.0,9.0,-5.149999999999999,17.725,True,2.0
+Children discharged from HHS Care,14,seasonal_naive,67,719,2025-10-13,733,2025-11-02,7.0,,,,,
+Children discharged from HHS Care,14,seasonal_naive,68,729,2025-10-27,743,2025-11-16,5.0,10.0,-4.149999999999999,18.725,True,5.0
+Children discharged from HHS Care,14,seasonal_naive,69,739,2025-11-10,753,2025-11-30,0.0,4.0,-10.149999999999999,12.725,True,4.0
+Children discharged from HHS Care,14,seasonal_naive,70,749,2025-11-24,763,2025-12-14,8.0,1.0,-13.149999999999999,9.725,True,7.0
