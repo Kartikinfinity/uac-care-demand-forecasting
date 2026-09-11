@@ -73,6 +73,41 @@ def _get(url: str, timeout: int = TIMEOUT):
         return response.status, response.read()
 
 
+# Streamlit Community Cloud sends the FIRST request from any client through
+# share.streamlit.io/-/auth/app to plant a session cookie -- on public apps too.
+# A browser follows the hop, gets the cookie and comes back; a cookieless client
+# sees 303 forever. So a 303 here says nothing about whether the app is private.
+#
+# `/~/+/<path>` is the cloud's internal route that skips the auth hop, and it is
+# what this script uses once the plain path redirects. Measured against the live
+# deployment: `/~/+/_stcore/health` returns "ok" (2 bytes) and
+# `/~/+/app/static/provenance.json` returns the real JSON, where a cookie-jar
+# client is handed the 9.8 KB SPA shell for every path -- including the static
+# file -- which would make the provenance comparison parse HTML as JSON.
+AUTH_HOP = "share.streamlit.io/-/auth"
+INTERNAL_PREFIX = "/~/+"
+
+
+def _resolve_prefix(base: str) -> str | None:
+    """
+    Work out how to reach this deployment: "" if plain paths work, INTERNAL_PREFIX
+    if the app sits behind the auth hop, or None if neither responds.
+    """
+    for prefix in ("", INTERNAL_PREFIX):
+        try:
+            status, _ = _get(base.rstrip("/") + prefix + "/_stcore/health")
+            if status == 200:
+                return prefix
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (301, 302, 303, 307, 308):
+                return None
+        except urllib.error.URLError:
+            return None
+        except Exception:  # noqa: BLE001
+            return None
+    return None
+
+
 PLACEHOLDER_MARKERS = ("<", ">", "your-app", "your_app", "YOUR-APP", "example.com")
 
 
@@ -85,48 +120,47 @@ def looks_like_a_placeholder(url: str) -> bool:
     return any(marker in url for marker in PLACEHOLDER_MARKERS)
 
 
-def check_reachable(result: Result, base: str) -> bool:
+def check_reachable(result: Result, base: str) -> str | None:
+    """
+    Returns the path prefix to use for every later request, or None if the app
+    could not be reached at all.
+    """
     if looks_like_a_placeholder(base):
-        return result.record(
+        result.record(
             "app is reachable and healthy", False,
             "the URL is still the documentation placeholder -- replace it with "
             "your real app address, e.g. https://uac-forecasting.streamlit.app",
         )
+        return None
+
     try:
-        status, _ = _get(base.rstrip("/") + "/_stcore/health")
-        return result.record("app is reachable and healthy", status == 200,
-                             "HTTP %d" % status)
-    except urllib.error.HTTPError as exc:
-        # streamlit.app resolves by wildcard, so a name with no app behind it
-        # does NOT fail DNS -- it redirects, and urllib gives up on the loop.
-        # Measured against a deliberately non-existent app name.
-        hint = ""
-        if "streamlit.app" in base and exc.code in (301, 302, 303, 307, 308):
-            hint = (" -- resolves, but redirects to sign-in. Either no app "
-                    "exists at this address, or it is deployed PRIVATE. A "
-                    "private app cannot be smoke-tested: set Sharing to "
-                    "'anyone with the link' in the app settings.")
-        return result.record("app is reachable and healthy", False,
-                             "HTTP %d%s" % (exc.code, hint))
-    except urllib.error.URLError as exc:
-        reason = str(getattr(exc, "reason", exc))
-        hint = ""
-        if "getaddrinfo" in reason or "Name or service not known" in reason:
-            hint = (" -- the hostname does not resolve. Is the app deployed yet, "
-                    "and is the address spelled correctly?")
-        elif "infinite loop" in reason or "redirect" in reason.lower():
-            hint = (" -- resolves, but redirects to sign-in. Either no app "
-                    "exists at this address, or it is deployed PRIVATE. A "
-                    "private app cannot be smoke-tested: set Sharing to "
-                    "'anyone with the link' in the app settings.")
-        return result.record("app is reachable and healthy", False,
-                             "%s%s" % (reason, hint))
+        prefix = _resolve_prefix(base)
     except Exception as exc:  # noqa: BLE001
-        return result.record("app is reachable and healthy", False,
-                             "%s: %s" % (type(exc).__name__, exc))
+        result.record("app is reachable and healthy", False,
+                      "%s: %s" % (type(exc).__name__, exc))
+        return None
+
+    if prefix is None:
+        # Reached only after BOTH the plain and internal routes failed. An app
+        # that is merely asleep wakes on the first request and answers on a
+        # retry, so persistent failure here is a real problem: wrong address,
+        # never deployed, or genuinely private.
+        result.record(
+            "app is reachable and healthy", False,
+            "no healthy response on either the public or the internal route. "
+            "Check the address is right and the app is deployed; if it is "
+            "sleeping, open it in a browser once to wake it, then re-run.",
+        )
+        return None
+
+    result.record("app is reachable and healthy", True,
+                  "HTTP 200" + (" via the internal route (the public route "
+                                "redirects through Streamlit's auth hop, which "
+                                "is normal for a public app)" if prefix else ""))
+    return prefix
 
 
-def check_pages(result: Result, base: str) -> None:
+def check_pages(result: Result, base: str, prefix: str = "") -> None:
     """
     Every route responds. Streamlit renders client-side, so a 200 here proves
     the route exists and the server is serving it -- not that the page rendered
@@ -135,7 +169,7 @@ def check_pages(result: Result, base: str) -> None:
     """
     for route, label in PAGES:
         try:
-            status, body = _get(base.rstrip("/") + route)
+            status, body = _get(base.rstrip("/") + prefix + route)
             result.record("page responds: %s" % label,
                           status == 200 and len(body) > 0, "HTTP %d" % status)
         except Exception as exc:  # noqa: BLE001
@@ -143,7 +177,7 @@ def check_pages(result: Result, base: str) -> None:
                           "%s: %s" % (type(exc).__name__, exc))
 
 
-def check_provenance_match(result: Result, base: str) -> None:
+def check_provenance_match(result: Result, base: str, prefix: str = "") -> None:
     """
     THE addendum check: the live app must be serving the same data version the
     repository holds.
@@ -152,7 +186,7 @@ def check_provenance_match(result: Result, base: str) -> None:
     sidecar against the local one. A mismatch means the deployment is running a
     different vintage of the data -- silently, since nothing errors.
     """
-    url = base.rstrip("/") + "/app/static/provenance.json"
+    url = base.rstrip("/") + prefix + "/app/static/provenance.json"
     try:
         status, body = _get(url)
     except Exception as exc:  # noqa: BLE001
@@ -236,9 +270,10 @@ def main() -> int:
 
     if not args.skip_live:
         print("\nLive application")
-        if check_reachable(result, args.url):
-            check_pages(result, args.url)
-            check_provenance_match(result, args.url)
+        prefix = check_reachable(result, args.url)
+        if prefix is not None:
+            check_pages(result, args.url, prefix)
+            check_provenance_match(result, args.url, prefix)
         else:
             print("  (skipping page and provenance checks -- app unreachable)")
 

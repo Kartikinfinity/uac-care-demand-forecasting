@@ -149,6 +149,23 @@ any check fails, so it can gate a deploy.
 Run it with `--skip-live` to check only that the committed artifacts describe the
 committed data.
 
+**A note on Streamlit Cloud and HTTP 303.** The cloud answers a cookieless client
+with `303 → share.streamlit.io/-/auth/app` on the first request to *any* path,
+**including public apps**. A browser follows the hop, picks up a session cookie
+and comes back; a script does not, and sees the redirect forever. A 303 therefore
+says nothing about whether an app is private. The smoke test handles this by
+falling back to the cloud's internal `/~/+/<path>` route, which skips the auth
+hop — and it must use that route for the provenance fetch too, because a
+cookie-jar client is handed the SPA shell (HTML) for
+`/app/static/provenance.json` rather than the JSON.
+
+If the live checks fail outright, the likely cause is that the free-tier instance
+has **gone to sleep**. Open the URL in a browser once, click *"Yes, get this app
+back up!"*, wait for it to finish booting, then re-run.
+
+**Live deployment:**
+<https://uac-care-demand-forecasting-yjwnfnfaw8gqjcpvevlqjo.streamlit.app>
+
 ## Hosting
 
 Streamlit Community Cloud. Free-tier instances sleep after inactivity and may

@@ -49,6 +49,10 @@ REQUIRED_FOR_DEPLOY = [
     "forecasts/kpi_summary.csv",
     "forecasts/champion_selection.csv",
     "forecasts/full_model_comparison.csv",
+    # The eight-model matrix the Model Comparison page prefers. It falls back to
+    # full_model_comparison.csv, so a clone without this renders -- but it renders
+    # a matrix missing a candidate, which is the thing Day 13 set out to fix.
+    "forecasts/comparison_matrix.csv",
     "forecasts/provenance.json",
     "data/interim/master_series.parquet",
     "data/interim/provenance.json",
@@ -359,8 +363,11 @@ def test_a_documentation_placeholder_url_is_named_as_such():
     assert not smoke.looks_like_a_placeholder("http://localhost:8501")
 
     result = smoke.Result()
-    ok = smoke.check_reachable(result, "https://<your-app>.streamlit.app")
-    assert ok is False
+    # check_reachable returns the path prefix to use for later requests, or None
+    # when the app could not be reached -- it stopped being a plain bool once
+    # Streamlit's auth hop forced the internal-route fallback.
+    prefix = smoke.check_reachable(result, "https://<your-app>.streamlit.app")
+    assert prefix is None
     detail = result.checks[-1][2]
     assert "placeholder" in detail, detail
 
@@ -376,3 +383,69 @@ def test_placeholder_detection_does_not_make_a_network_call(monkeypatch):
     result = smoke.Result()
     smoke.check_reachable(result, "https://<your-app>.streamlit.app")
     assert result.failed
+
+
+def test_an_auth_hop_redirect_is_not_reported_as_a_private_app(monkeypatch):
+    """
+    Regression guard for a real false failure.
+
+    Streamlit Community Cloud answers a cookieless client with 303 to
+    share.streamlit.io/-/auth/app on EVERY first request, public apps included.
+    The first version of this script treated that 303 as evidence the app was
+    deployed private, and told the user to change their sharing settings -- which
+    were already correct. The app was public and serving fine in a browser.
+
+    The fix is the internal `/~/+` route, which skips the auth hop. This test
+    simulates exactly that server behaviour and asserts the script now succeeds.
+    """
+    import urllib.error
+
+    import scripts.smoke_test as smoke
+
+    seen = []
+
+    def fake_get(url, timeout=smoke.TIMEOUT):
+        seen.append(url)
+        if smoke.INTERNAL_PREFIX in url:
+            return 200, b"ok"
+        raise urllib.error.HTTPError(
+            url, 303, "See Other",
+            {"Location": "https://share.streamlit.io/-/auth/app"}, None)
+
+    monkeypatch.setattr(smoke, "_get", fake_get)
+    result = smoke.Result()
+    prefix = smoke.check_reachable(result, "https://example-app.streamlit.app")
+
+    assert prefix == smoke.INTERNAL_PREFIX, "should fall back to the internal route"
+    assert not result.failed, "a public app behind the auth hop must not fail"
+    detail = result.checks[-1][2].lower()
+    assert "private" not in detail, (
+        "must not blame sharing settings for an auth-hop redirect: " + detail)
+    assert any(smoke.INTERNAL_PREFIX in url for url in seen)
+
+
+def test_the_internal_route_is_used_for_pages_and_provenance(monkeypatch):
+    """
+    The prefix has to reach the provenance fetch too. A cookie-jar client gets
+    the SPA shell for /app/static/provenance.json -- HTML, not JSON -- so a fix
+    that only covered the health check would fail the comparison that matters.
+    """
+    import scripts.smoke_test as smoke
+
+    requested = []
+
+    def fake_get(url, timeout=smoke.TIMEOUT):
+        requested.append(url)
+        return 200, b"{}"
+
+    monkeypatch.setattr(smoke, "_get", fake_get)
+    result = smoke.Result()
+    smoke.check_pages(result, "https://example-app.streamlit.app",
+                      smoke.INTERNAL_PREFIX)
+    assert requested and all(smoke.INTERNAL_PREFIX in url for url in requested)
+
+    requested.clear()
+    smoke.check_provenance_match(result, "https://example-app.streamlit.app",
+                                 smoke.INTERNAL_PREFIX)
+    assert requested[0].endswith(
+        smoke.INTERNAL_PREFIX + "/app/static/provenance.json")
