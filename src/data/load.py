@@ -1,3 +1,15 @@
+"""
+load.py -- Read the raw CSV, and nothing else (Day 1).
+
+Deliberately thin. This module's only job is to get the delivered file into a
+DataFrame with no interpretation applied: no type coercion, no reindexing, no
+gap handling. Everything that makes a judgement about the data belongs in
+`clean.py`, so that there is exactly one place to look when asking "what was
+done to this data before I saw it".
+
+The raw file is treated as read-only throughout the project and is hashed on
+every run by `validate.py`.
+"""
 import pandas as pd
 from pathlib import Path
 import sys

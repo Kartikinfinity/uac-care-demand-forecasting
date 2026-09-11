@@ -79,17 +79,29 @@ path matches the path the code actually uses.
 └── README.md
 ```
 
-## Research Paper
+## Deliverables
 
-`reports/research_paper.md` is **generated**, not written by hand. Every numeral
-in it is fetched from an artifact by `src/reporting/build_paper.py` and recorded
-in `reports/paper_evidence.json` with the file and locator it came from.
-`tests/test_day13.py` then scans the finished document and fails if it contains a
-number the ledger never issued — so a figure typed from memory cannot survive the
-build. Regenerate it with:
+| Deliverable | Path | Audience |
+|---|---|---|
+| Live dashboard | <https://uac-care-demand-forecasting-yjwnfnfaw8gqjcpvevlqjo.streamlit.app> | Operational |
+| Executive summary | `reports/executive_summary.md` | Non-technical stakeholder, one page |
+| Research paper | `reports/research_paper.md` | Technical, 25 sections |
+| Evidence ledgers | `reports/paper_evidence.json`, `reports/executive_summary_evidence.json` | Anyone checking a figure |
+
+**Both documents are generated, not written by hand.** Every numeral in them is
+fetched from an artifact by `src/reporting/` and recorded in the matching
+evidence ledger with the file and locator it came from. `tests/test_day13.py`
+scans the finished paper and fails if it contains a number the ledger never
+issued, so a figure typed from memory cannot survive the build; the executive
+summary is additionally asserted byte-identical on regeneration. Rebuild both
+with:
 
 ```bash
 python -m src.reporting.build_paper
+```
+
+```bash
+python -m src.reporting.build_executive_summary
 ```
 
 ## Known Limitations & Data Discrepancies
@@ -102,6 +114,39 @@ python -m src.reporting.build_paper
 6. Column `Children apprehended...` carries an unresolved footnote asterisk
 7. Flow columns do not exactly reconcile against HHS Care stock (~2.5% exact match)
 8. `Children in HHS Care` exhibits a ~5.8× regime shift (11,516 → 1,972)
+
+## Reproducibility, Seed & Versioning
+
+**Seed.** Every stochastic step uses `RANDOM_SEED = 42`, set once in
+`src/config.py` and threaded through model fitting and the paired bootstrap
+(`PRACTICAL_EQUIVALENCE_SEED` is the same value). Re-running the pipeline on the
+same input CSV reproduces every artifact, and two of the generated documents are
+asserted byte-identical on regeneration by the test suite. There is no hidden
+source of randomness: nothing samples at serve time, and the dashboard never
+fits a model.
+
+**Data versioning.** There is no version number on the dataset, so the data is
+identified by content instead. `src/data/validate.py` hashes the raw CSV and the
+derived master series with SHA-256 on every run, and writes both digests plus a
+`data_as_of` date into `data/interim/provenance.json`. Every downstream
+artifact — forecasts, registry, research paper, executive summary — carries the
+same pair of digests, so any output can be traced to the exact bytes it came
+from.
+
+Current vintage:
+
+| | |
+|---|---|
+| `data_as_of` | 2025-12-21 |
+| Raw CSV SHA-256 | `061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198` |
+| Master series SHA-256 | `3c6b093d73744140ac7d1d68d308e9f3f0f070fdc3d26e8c6e3d03bf24243c6d` |
+
+**Checking a deployment matches.** The app serves its provenance sidecar as a
+static file, and `scripts/smoke_test.py` compares the deployed digests against
+the local ones. That is what catches the failure mode this architecture is prone
+to: a dashboard serving a stale pre-generated artifact without erroring. If you
+replace the CSV, every digest changes and the mismatch is reported rather than
+silently absorbed.
 
 ## Refresh Policy
 

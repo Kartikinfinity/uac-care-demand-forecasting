@@ -660,6 +660,7 @@ def build_kpis(df, registry, forwards, backtest_summary, holdout, cutoff_pos,
 # Driver
 # ----------------------------------------------------------------------
 def main() -> None:
+    """Day 9 driver: produce every artifact the dashboard reads, plus provenance."""
     df = pd.read_parquet(MASTER_SERIES_PATH)
     df["parsed_date"] = pd.to_datetime(df["parsed_date"])
 

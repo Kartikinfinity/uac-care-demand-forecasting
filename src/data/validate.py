@@ -148,12 +148,14 @@ def build_provenance(raw_csv_path: Path, master: pd.DataFrame) -> dict:
 
 
 def write_provenance(record: dict, path: Path = PROVENANCE_PATH) -> Path:
+    """Write the data digests and vintage to data/interim/provenance.json."""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
     return path
 
 
 def read_provenance(path: Path = PROVENANCE_PATH) -> dict:
+    """Read back the recorded digests and vintage."""
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 

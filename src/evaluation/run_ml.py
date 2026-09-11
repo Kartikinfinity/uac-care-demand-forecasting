@@ -186,6 +186,7 @@ def persist_ml_fits(df: pd.DataFrame, features: pd.DataFrame, columns: list,
 
 
 def main(reuse_predictions: bool = False) -> None:
+    """Day 7 driver: fit and score the ML track, then write the full comparison."""
     df = pd.read_parquet(MASTER_SERIES_PATH)
     df["parsed_date"] = pd.to_datetime(df["parsed_date"])
     features, columns = load_features()

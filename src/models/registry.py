@@ -61,12 +61,14 @@ def build_registry(entries: list, provenance: dict = None) -> dict:
 
 
 def write_registry(registry: dict, path: Path = MODEL_REGISTRY_PATH) -> Path:
+    """Freeze the selection decisions to models/model_registry.json."""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(registry, indent=2, default=str) + "\n", encoding="utf-8")
     return path
 
 
 def read_registry(path: Path = MODEL_REGISTRY_PATH) -> dict:
+    """Read the frozen selection decisions."""
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 

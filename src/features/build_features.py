@@ -1,3 +1,27 @@
+"""
+build_features.py -- Model-ready feature tables for the ML track (Day 3).
+
+Only the machine-learning models consume these; the baselines and the statistical
+models read the raw series directly.
+
+Every feature is built from information available at or BEFORE the forecast
+origin -- lags, trailing rolling statistics, differences, calendar markers, and
+lagged values of the other series. Two rules are absolute:
+
+  * No feature uses a value from the target period.
+  * No rolling window includes the current row in its own statistic.
+
+All offsets are expressed in PERIOD POSITIONS, never calendar days. The reporting
+cadence is Sun-Thu, so a 7-position lag is about nine calendar days; computing it
+by date arithmetic would silently land on a different observation, or on no
+observation at all.
+
+The walk-forward harness enforces the same boundary independently by slicing this
+table at each fold's training cutoff, so a feature that leaked despite the rules
+above would still not be visible to the model at fit time. The redundancy is
+deliberate: leakage is the one defect that makes every downstream number look
+better than it is.
+"""
 import pandas as pd
 import numpy as np
 from pathlib import Path
@@ -40,6 +64,12 @@ def add_calendar_features(df: pd.DataFrame) -> pd.DataFrame:
     # NumPy deprecation on every call (3,588 warnings per test run) and is slated
     # to become an error.
     def is_near_holiday(d):
+        """True when a date falls within the configured window of a US holiday.
+
+    Reporting cadence shifts around holidays, so this marks the periods where a
+    published count may reflect an unusual reporting pattern rather than an
+    unusual caseload.
+        """
         base = d.date()
         return int(any((base + timedelta(days=offset)) in us_holidays
                        for offset in range(-2, 3)))
@@ -94,6 +124,11 @@ def add_lag_and_rolling_features(df: pd.DataFrame) -> pd.DataFrame:
     return df_feat
 
 def build_features():
+    """Assemble the full feature table for one target.
+
+    Calendar markers, then lags and trailing rolling statistics, all in period
+    positions. Every column is available at or before the forecast origin.
+    """
     print("Loading master series...")
     df = pd.read_parquet(MASTER_SERIES_PATH)
     

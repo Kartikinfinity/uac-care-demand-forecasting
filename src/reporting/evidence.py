@@ -80,6 +80,7 @@ class Evidence:
 
     @property
     def entries(self) -> list[dict[str, Any]]:
+        """A copy of the recorded citations."""
         return list(self._entries)
 
     @property
@@ -88,6 +89,7 @@ class Evidence:
         return {entry["rendered"] for entry in self._entries}
 
     def write(self, path: Path, extra: dict[str, Any] | None = None) -> None:
+        """Write the ledger to disk as the paper's claim-by-claim audit trail."""
         payload = {
             "purpose": (
                 "Audit trail for reports/research_paper.md. Every numeral in the "

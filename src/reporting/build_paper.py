@@ -127,11 +127,13 @@ class Artifacts:
         return sub.sort_values("MAE").reset_index(drop=True)
 
     def champ(self, target: str, horizon: int) -> pd.Series:
+        """The frozen champion row for one target/horizon."""
         sub = self.champions[(self.champions["target"] == target)
                              & (self.champions["horizon"] == horizon)]
         return sub.iloc[0]
 
     def kpi_row(self, target: str) -> pd.Series:
+        """The KPI row for one target."""
         return self.kpi[self.kpi["target"] == target].iloc[0]
 
     def reconciliation(self) -> dict:
@@ -163,6 +165,7 @@ class Artifacts:
         }
 
     def regime(self) -> dict:
+        """Range and current level of the care-load series."""
         care = self.master[COL_HHS_CARE].astype("Float64").dropna().astype(float)
         return {
             "max": float(care.max()),
@@ -177,10 +180,12 @@ class Artifacts:
 # ======================================================================
 
 def label(model: str) -> str:
+    """Display name for a model key."""
     return MODEL_LABELS.get(model, model)
 
 
 def family_of(model: str) -> str:
+    """Which of the four model families a model key belongs to."""
     if model in BASELINES:
         return "baseline"
     if model in STATISTICAL:
@@ -191,10 +196,12 @@ def family_of(model: str) -> str:
 
 
 def h_label(h: int) -> str:
+    """Horizon in both units -- positions and wall-clock -- never just one."""
     return "h=%d (%s)" % (h, HORIZON_CALENDAR.get(h, "?"))
 
 
 def table(headers: list[str], rows: list[list[str]]) -> str:
+    """Render rows as a markdown table."""
     out = ["| " + " | ".join(headers) + " |",
            "|" + "|".join(["---"] * len(headers)) + "|"]
     out += ["| " + " | ".join(str(c) for c in row) + " |" for row in rows]
@@ -1856,6 +1863,7 @@ def _register_vocabulary(e: Evidence) -> None:
 
 
 def build() -> tuple[Path, int]:
+    """Generate the paper and its evidence ledger. Returns (path, n_citations)."""
     artifacts = Artifacts()
     evidence = Evidence()
     _register_vocabulary(evidence)

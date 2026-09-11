@@ -129,12 +129,26 @@ class DirectMultiHorizonForecaster:
 
     @property
     def failed_(self) -> bool:
+        """True if either the fit or the forecast failed, for either reason."""
         return bool(self.fit_failed_ or self.forecast_failed_)
 
     def _make_estimator(self):
         raise NotImplementedError
 
     def fit(self, y, X=None):
+        """Fit one estimator PER HORIZON (the direct strategy).
+
+        A recursive forecaster feeds its own predictions back as inputs and
+        compounds its errors; a single model asked to serve every horizon is
+        being evaluated on a different task at each. One model per horizon means
+        each is scored on exactly the task it was trained for, which is what
+        makes this track comparable to the statistical one rather than
+        disadvantaged against it.
+
+        Failure is recorded on the instance rather than raised: a fold where a
+        fit legitimately cannot happen must abstain and be excluded from common
+        support, not abort the whole run.
+        """
         if X is None:
             raise ValueError("%s requires a feature matrix" % type(self).__name__)
         self.models_ = {}
@@ -172,6 +186,11 @@ class DirectMultiHorizonForecaster:
         return X[usable], target[usable], dropped
 
     def predict(self, horizons):
+        """Forecast at each requested horizon using that horizon's own model.
+
+        Returns NaN for any horizon whose model failed to fit, so the harness can
+        drop that point from common support rather than score a fabricated value.
+        """
         leads = [int(h) for h in np.atleast_1d(horizons)]
         out = np.full(len(leads), np.nan)
         if self.fit_failed_ or self._y is None:
@@ -208,6 +227,12 @@ class DirectMultiHorizonForecaster:
         return out
 
     def feature_importances(self, lead: int):
+        """Per-horizon impurity importances, where the estimator exposes them.
+
+        Random Forest does; HistGradientBoostingRegressor does not. See
+        `src/reporting/feature_importance.py` for the collinearity caveat these
+        values must always carry.
+        """
         model = self.models_.get(lead)
         if model is None:
             return None

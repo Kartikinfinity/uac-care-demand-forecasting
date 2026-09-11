@@ -90,6 +90,15 @@ class StatisticalForecaster:
 
     # -- harness interface ----------------------------------------------
     def fit(self, y):
+        """Fit once on the training series; the whole horizon path comes from it.
+
+        Unlike the ML track, a single fit serves every horizon here -- that is
+        the natural shape of these models, and the comparison respects it.
+
+        Failure is recorded rather than raised, for the same reason as the ML
+        models: a fold that cannot be fitted must abstain and drop out of common
+        support, not abort the run.
+        """
         y = np.asarray(y, dtype=float)
         self.result_ = None
         self.fit_failed_ = False
@@ -115,6 +124,11 @@ class StatisticalForecaster:
         return self
 
     def predict(self, horizons):
+        """Forecast at each requested horizon, in period positions.
+
+        Returns NaN per horizon when the fit failed, so the point is excluded
+        from common support rather than scored against a fabricated value.
+        """
         horizons = [int(h) for h in np.atleast_1d(horizons)]
         n = len(horizons)
         if self.fit_failed_ or self.result_ is None:
@@ -181,6 +195,7 @@ class SarimaxForecaster(StatisticalForecaster):
 
     @property
     def min_observations(self) -> int:
+        """Fewest finite observations this specification can be fitted on."""
         p, d, q = self.order
         P, D, Q, m = self.seasonal_order
         # Enough rows to survive the differencing and still estimate the terms.
@@ -280,6 +295,7 @@ class ETSForecaster(StatisticalForecaster):
 
     @property
     def min_observations(self) -> int:
+        """Fewest finite observations this specification can be fitted on."""
         if self.seasonal:
             return 2 * self.seasonal_periods + 4
         return 6

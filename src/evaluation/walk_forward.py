@@ -116,6 +116,7 @@ class Fold:
 
     @property
     def max_test_pos(self) -> int:
+        """The furthest position this fold needs, i.e. its longest horizon."""
         return max(self.test_positions.values())
 
     @property

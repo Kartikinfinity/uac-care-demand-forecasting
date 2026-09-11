@@ -1,3 +1,24 @@
+"""
+baselines.py -- The three baseline forecasters (Day 4).
+
+These are not a reference line to be beaten on the way to a "real" model. Under
+the selection rule they are first-class candidates that can win outright, and in
+this project they mostly do -- the champion is a baseline in every target/horizon
+cell. Treating them as placeholders would have produced a system that looks more
+sophisticated and forecasts no better.
+
+  * `NaiveBaseline`          -- persistence: the next value is the last one.
+  * `SeasonalNaiveBaseline`  -- the value m positions ago. m=5, not 7: with
+                                Sun-Thu reporting, five POSITIONS is one week.
+                                Using 7 would compare each observation against a
+                                different weekday.
+  * `MovingAverageBaseline`  -- the mean of the trailing w positions.
+
+All three share the fit/predict shape the walk-forward harness expects, and all
+three are scored by that same harness on identical folds -- no family has its own
+evaluation path, because the moment two families are scored by two code paths the
+comparison between them stops being a comparison of models.
+"""
 import numpy as np
 import pandas as pd
 
@@ -7,6 +28,7 @@ class NaiveBaseline:
         self.last_value_ = None
         
     def fit(self, y):
+        """Store the last observed value -- that is the entire model."""
         # We only need the very last valid value.
         # If there's an index, just take the raw values
         y_vals = np.asarray(y)
@@ -35,6 +57,7 @@ class SeasonalNaiveBaseline:
         self.history_ = None
         
     def fit(self, y):
+        """Store the trailing window, so predict can look back m positions."""
         y_vals = np.asarray(y)
         # Store at least m valid observations, but dealing with NaNs requires care.
         # Since this is a baseline evaluated identically, we store the full series.
@@ -76,6 +99,7 @@ class MovingAverageBaseline:
         self.mean_val_ = None
         
     def fit(self, y):
+        """Store the mean of the trailing w positions."""
         y_vals = np.asarray(y)
         # Get the last w periods
         window = y_vals[-self.w:]
@@ -84,6 +108,7 @@ class MovingAverageBaseline:
         return self
         
     def predict(self, horizons):
+        """Forecast at each requested horizon, in period positions."""
         if isinstance(horizons, int):
             return self.mean_val_
         return np.array([self.mean_val_] * len(horizons))

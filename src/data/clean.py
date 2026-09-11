@@ -1,3 +1,38 @@
+"""
+clean.py -- Build the one trustworthy master series (Day 2).
+
+Everything downstream reads the output of this module, so every judgement made
+about the data is made here and recorded rather than scattered.
+
+Four things happen, in order:
+
+  1. **Truncate the blank tail.** The delivered file carries 450 empty trailing
+     rows after the 720 real observations.
+  2. **Parse and type.** `Children in HHS Care` arrives string-typed because its
+     values carry thousands-separator commas; it is parsed to a nullable integer
+     rather than coerced through float, so no value is silently rounded.
+  3. **Reindex onto the reporting calendar.** Reporting runs Sunday-Thursday, so
+     the series is placed on the true Sun-Thu schedule rather than a daily one,
+     which would invent weekend rows that were never meant to exist. Positions
+     with no published observation become explicit gap slots.
+  4. **Fill gaps according to what the series IS.** This is the invariant that
+     matters most:
+
+        * A STOCK (`Children in HHS Care`, `Children in CBP custody`) exists
+          continuously and is merely unobserved on a non-reporting day, so
+          interpolating it estimates something real.
+        * A FLOW (discharges, transfers, apprehensions) counts events WITHIN a
+          period. On a day with no report there is no count to estimate, and
+          interpolating one would fabricate events that never happened.
+
+     Flows are therefore left genuinely missing, without exception.
+
+Every imputed value carries a per-column `is_imputed_*` flag, and those flags are
+load-bearing rather than documentary: the walk-forward harness uses them to stop
+training on an interpolated origin (which blends values from both sides of
+itself, including future ones) and to exclude interpolated actuals from scoring
+(which would measure agreement with the interpolation, not accuracy).
+"""
 import pandas as pd
 import numpy as np
 from pathlib import Path

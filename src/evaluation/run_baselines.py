@@ -124,6 +124,7 @@ def _fmt(df: pd.DataFrame, cols) -> str:
 
 
 def main() -> None:
+    """Day 5 driver: score the three baselines on the shared walk-forward folds."""
     df = pd.read_parquet(MASTER_SERIES_PATH)
     df["parsed_date"] = pd.to_datetime(df["parsed_date"])
 

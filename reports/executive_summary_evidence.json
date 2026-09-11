@@ -1,0 +1,126 @@
+{
+  "purpose": "Audit trail for reports/research_paper.md. Every numeral in the paper was issued by Evidence.cite and appears here with the artifact it was read from. Nothing was typed from memory.",
+  "n_citations": 18,
+  "n_distinct_sources": 5,
+  "sources": [
+    "data/interim/provenance.json",
+    "derived from data/interim/master_series.parquet",
+    "forecasts/champion_selection.csv",
+    "forecasts/forward_forecasts.csv",
+    "forecasts/kpi_summary.csv"
+  ],
+  "citations": [
+    {
+      "rendered": "2025-12-21",
+      "raw_value": "2025-12-21",
+      "source": "data/interim/provenance.json",
+      "locator": "data_as_of"
+    },
+    {
+      "rendered": "1,972",
+      "raw_value": 1972.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "min of Children in HHS Care"
+    },
+    {
+      "rendered": "11,516",
+      "raw_value": 11516.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "max of Children in HHS Care"
+    },
+    {
+      "rendered": "5.8",
+      "raw_value": 5.8397565922920895,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "max/min ratio"
+    },
+    {
+      "rendered": "720",
+      "raw_value": 720,
+      "source": "data/interim/provenance.json",
+      "locator": "n_real_observations"
+    },
+    {
+      "rendered": "2023-01-12",
+      "raw_value": "2023-01-12",
+      "source": "data/interim/provenance.json",
+      "locator": "series_starts"
+    },
+    {
+      "rendered": "10",
+      "raw_value": 10.133333333333333,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> champion_mae"
+    },
+    {
+      "rendered": "70",
+      "raw_value": 70.21428571428571,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> champion_mae"
+    },
+    {
+      "rendered": "148",
+      "raw_value": 147.64285714285714,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> champion_mae"
+    },
+    {
+      "rendered": "2,484",
+      "raw_value": 2484.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> point_forecast"
+    },
+    {
+      "rendered": "4",
+      "raw_value": 4.142857142857143,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> champion_mae"
+    },
+    {
+      "rendered": "8",
+      "raw_value": 8.461538461538462,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> champion_mae"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "count of champion in the baseline set"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "65",
+      "raw_value": 65.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> n_backtest_origins"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "42",
+      "raw_value": 41.961876832844574,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "mean signed reconciliation residual"
+    }
+  ],
+  "document": "reports/executive_summary.md",
+  "spec": "roadmap Part 13 -- eight questions, one page, non-technical",
+  "raw_csv_sha256": "061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198",
+  "random_seed": 42
+}

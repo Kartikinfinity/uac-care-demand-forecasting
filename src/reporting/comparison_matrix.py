@@ -64,6 +64,11 @@ def _support_points(seven_model_preds: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_complete_matrix() -> pd.DataFrame:
+    """Append the ensemble to the seven-model matrix and write the result.
+
+    The seven existing rows are carried across untouched -- see the module
+    docstring for why rebasing common support would be the wrong fix.
+    """
     existing = pd.read_csv(FULL_COMPARISON_PATH)
     seven = pd.read_csv(ML_PREDICTIONS_PATH)
     ensemble = pd.read_csv(ENSEMBLE_PREDICTIONS_PATH)

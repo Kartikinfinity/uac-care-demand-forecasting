@@ -194,6 +194,7 @@ def imbalance_residual_correlation(df, folds, cutoff_pos, discharged_residuals) 
 # Driver
 # ----------------------------------------------------------------------
 def main() -> None:
+    """Day 8 driver: ensemble, champion selection, imbalance signal, early warning."""
     from src.data.validate import read_provenance
 
     df = pd.read_parquet(MASTER_SERIES_PATH)

@@ -514,6 +514,8 @@ IMBALANCE_INDEPENDENCE_THRESHOLD = 0.2
 # enforced by construction instead of by proofreading. Narrative prose is
 # authored; every numeral in it is interpolated from a loaded artifact.
 RESEARCH_PAPER_PATH = REPORTS_DIR / "research_paper.md"
+EXECUTIVE_SUMMARY_PATH = REPORTS_DIR / "executive_summary.md"
+EXEC_SUMMARY_EVIDENCE_PATH = REPORTS_DIR / "executive_summary_evidence.json"
 PAPER_EVIDENCE_PATH = REPORTS_DIR / "paper_evidence.json"
 FEATURE_IMPORTANCE_PATH = FORECASTS_DIR / "feature_importance.csv"
 

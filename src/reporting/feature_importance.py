@@ -82,6 +82,7 @@ def extract_importances() -> pd.DataFrame:
 
 
 def write_importances(path: Path = FEATURE_IMPORTANCE_PATH) -> pd.DataFrame:
+    """Extract importances and write the CSV. Returns the frame (empty if none)."""
     frame = extract_importances()
     if len(frame):
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -90,6 +91,7 @@ def write_importances(path: Path = FEATURE_IMPORTANCE_PATH) -> pd.DataFrame:
 
 
 def top_features(frame: pd.DataFrame, target: str, horizon: int, n: int = 8):
+    """The n highest-importance features for one target/horizon."""
     sub = frame[(frame["target"] == target) & (frame["horizon"] == horizon)]
     return sub.sort_values("importance", ascending=False).head(n)
 

@@ -43,11 +43,13 @@ def align_pairs(y_true, y_pred):
 
 
 def mae(y_true, y_pred) -> float:
+    """Mean absolute error, in units of the series. The primary metric."""
     a, f = align_pairs(y_true, y_pred)
     return float(np.mean(np.abs(a - f))) if a.size else float("nan")
 
 
 def rmse(y_true, y_pred) -> float:
+    """Root mean squared error -- penalises large misses more than MAE does."""
     a, f = align_pairs(y_true, y_pred)
     return float(np.sqrt(np.mean((a - f) ** 2))) if a.size else float("nan")
 
