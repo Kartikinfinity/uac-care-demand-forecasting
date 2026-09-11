@@ -504,3 +504,19 @@ IMBALANCE_BASELINE_MODELS = ["seasonal_naive", "moving_average"]
 # this "is a prior, not the final answer" -- the decision is made from the
 # measured paired out-of-sample residual correlation at Day 8.
 IMBALANCE_INDEPENDENCE_THRESHOLD = 0.2
+
+# ----------------------------------------------------------------------
+# REPORTING / RESEARCH PAPER (Day 13)
+# ----------------------------------------------------------------------
+# The paper is GENERATED from the artifacts rather than typed, so the Day 13
+# validation checkpoint -- "every number in the paper is cross-checked against
+# an actual output file; zero figures written from memory or assumption" -- is
+# enforced by construction instead of by proofreading. Narrative prose is
+# authored; every numeral in it is interpolated from a loaded artifact.
+RESEARCH_PAPER_PATH = REPORTS_DIR / "research_paper.md"
+PAPER_EVIDENCE_PATH = REPORTS_DIR / "paper_evidence.json"
+FEATURE_IMPORTANCE_PATH = FORECASTS_DIR / "feature_importance.csv"
+
+# Reported per model/horizon in the paper's feature-importance table. Kept small
+# on purpose: the tail is not interpretable under collinear lag features.
+PAPER_TOP_FEATURES = 8

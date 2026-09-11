@@ -33,6 +33,9 @@ python -m src.evaluation.run_ml          # -> forecasts/full_model_comparison.cs
 python -m src.evaluation.run_selection   # -> models/model_registry.json, docs/model_selection_rationale.md, forecasts/champion_selection.csv
 python -m src.forecast.generate          # -> forecasts/{forward_forecasts,interval_coverage,holdout_evaluation,
                                          #      imbalance_forecast,early_warning_backtest,kpi_summary}.csv + provenance.json
+python -m src.reporting.feature_importance # -> forecasts/feature_importance.csv
+python -m src.reporting.comparison_matrix  # -> forecasts/comparison_matrix.csv (8 models)
+python -m src.reporting.build_paper        # -> reports/research_paper.md + reports/paper_evidence.json
 
 # Run the test suite
 python -m pytest -q
@@ -74,6 +77,19 @@ path matches the path the code actually uses.
 ├── requirements.txt           # runtime dependencies
 ├── requirements-dev.txt       # + test tooling
 └── README.md
+```
+
+## Research Paper
+
+`reports/research_paper.md` is **generated**, not written by hand. Every numeral
+in it is fetched from an artifact by `src/reporting/build_paper.py` and recorded
+in `reports/paper_evidence.json` with the file and locator it came from.
+`tests/test_day13.py` then scans the finished document and fails if it contains a
+number the ledger never issued — so a figure typed from memory cannot survive the
+build. Regenerate it with:
+
+```bash
+python -m src.reporting.build_paper
 ```
 
 ## Known Limitations & Data Discrepancies

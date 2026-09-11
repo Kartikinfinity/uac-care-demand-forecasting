@@ -59,6 +59,11 @@ data/interim/*
 
 # Forecast artifacts: dashboard-consumed set committed (~128 KB total),
 # multi-megabyte intermediates ignored.
+#
+# Day 13 adds two more (~111 KB). They are not read by the dashboard, so they sit
+# outside the original rule -- but reports/paper_evidence.json cites them as the
+# source of figures in the research paper, and a citation whose source is not in
+# the repository cannot be checked. They are committed for that reason.
 forecasts/*
 !forecasts/.gitkeep
 !forecasts/forward_forecasts.csv
@@ -71,6 +76,8 @@ forecasts/*
 !forecasts/champion_selection.csv
 !forecasts/full_model_comparison.csv
 !forecasts/provenance.json
+!forecasts/comparison_matrix.csv
+!forecasts/feature_importance.csv
 
 # Serialized models: regenerable, and a slimmed SARIMAX result is still
 # megabytes. The dashboard reads model METADATA from the registry JSON, never

@@ -33,6 +33,7 @@ from src.config import (  # noqa: E402
     FORECAST_HORIZONS,
     FORECAST_PROVENANCE_PATH,
     FORWARD_FORECASTS_PATH,
+    FORECASTS_DIR,
     FULL_COMPARISON_PATH,
     HOLDOUT_EVALUATION_PATH,
     IMBALANCE_FORECAST_PATH,
@@ -66,6 +67,12 @@ MODEL_LABELS = {
 # the addendum requires horizon labels to show both so a reader planning in days
 # is never misled by a number counted in reporting periods.
 HORIZON_CALENDAR_DAYS = {1: "~1 day", 7: "~9 days", 14: "~20 days"}
+
+
+# Path only -- deliberately not imported from src.reporting, which would pull
+# the evaluation harness into the app process. The app reads files; it never
+# builds them.
+COMPLETE_COMPARISON_PATH = FORECASTS_DIR / "comparison_matrix.csv"
 
 
 def _require(path: Path, command: str) -> Path:
@@ -134,7 +141,19 @@ def load_sensitivity() -> pd.DataFrame:
 
 @st.cache_data(show_spinner=False)
 def load_comparison() -> pd.DataFrame:
-    return pd.read_csv(_require(FULL_COMPARISON_PATH, "python -m src.evaluation.run_ml"))
+    """
+    The model comparison matrix.
+
+    Prefers the completed eight-model matrix. `full_model_comparison.csv` is
+    written at Day 7 and so predates the ensemble, which is built at Day 8 and is
+    the numerical leader in one cell -- a page headed "full comparison matrix"
+    should not be missing a candidate that led one. The Day-7 file is the
+    fallback, and the seven models it holds are identical in both, so the page
+    renders either way.
+    """
+    path = (COMPLETE_COMPARISON_PATH if COMPLETE_COMPARISON_PATH.exists()
+            else FULL_COMPARISON_PATH)
+    return pd.read_csv(_require(path, "python -m src.reporting.comparison_matrix"))
 
 
 @st.cache_data(show_spinner=False)

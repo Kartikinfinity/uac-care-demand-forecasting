@@ -1,0 +1,4369 @@
+{
+  "purpose": "Audit trail for reports/research_paper.md. Every numeral in the paper was issued by Evidence.cite and appears here with the artifact it was read from. Nothing was typed from memory.",
+  "n_citations": 722,
+  "n_distinct_sources": 24,
+  "sources": [
+    "app/lib/artifacts.py",
+    "data/interim/master_series.parquet",
+    "data/interim/provenance.json",
+    "data/processed/features_target1.parquet",
+    "derived from data/interim/master_series.parquet",
+    "derived from forecasts/comparison_matrix.csv",
+    "derived from forecasts/feature_importance.csv",
+    "derived from forecasts/imbalance_forecast.csv",
+    "docs/discrepancy_log.md",
+    "forecasts/champion_selection.csv",
+    "forecasts/comparison_matrix.csv",
+    "forecasts/early_warning_sensitivity.csv",
+    "forecasts/feature_importance.csv",
+    "forecasts/forward_forecasts.csv",
+    "forecasts/holdout_evaluation.csv",
+    "forecasts/imbalance_forecast.csv",
+    "forecasts/interval_coverage.csv",
+    "forecasts/kpi_summary.csv",
+    "forecasts/oos_residuals.csv",
+    "forecasts/provenance.json",
+    "forecasts/walk_forward_folds.csv",
+    "models/model_registry.json",
+    "src/config.py",
+    "src/data/clean.py"
+  ],
+  "citations": [
+    {
+      "rendered": "1",
+      "raw_value": 1,
+      "source": "src/config.py",
+      "locator": "FORECAST_HORIZONS element"
+    },
+    {
+      "rendered": "~1 day",
+      "raw_value": "~1 day",
+      "source": "app/lib/artifacts.py",
+      "locator": "HORIZON_CALENDAR_DAYS[1]"
+    },
+    {
+      "rendered": "7",
+      "raw_value": 7,
+      "source": "src/config.py",
+      "locator": "FORECAST_HORIZONS element"
+    },
+    {
+      "rendered": "~9 days",
+      "raw_value": "~9 days",
+      "source": "app/lib/artifacts.py",
+      "locator": "HORIZON_CALENDAR_DAYS[7]"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "src/config.py",
+      "locator": "FORECAST_HORIZONS element"
+    },
+    {
+      "rendered": "~20 days",
+      "raw_value": "~20 days",
+      "source": "app/lib/artifacts.py",
+      "locator": "HORIZON_CALENDAR_DAYS[14]"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "src/config.py",
+      "locator": "SEASONAL_PERIOD_M"
+    },
+    {
+      "rendered": "75",
+      "raw_value": 75,
+      "source": "src/config.py",
+      "locator": "EARLY_WARNING_SENSITIVITY_PERCENTILES element"
+    },
+    {
+      "rendered": "80",
+      "raw_value": 80,
+      "source": "src/config.py",
+      "locator": "EARLY_WARNING_SENSITIVITY_PERCENTILES element"
+    },
+    {
+      "rendered": "85",
+      "raw_value": 85,
+      "source": "src/config.py",
+      "locator": "EARLY_WARNING_SENSITIVITY_PERCENTILES element"
+    },
+    {
+      "rendered": "90",
+      "raw_value": 90,
+      "source": "src/config.py",
+      "locator": "EARLY_WARNING_SENSITIVITY_PERCENTILES element"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95,
+      "source": "src/config.py",
+      "locator": "EARLY_WARNING_SENSITIVITY_PERCENTILES element"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "src/config.py",
+      "locator": "100 * EMPIRICAL_INTERVAL_ALPHA / 2 (lower tail percentile)"
+    },
+    {
+      "rendered": "97.5",
+      "raw_value": 97.5,
+      "source": "src/config.py",
+      "locator": "100 * (1 - EMPIRICAL_INTERVAL_ALPHA / 2) (upper tail percentile)"
+    },
+    {
+      "rendered": "2023-01-12",
+      "raw_value": "2023-01-12",
+      "source": "data/interim/provenance.json",
+      "locator": "series_starts"
+    },
+    {
+      "rendered": "2025-12-21",
+      "raw_value": "2025-12-21",
+      "source": "data/interim/provenance.json",
+      "locator": "data_as_of"
+    },
+    {
+      "rendered": "061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198",
+      "raw_value": "061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198",
+      "source": "data/interim/provenance.json",
+      "locator": "raw_csv_sha256"
+    },
+    {
+      "rendered": "3c6b093d73744140ac7d1d68d308e9f3f0f070fdc3d26e8c6e3d03bf24243c6d",
+      "raw_value": "3c6b093d73744140ac7d1d68d308e9f3f0f070fdc3d26e8c6e3d03bf24243c6d",
+      "source": "data/interim/provenance.json",
+      "locator": "master_series_sha256"
+    },
+    {
+      "rendered": "2026-09-10T15:17:09+00:00",
+      "raw_value": "2026-09-10T15:17:09+00:00",
+      "source": "forecasts/provenance.json",
+      "locator": "generated_at_utc"
+    },
+    {
+      "rendered": "3",
+      "raw_value": 3,
+      "source": "src/config.py",
+      "locator": "len(FORECAST_HORIZONS)"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "count of champion in {naive, seasonal_naive, moving_average}"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "682",
+      "raw_value": 682,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "rows with all of care[t-1], care[t], transferred[t], discharged[t] genuinely observed"
+    },
+    {
+      "rendered": "18",
+      "raw_value": 18,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "count of zero reconciliation residual"
+    },
+    {
+      "rendered": "2.64",
+      "raw_value": 2.6392961876832843,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "percent exact reconciliation"
+    },
+    {
+      "rendered": "+42.0",
+      "raw_value": 41.961876832844574,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "mean of care[t] - (care[t-1] + transferred[t] - discharged[t])"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95.0,
+      "source": "forecasts/provenance.json",
+      "locator": "nominal_interval_coverage"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "min of n"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "max of n"
+    },
+    {
+      "rendered": "4",
+      "raw_value": 4,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "count covers_nominal == True"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "99.56",
+      "raw_value": 99.5563306350306,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> forecast_accuracy_pct"
+    },
+    {
+      "rendered": "63.37",
+      "raw_value": 63.36759947720854,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> forecast_accuracy_pct"
+    },
+    {
+      "rendered": "High",
+      "raw_value": "High",
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> capacity_tier"
+    },
+    {
+      "rendered": "Normal",
+      "raw_value": "Normal",
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> capacity_tier"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "0.000",
+      "raw_value": 0.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> false_positive_rate"
+    },
+    {
+      "rendered": "0.000",
+      "raw_value": 0.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> false_positive_rate"
+    },
+    {
+      "rendered": "0.115",
+      "raw_value": 0.1153846153846153,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> false_negative_rate"
+    },
+    {
+      "rendered": "0.476",
+      "raw_value": 0.4761904761904761,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> false_negative_rate"
+    },
+    {
+      "rendered": "2.05",
+      "raw_value": 2.0500000000000003,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> forecast_stability_index"
+    },
+    {
+      "rendered": "1.34",
+      "raw_value": 1.3400000000000003,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> forecast_stability_index"
+    },
+    {
+      "rendered": "2025-12-21",
+      "raw_value": "2025-12-21",
+      "source": "data/interim/provenance.json",
+      "locator": "data_as_of"
+    },
+    {
+      "rendered": "11,516",
+      "raw_value": 11516.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "max of Children in HHS Care"
+    },
+    {
+      "rendered": "1,972",
+      "raw_value": 1972.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "min of Children in HHS Care"
+    },
+    {
+      "rendered": "5.8",
+      "raw_value": 5.8397565922920895,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "max/min ratio"
+    },
+    {
+      "rendered": "97.36",
+      "raw_value": 97.36070381231671,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "100 - percent exact reconciliation"
+    },
+    {
+      "rendered": "+42.0",
+      "raw_value": 41.961876832844574,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "mean reconciliation residual"
+    },
+    {
+      "rendered": "720",
+      "raw_value": 720,
+      "source": "data/interim/master_series.parquet",
+      "locator": "count non-null Children apprehended and placed in CBP custody*"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "min Children apprehended and placed in CBP custody*"
+    },
+    {
+      "rendered": "333",
+      "raw_value": 333.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "max Children apprehended and placed in CBP custody*"
+    },
+    {
+      "rendered": "93.5",
+      "raw_value": 93.52361111111111,
+      "source": "data/interim/master_series.parquet",
+      "locator": "mean Children apprehended and placed in CBP custody*"
+    },
+    {
+      "rendered": "769",
+      "raw_value": 769,
+      "source": "data/interim/master_series.parquet",
+      "locator": "count non-null Children in CBP custody"
+    },
+    {
+      "rendered": "7",
+      "raw_value": 7.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "min Children in CBP custody"
+    },
+    {
+      "rendered": "531",
+      "raw_value": 531.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "max Children in CBP custody"
+    },
+    {
+      "rendered": "169.5",
+      "raw_value": 169.4707412223667,
+      "source": "data/interim/master_series.parquet",
+      "locator": "mean Children in CBP custody"
+    },
+    {
+      "rendered": "720",
+      "raw_value": 720,
+      "source": "data/interim/master_series.parquet",
+      "locator": "count non-null Children transferred out of CBP custody"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "min Children transferred out of CBP custody"
+    },
+    {
+      "rendered": "440",
+      "raw_value": 440.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "max Children transferred out of CBP custody"
+    },
+    {
+      "rendered": "128.7",
+      "raw_value": 128.66805555555555,
+      "source": "data/interim/master_series.parquet",
+      "locator": "mean Children transferred out of CBP custody"
+    },
+    {
+      "rendered": "769",
+      "raw_value": 769,
+      "source": "data/interim/master_series.parquet",
+      "locator": "count non-null Children in HHS Care"
+    },
+    {
+      "rendered": "1,972",
+      "raw_value": 1972.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "min Children in HHS Care"
+    },
+    {
+      "rendered": "11,516",
+      "raw_value": 11516.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "max Children in HHS Care"
+    },
+    {
+      "rendered": "6,063.6",
+      "raw_value": 6063.629388816645,
+      "source": "data/interim/master_series.parquet",
+      "locator": "mean Children in HHS Care"
+    },
+    {
+      "rendered": "720",
+      "raw_value": 720,
+      "source": "data/interim/master_series.parquet",
+      "locator": "count non-null Children discharged from HHS Care"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "min Children discharged from HHS Care"
+    },
+    {
+      "rendered": "505",
+      "raw_value": 505.0,
+      "source": "data/interim/master_series.parquet",
+      "locator": "max Children discharged from HHS Care"
+    },
+    {
+      "rendered": "173.4",
+      "raw_value": 173.40694444444443,
+      "source": "data/interim/master_series.parquet",
+      "locator": "mean Children discharged from HHS Care"
+    },
+    {
+      "rendered": "1,170",
+      "raw_value": 1170,
+      "source": "docs/discrepancy_log.md",
+      "locator": "raw CSV row count as delivered"
+    },
+    {
+      "rendered": "720",
+      "raw_value": 720,
+      "source": "data/interim/provenance.json",
+      "locator": "n_real_observations"
+    },
+    {
+      "rendered": "769",
+      "raw_value": 769,
+      "source": "data/interim/provenance.json",
+      "locator": "n_period_positions"
+    },
+    {
+      "rendered": "2023-01-12",
+      "raw_value": "2023-01-12",
+      "source": "data/interim/provenance.json",
+      "locator": "series_starts"
+    },
+    {
+      "rendered": "2025-12-21",
+      "raw_value": "2025-12-21",
+      "source": "data/interim/provenance.json",
+      "locator": "data_as_of"
+    },
+    {
+      "rendered": "49",
+      "raw_value": 49,
+      "source": "data/interim/provenance.json",
+      "locator": "n_gap_slots"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "src/config.py",
+      "locator": "max(FORECAST_HORIZONS)"
+    },
+    {
+      "rendered": "~20 days",
+      "raw_value": "~20 days",
+      "source": "app/lib/artifacts.py",
+      "locator": "HORIZON_CALENDAR_DAYS"
+    },
+    {
+      "rendered": "49",
+      "raw_value": 49,
+      "source": "data/interim/master_series.parquet",
+      "locator": "sum of is_imputed_Children in HHS Care"
+    },
+    {
+      "rendered": "49",
+      "raw_value": 49,
+      "source": "data/interim/master_series.parquet",
+      "locator": "sum of is_imputed_Children in CBP custody"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "src/data/clean.py",
+      "locator": "flows are not imputed by construction"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60,
+      "source": "src/config.py",
+      "locator": "FINAL_TEST_WINDOW"
+    },
+    {
+      "rendered": "11,516",
+      "raw_value": 11516.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "max Children in HHS Care"
+    },
+    {
+      "rendered": "1,972",
+      "raw_value": 1972.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "min Children in HHS Care"
+    },
+    {
+      "rendered": "2,484",
+      "raw_value": 2484.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "last observed Children in HHS Care"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "src/config.py",
+      "locator": "SEASONAL_PERIOD_M"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "src/config.py",
+      "locator": "SEASONAL_PERIOD_M"
+    },
+    {
+      "rendered": "2,829.0",
+      "raw_value": 2828.989723814102,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "std Children in HHS Care"
+    },
+    {
+      "rendered": "173.4",
+      "raw_value": 173.40694444444443,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "mean Children discharged from HHS Care"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "min Children discharged from HHS Care"
+    },
+    {
+      "rendered": "must beat BOTH naive and seasonal-naive on MAE, strictly",
+      "raw_value": "must beat BOTH naive and seasonal-naive on MAE, strictly",
+      "source": "models/model_registry.json",
+      "locator": "selection_rule.gate"
+    },
+    {
+      "rendered": "post_cutoff_common_support",
+      "raw_value": "post_cutoff_common_support",
+      "source": "models/model_registry.json",
+      "locator": "selection_rule.ranking_scope"
+    },
+    {
+      "rendered": "paired bootstrap over per-observation absolute errors, 10000 resamples at the 95% level; a candidate whose interval spans zero is tied with the numerical leader",
+      "raw_value": "paired bootstrap over per-observation absolute errors, 10000 resamples at the 95% level; a candidate whose interval spans zero is tied with the numerical leader",
+      "source": "models/model_registry.json",
+      "locator": "selection_rule.practical_equivalence"
+    },
+    {
+      "rendered": "prefer un-biased, then prefer lower complexity rank",
+      "raw_value": "prefer un-biased, then prefer lower complexity rank",
+      "source": "models/model_registry.json",
+      "locator": "selection_rule.tie_break"
+    },
+    {
+      "rendered": "yes",
+      "raw_value": true,
+      "source": "models/model_registry.json",
+      "locator": "selection_rule.baselines_eligible"
+    },
+    {
+      "rendered": "42",
+      "raw_value": 42,
+      "source": "src/config.py",
+      "locator": "RANDOM_SEED"
+    },
+    {
+      "rendered": "0.136",
+      "raw_value": 0.1364523093331956,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=1 feature=lag_1_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.135",
+      "raw_value": 0.1346102761525754,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=1 feature=rolling_7_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.104",
+      "raw_value": 0.1043290717436153,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=1 feature=rolling_14_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.132",
+      "raw_value": 0.1324856549326754,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=7 feature=rolling_7_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.132",
+      "raw_value": 0.1318631022844639,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=7 feature=lag_1_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.099",
+      "raw_value": 0.0988603971922455,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=7 feature=rolling_14_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.135",
+      "raw_value": 0.1350243528546875,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=14 feature=rolling_7_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.130",
+      "raw_value": 0.1296688269110155,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=14 feature=lag_1_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.093",
+      "raw_value": 0.093115060345718,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children in HHS Care horizon=14 feature=rolling_14_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.109",
+      "raw_value": 0.1087544842960246,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 feature=rolling_7_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.103",
+      "raw_value": 0.1032383139682436,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 feature=lag_1_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.096",
+      "raw_value": 0.0956080879619428,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 feature=lag_7_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.121",
+      "raw_value": 0.1213483605553315,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 feature=rolling_7_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.118",
+      "raw_value": 0.1182985119873435,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 feature=lag_1_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.085",
+      "raw_value": 0.0849520451466096,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 feature=rolling_14_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.113",
+      "raw_value": 0.1130043558343912,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 feature=rolling_7_mean_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.105",
+      "raw_value": 0.1048230109283989,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 feature=lag_1_Children in HHS Care -> importance"
+    },
+    {
+      "rendered": "0.095",
+      "raw_value": 0.0954179974869421,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 feature=lag_1_Children discharged from HHS Care -> importance"
+    },
+    {
+      "rendered": "342",
+      "raw_value": 342,
+      "source": "forecasts/feature_importance.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "77",
+      "raw_value": 77.13863309931394,
+      "source": "derived from forecasts/feature_importance.csv",
+      "locator": "share of top-8 importance on own-series features, target=Children in HHS Care"
+    },
+    {
+      "rendered": "8",
+      "raw_value": 8,
+      "source": "src/config.py",
+      "locator": "PAPER_TOP_FEATURES"
+    },
+    {
+      "rendered": "24",
+      "raw_value": 24.192878910520225,
+      "source": "derived from forecasts/feature_importance.csv",
+      "locator": "share of top-8 importance on own-series features, target=Children discharged from HHS Care"
+    },
+    {
+      "rendered": "8",
+      "raw_value": 8,
+      "source": "src/config.py",
+      "locator": "PAPER_TOP_FEATURES"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2,
+      "source": "derived from forecasts/comparison_matrix.csv",
+      "locator": "cells on the governing scope where random_forest has the highest MAE"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "derived from forecasts/comparison_matrix.csv",
+      "locator": "target x horizon cell count"
+    },
+    {
+      "rendered": "68",
+      "raw_value": 68,
+      "source": "data/processed/features_target1.parquet",
+      "locator": "column count"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "src/config.py",
+      "locator": "SEASONAL_PERIOD_M"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "src/config.py",
+      "locator": "SEASONAL_PERIOD_M"
+    },
+    {
+      "rendered": "65",
+      "raw_value": 65,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "10",
+      "raw_value": 10,
+      "source": "src/config.py",
+      "locator": "WALK_FORWARD_STEP"
+    },
+    {
+      "rendered": "50",
+      "raw_value": 50,
+      "source": "src/config.py",
+      "locator": "MIN_INITIAL_TRAINING"
+    },
+    {
+      "rendered": "2025-02-05",
+      "raw_value": "2025-02-05",
+      "source": "src/config.py",
+      "locator": "TRAINING_CAP_DATE"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60,
+      "source": "src/config.py",
+      "locator": "FINAL_TEST_WINDOW"
+    },
+    {
+      "rendered": "42",
+      "raw_value": 42,
+      "source": "src/config.py",
+      "locator": "RANDOM_SEED"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "min n_scored"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "max n_scored"
+    },
+    {
+      "rendered": "10,000",
+      "raw_value": 10000,
+      "source": "src/config.py",
+      "locator": "PRACTICAL_EQUIVALENCE_RESAMPLES"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95.0,
+      "source": "src/config.py",
+      "locator": "PRACTICAL_EQUIVALENCE_LEVEL"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95.0,
+      "source": "src/config.py",
+      "locator": "1 - EMPIRICAL_INTERVAL_ALPHA"
+    },
+    {
+      "rendered": "10",
+      "raw_value": 10,
+      "source": "src/config.py",
+      "locator": "MIN_RESIDUALS_FOR_INTERVAL"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "src/config.py",
+      "locator": "lower tail percentile"
+    },
+    {
+      "rendered": "97.5",
+      "raw_value": 97.5,
+      "source": "src/config.py",
+      "locator": "upper tail percentile"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60,
+      "source": "src/config.py",
+      "locator": "FINAL_TEST_WINDOW"
+    },
+    {
+      "rendered": "10.13",
+      "raw_value": 10.133333333333333,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> champion_mae"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> n_scored"
+    },
+    {
+      "rendered": "70.21",
+      "raw_value": 70.21428571428571,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> champion_mae"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> n_scored"
+    },
+    {
+      "rendered": "147.64",
+      "raw_value": 147.64285714285714,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> champion_mae"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> n_scored"
+    },
+    {
+      "rendered": "4.14",
+      "raw_value": 4.142857142857143,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> champion_mae"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> n_scored"
+    },
+    {
+      "rendered": "8.46",
+      "raw_value": 8.461538461538462,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> champion_mae"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> n_scored"
+    },
+    {
+      "rendered": "5.33",
+      "raw_value": 5.333333333333333,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> champion_mae"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> n_scored"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> n"
+    },
+    {
+      "rendered": "86.7",
+      "raw_value": 86.67,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> empirical_coverage"
+    },
+    {
+      "rendered": "62.1",
+      "raw_value": 62.12,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> band_low"
+    },
+    {
+      "rendered": "96.3",
+      "raw_value": 96.26,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> band_high"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> n"
+    },
+    {
+      "rendered": "71.4",
+      "raw_value": 71.43,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> empirical_coverage"
+    },
+    {
+      "rendered": "45.4",
+      "raw_value": 45.35,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> band_low"
+    },
+    {
+      "rendered": "88.3",
+      "raw_value": 88.28,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> band_high"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> n"
+    },
+    {
+      "rendered": "85.7",
+      "raw_value": 85.71,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> empirical_coverage"
+    },
+    {
+      "rendered": "60.1",
+      "raw_value": 60.06,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> band_low"
+    },
+    {
+      "rendered": "96.0",
+      "raw_value": 95.99,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> band_high"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> n"
+    },
+    {
+      "rendered": "80.0",
+      "raw_value": 80.0,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> empirical_coverage"
+    },
+    {
+      "rendered": "54.8",
+      "raw_value": 54.81,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> band_low"
+    },
+    {
+      "rendered": "93.0",
+      "raw_value": 92.95,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> band_high"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> n"
+    },
+    {
+      "rendered": "85.7",
+      "raw_value": 85.71,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> empirical_coverage"
+    },
+    {
+      "rendered": "60.1",
+      "raw_value": 60.06,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> band_low"
+    },
+    {
+      "rendered": "96.0",
+      "raw_value": 95.99,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> band_high"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> n"
+    },
+    {
+      "rendered": "83.3",
+      "raw_value": 83.33,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> empirical_coverage"
+    },
+    {
+      "rendered": "55.2",
+      "raw_value": 55.2,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> band_low"
+    },
+    {
+      "rendered": "95.3",
+      "raw_value": 95.3,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> band_high"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> row count"
+    },
+    {
+      "rendered": "5.00",
+      "raw_value": 5.0,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> mean abs_error"
+    },
+    {
+      "rendered": "100",
+      "raw_value": 100.0,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> mean covered"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> row count"
+    },
+    {
+      "rendered": "5.20",
+      "raw_value": 5.2,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> mean abs_error"
+    },
+    {
+      "rendered": "100",
+      "raw_value": 100.0,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> mean covered"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> row count"
+    },
+    {
+      "rendered": "4.50",
+      "raw_value": 4.5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> mean abs_error"
+    },
+    {
+      "rendered": "100",
+      "raw_value": 100.0,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> mean covered"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> row count"
+    },
+    {
+      "rendered": "6.20",
+      "raw_value": 6.2,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> mean abs_error"
+    },
+    {
+      "rendered": "100",
+      "raw_value": 100.0,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> mean covered"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> row count"
+    },
+    {
+      "rendered": "37.20",
+      "raw_value": 37.2,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> mean abs_error"
+    },
+    {
+      "rendered": "100",
+      "raw_value": 100.0,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> mean covered"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> row count"
+    },
+    {
+      "rendered": "82.60",
+      "raw_value": 82.6,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> mean abs_error"
+    },
+    {
+      "rendered": "100",
+      "raw_value": 100.0,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> mean covered"
+    },
+    {
+      "rendered": "147.6",
+      "raw_value": 147.64285714285714,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> champion_mae"
+    },
+    {
+      "rendered": "2,484",
+      "raw_value": 2484.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "last observed Children in HHS Care"
+    },
+    {
+      "rendered": "5.3",
+      "raw_value": 5.333333333333333,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> champion_mae"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95.0,
+      "source": "forecasts/provenance.json",
+      "locator": "nominal_interval_coverage"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "min n"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "max n"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/holdout_evaluation.csv",
+      "locator": "n per cell"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=naive -> n_scored"
+    },
+    {
+      "rendered": "10.13",
+      "raw_value": 10.133333333333333,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=naive -> MAE"
+    },
+    {
+      "rendered": "13.97",
+      "raw_value": 13.966626889362608,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=naive -> RMSE"
+    },
+    {
+      "rendered": "0.44",
+      "raw_value": 0.4436693649694077,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=naive -> sMAPE"
+    },
+    {
+      "rendered": "0.037",
+      "raw_value": 0.0368926056018609,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=naive -> MASE"
+    },
+    {
+      "rendered": "+0.00",
+      "raw_value": 0.0,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=naive -> ME_bias"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=sarima -> n_scored"
+    },
+    {
+      "rendered": "11.44",
+      "raw_value": 11.440269132834844,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=sarima -> MAE"
+    },
+    {
+      "rendered": "16.36",
+      "raw_value": 16.35742639015376,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=sarima -> RMSE"
+    },
+    {
+      "rendered": "0.50",
+      "raw_value": 0.5001686452920371,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=sarima -> sMAPE"
+    },
+    {
+      "rendered": "0.041",
+      "raw_value": 0.0407974515453333,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=sarima -> MASE"
+    },
+    {
+      "rendered": "+10.18",
+      "raw_value": 10.17820154507311,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=sarima -> ME_bias"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=ensemble -> n_scored"
+    },
+    {
+      "rendered": "18.70",
+      "raw_value": 18.70117521629776,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=ensemble -> MAE"
+    },
+    {
+      "rendered": "30.45",
+      "raw_value": 30.44753077722612,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=ensemble -> RMSE"
+    },
+    {
+      "rendered": "0.79",
+      "raw_value": 0.7941798616716403,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=ensemble -> sMAPE"
+    },
+    {
+      "rendered": "0.067",
+      "raw_value": 0.0672291803607531,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=ensemble -> MASE"
+    },
+    {
+      "rendered": "+16.06",
+      "raw_value": 16.062371968947204,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=ensemble -> ME_bias"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=exponential_smoothing -> n_scored"
+    },
+    {
+      "rendered": "28.57",
+      "raw_value": 28.57449164513135,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=exponential_smoothing -> MAE"
+    },
+    {
+      "rendered": "41.63",
+      "raw_value": 41.62863032860013,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=exponential_smoothing -> RMSE"
+    },
+    {
+      "rendered": "1.27",
+      "raw_value": 1.2671619117407389,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=exponential_smoothing -> sMAPE"
+    },
+    {
+      "rendered": "0.102",
+      "raw_value": 0.1018107067283375,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=exponential_smoothing -> MASE"
+    },
+    {
+      "rendered": "+24.70",
+      "raw_value": 24.70357792559209,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=exponential_smoothing -> ME_bias"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=gradient_boosting -> n_scored"
+    },
+    {
+      "rendered": "34.16",
+      "raw_value": 34.16342617749271,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=gradient_boosting -> MAE"
+    },
+    {
+      "rendered": "51.94",
+      "raw_value": 51.93863584901269,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=gradient_boosting -> RMSE"
+    },
+    {
+      "rendered": "1.44",
+      "raw_value": 1.438616891319938,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=gradient_boosting -> sMAPE"
+    },
+    {
+      "rendered": "0.124",
+      "raw_value": 0.1237743436709131,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=gradient_boosting -> MASE"
+    },
+    {
+      "rendered": "+21.95",
+      "raw_value": 21.94654239282125,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=gradient_boosting -> ME_bias"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=moving_average -> n_scored"
+    },
+    {
+      "rendered": "42.97",
+      "raw_value": 42.97142857142856,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=moving_average -> MAE"
+    },
+    {
+      "rendered": "59.51",
+      "raw_value": 59.51079476765158,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=moving_average -> RMSE"
+    },
+    {
+      "rendered": "1.84",
+      "raw_value": 1.836696619378564,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=moving_average -> sMAPE"
+    },
+    {
+      "rendered": "0.156",
+      "raw_value": 0.1556699516492793,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=moving_average -> MASE"
+    },
+    {
+      "rendered": "+16.13",
+      "raw_value": 16.133333333333304,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=moving_average -> ME_bias"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=seasonal_naive -> n_scored"
+    },
+    {
+      "rendered": "56.40",
+      "raw_value": 56.4,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=seasonal_naive -> MAE"
+    },
+    {
+      "rendered": "82.52",
+      "raw_value": 82.51868475280816,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=seasonal_naive -> RMSE"
+    },
+    {
+      "rendered": "2.39",
+      "raw_value": 2.3886420992702493,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=seasonal_naive -> sMAPE"
+    },
+    {
+      "rendered": "0.203",
+      "raw_value": 0.2032526441252752,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=seasonal_naive -> MASE"
+    },
+    {
+      "rendered": "+27.33",
+      "raw_value": 27.33333333333333,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=seasonal_naive -> ME_bias"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=random_forest -> n_scored"
+    },
+    {
+      "rendered": "103.19",
+      "raw_value": 103.19228731137912,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=random_forest -> MAE"
+    },
+    {
+      "rendered": "171.10",
+      "raw_value": 171.09752916944603,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=random_forest -> RMSE"
+    },
+    {
+      "rendered": "4.22",
+      "raw_value": 4.217667458439603,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=random_forest -> sMAPE"
+    },
+    {
+      "rendered": "0.370",
+      "raw_value": 0.3699334163884265,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=random_forest -> MASE"
+    },
+    {
+      "rendered": "+50.42",
+      "raw_value": 50.4194672956996,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=1 model=random_forest -> ME_bias"
+    },
+    {
+      "rendered": "no candidate beat both naive and seasonal-naive; the best baseline is the champion and is preserved as the result",
+      "raw_value": "no candidate beat both naive and seasonal-naive; the best baseline is the champion and is preserved as the result",
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> reason"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=exponential_smoothing -> n_scored"
+    },
+    {
+      "rendered": "61.52",
+      "raw_value": 61.517654992577896,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=exponential_smoothing -> MAE"
+    },
+    {
+      "rendered": "77.77",
+      "raw_value": 77.76849584884052,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=exponential_smoothing -> RMSE"
+    },
+    {
+      "rendered": "2.70",
+      "raw_value": 2.702867863664619,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=exponential_smoothing -> sMAPE"
+    },
+    {
+      "rendered": "0.225",
+      "raw_value": 0.224788998664523,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=exponential_smoothing -> MASE"
+    },
+    {
+      "rendered": "+42.88",
+      "raw_value": 42.87992085630616,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=exponential_smoothing -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=sarima -> n_scored"
+    },
+    {
+      "rendered": "62.39",
+      "raw_value": 62.385141836353945,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=sarima -> MAE"
+    },
+    {
+      "rendered": "79.88",
+      "raw_value": 79.88156400403908,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=sarima -> RMSE"
+    },
+    {
+      "rendered": "2.82",
+      "raw_value": 2.8153253509454865,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=sarima -> sMAPE"
+    },
+    {
+      "rendered": "0.223",
+      "raw_value": 0.2231599313322799,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=sarima -> MASE"
+    },
+    {
+      "rendered": "-29.93",
+      "raw_value": -29.92786028469593,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=sarima -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=naive -> n_scored"
+    },
+    {
+      "rendered": "70.21",
+      "raw_value": 70.21428571428571,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=naive -> MAE"
+    },
+    {
+      "rendered": "86.87",
+      "raw_value": 86.87388231552352,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=naive -> RMSE"
+    },
+    {
+      "rendered": "3.08",
+      "raw_value": 3.0787112889464754,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=naive -> sMAPE"
+    },
+    {
+      "rendered": "0.256",
+      "raw_value": 0.2560976066488186,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=naive -> MASE"
+    },
+    {
+      "rendered": "+26.50",
+      "raw_value": 26.5,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=naive -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=moving_average -> n_scored"
+    },
+    {
+      "rendered": "105.73",
+      "raw_value": 105.734693877551,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=moving_average -> MAE"
+    },
+    {
+      "rendered": "133.77",
+      "raw_value": 133.77412318899877,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=moving_average -> RMSE"
+    },
+    {
+      "rendered": "4.58",
+      "raw_value": 4.582786854061177,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=moving_average -> sMAPE"
+    },
+    {
+      "rendered": "0.385",
+      "raw_value": 0.3845134485816814,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=moving_average -> MASE"
+    },
+    {
+      "rendered": "+43.84",
+      "raw_value": 43.83673469387752,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=moving_average -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=seasonal_naive -> n_scored"
+    },
+    {
+      "rendered": "110.57",
+      "raw_value": 110.57142857142856,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=seasonal_naive -> MAE"
+    },
+    {
+      "rendered": "143.26",
+      "raw_value": 143.2624963385144,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=seasonal_naive -> RMSE"
+    },
+    {
+      "rendered": "4.79",
+      "raw_value": 4.785321209974989,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=seasonal_naive -> sMAPE"
+    },
+    {
+      "rendered": "0.401",
+      "raw_value": 0.4012010138536968,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=seasonal_naive -> MASE"
+    },
+    {
+      "rendered": "+48.14",
+      "raw_value": 48.142857142857146,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=seasonal_naive -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=ensemble -> n_scored"
+    },
+    {
+      "rendered": "111.11",
+      "raw_value": 111.111863813014,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=ensemble -> MAE"
+    },
+    {
+      "rendered": "149.34",
+      "raw_value": 149.343895119321,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=ensemble -> RMSE"
+    },
+    {
+      "rendered": "4.83",
+      "raw_value": 4.826799684453553,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=ensemble -> sMAPE"
+    },
+    {
+      "rendered": "0.404",
+      "raw_value": 0.4040425322582875,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=ensemble -> MASE"
+    },
+    {
+      "rendered": "+77.24",
+      "raw_value": 77.24208576441934,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=ensemble -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=random_forest -> n_scored"
+    },
+    {
+      "rendered": "184.79",
+      "raw_value": 184.78761634196127,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=random_forest -> MAE"
+    },
+    {
+      "rendered": "277.91",
+      "raw_value": 277.9121128341461,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=random_forest -> RMSE"
+    },
+    {
+      "rendered": "7.72",
+      "raw_value": 7.722980963971058,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=random_forest -> sMAPE"
+    },
+    {
+      "rendered": "0.668",
+      "raw_value": 0.668258880311955,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=random_forest -> MASE"
+    },
+    {
+      "rendered": "+111.60",
+      "raw_value": 111.6042506725324,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=random_forest -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=gradient_boosting -> n_scored"
+    },
+    {
+      "rendered": "198.30",
+      "raw_value": 198.29585690693665,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=gradient_boosting -> MAE"
+    },
+    {
+      "rendered": "312.97",
+      "raw_value": 312.96548944727766,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=gradient_boosting -> RMSE"
+    },
+    {
+      "rendered": "8.21",
+      "raw_value": 8.213252557856759,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=gradient_boosting -> sMAPE"
+    },
+    {
+      "rendered": "0.714",
+      "raw_value": 0.7144684368805349,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=gradient_boosting -> MASE"
+    },
+    {
+      "rendered": "+135.38",
+      "raw_value": 135.38065004568872,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=7 model=gradient_boosting -> ME_bias"
+    },
+    {
+      "rendered": "55",
+      "raw_value": 55.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> full_dev_n"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> n_scored"
+    },
+    {
+      "rendered": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "raw_value": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=7 -> reason"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=exponential_smoothing -> n_scored"
+    },
+    {
+      "rendered": "108.74",
+      "raw_value": 108.74263902776782,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=exponential_smoothing -> MAE"
+    },
+    {
+      "rendered": "127.25",
+      "raw_value": 127.24995056752742,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=exponential_smoothing -> RMSE"
+    },
+    {
+      "rendered": "4.91",
+      "raw_value": 4.912441636600449,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=exponential_smoothing -> sMAPE"
+    },
+    {
+      "rendered": "0.403",
+      "raw_value": 0.4034433294799124,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=exponential_smoothing -> MASE"
+    },
+    {
+      "rendered": "-6.40",
+      "raw_value": -6.401820782809231,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=exponential_smoothing -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=naive -> n_scored"
+    },
+    {
+      "rendered": "147.64",
+      "raw_value": 147.64285714285714,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=naive -> MAE"
+    },
+    {
+      "rendered": "176.41",
+      "raw_value": 176.41043862862213,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=naive -> RMSE"
+    },
+    {
+      "rendered": "6.53",
+      "raw_value": 6.530819448245636,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=naive -> sMAPE"
+    },
+    {
+      "rendered": "0.542",
+      "raw_value": 0.5418850341320879,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=naive -> MASE"
+    },
+    {
+      "rendered": "+43.93",
+      "raw_value": 43.92857142857143,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=naive -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=seasonal_naive -> n_scored"
+    },
+    {
+      "rendered": "152.64",
+      "raw_value": 152.64285714285714,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=seasonal_naive -> MAE"
+    },
+    {
+      "rendered": "181.30",
+      "raw_value": 181.30262782746107,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=seasonal_naive -> RMSE"
+    },
+    {
+      "rendered": "6.76",
+      "raw_value": 6.756843714111886,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=seasonal_naive -> sMAPE"
+    },
+    {
+      "rendered": "0.561",
+      "raw_value": 0.5610620747729869,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=seasonal_naive -> MASE"
+    },
+    {
+      "rendered": "+46.79",
+      "raw_value": 46.785714285714285,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=seasonal_naive -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=ensemble -> n_scored"
+    },
+    {
+      "rendered": "156.60",
+      "raw_value": 156.59568292734738,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=ensemble -> MAE"
+    },
+    {
+      "rendered": "233.55",
+      "raw_value": 233.54867925878708,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=ensemble -> RMSE"
+    },
+    {
+      "rendered": "6.79",
+      "raw_value": 6.7941846363500185,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=ensemble -> sMAPE"
+    },
+    {
+      "rendered": "0.567",
+      "raw_value": 0.5672859028303142,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=ensemble -> MASE"
+    },
+    {
+      "rendered": "+101.57",
+      "raw_value": 101.57140249557548,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=ensemble -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=moving_average -> n_scored"
+    },
+    {
+      "rendered": "179.84",
+      "raw_value": 179.83673469387753,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=moving_average -> MAE"
+    },
+    {
+      "rendered": "220.55",
+      "raw_value": 220.54732473775235,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=moving_average -> RMSE"
+    },
+    {
+      "rendered": "7.88",
+      "raw_value": 7.884924190897366,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=moving_average -> sMAPE"
+    },
+    {
+      "rendered": "0.658",
+      "raw_value": 0.6576259823335506,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=moving_average -> MASE"
+    },
+    {
+      "rendered": "+63.37",
+      "raw_value": 63.36734693877549,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=moving_average -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=sarima -> n_scored"
+    },
+    {
+      "rendered": "220.44",
+      "raw_value": 220.44449961012933,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=sarima -> MAE"
+    },
+    {
+      "rendered": "307.00",
+      "raw_value": 306.9993051252039,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=sarima -> RMSE"
+    },
+    {
+      "rendered": "10.98",
+      "raw_value": 10.978820460549912,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=sarima -> sMAPE"
+    },
+    {
+      "rendered": "0.779",
+      "raw_value": 0.7787274400873777,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=sarima -> MASE"
+    },
+    {
+      "rendered": "-168.23",
+      "raw_value": -168.22578493700846,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=sarima -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=random_forest -> n_scored"
+    },
+    {
+      "rendered": "287.01",
+      "raw_value": 287.01063545951945,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=random_forest -> MAE"
+    },
+    {
+      "rendered": "461.72",
+      "raw_value": 461.7240913255587,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=random_forest -> RMSE"
+    },
+    {
+      "rendered": "11.61",
+      "raw_value": 11.611068397139796,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=random_forest -> sMAPE"
+    },
+    {
+      "rendered": "1.032",
+      "raw_value": 1.0316557079188395,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=random_forest -> MASE"
+    },
+    {
+      "rendered": "+209.54",
+      "raw_value": 209.54462577396,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=random_forest -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=gradient_boosting -> n_scored"
+    },
+    {
+      "rendered": "411.42",
+      "raw_value": 411.4168089657275,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=gradient_boosting -> MAE"
+    },
+    {
+      "rendered": "605.42",
+      "raw_value": 605.4204214051992,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=gradient_boosting -> RMSE"
+    },
+    {
+      "rendered": "15.98",
+      "raw_value": 15.983033195644914,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=gradient_boosting -> sMAPE"
+    },
+    {
+      "rendered": "1.460",
+      "raw_value": 1.4596593358115002,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=gradient_boosting -> MASE"
+    },
+    {
+      "rendered": "+321.60",
+      "raw_value": 321.59600857030574,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children in HHS Care horizon=14 model=gradient_boosting -> ME_bias"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> full_dev_n"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> n_scored"
+    },
+    {
+      "rendered": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "raw_value": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> reason"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=ensemble -> n_scored"
+    },
+    {
+      "rendered": "3.17",
+      "raw_value": 3.1687188340044625,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=ensemble -> MAE"
+    },
+    {
+      "rendered": "5.85",
+      "raw_value": 5.850662243753684,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=ensemble -> RMSE"
+    },
+    {
+      "rendered": "19.26",
+      "raw_value": 19.26123988644853,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=ensemble -> sMAPE"
+    },
+    {
+      "rendered": "0.091",
+      "raw_value": 0.0912821620176613,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=ensemble -> MASE"
+    },
+    {
+      "rendered": "+0.34",
+      "raw_value": 0.3369362684058607,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=ensemble -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=exponential_smoothing -> n_scored"
+    },
+    {
+      "rendered": "3.82",
+      "raw_value": 3.817078528133062,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=exponential_smoothing -> MAE"
+    },
+    {
+      "rendered": "6.27",
+      "raw_value": 6.267510377497867,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=exponential_smoothing -> RMSE"
+    },
+    {
+      "rendered": "24.23",
+      "raw_value": 24.22792455987057,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=exponential_smoothing -> sMAPE"
+    },
+    {
+      "rendered": "0.113",
+      "raw_value": 0.1128152238964408,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=exponential_smoothing -> MASE"
+    },
+    {
+      "rendered": "-1.42",
+      "raw_value": -1.422495151918523,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=exponential_smoothing -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=naive -> n_scored"
+    },
+    {
+      "rendered": "4.14",
+      "raw_value": 4.142857142857143,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=naive -> MAE"
+    },
+    {
+      "rendered": "5.46",
+      "raw_value": 5.464168999687222,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=naive -> RMSE"
+    },
+    {
+      "rendered": "36.63",
+      "raw_value": 36.63240052279146,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=naive -> sMAPE"
+    },
+    {
+      "rendered": "0.121",
+      "raw_value": 0.1212387550535287,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=naive -> MASE"
+    },
+    {
+      "rendered": "-1.43",
+      "raw_value": -1.4285714285714286,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=naive -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=gradient_boosting -> n_scored"
+    },
+    {
+      "rendered": "4.44",
+      "raw_value": 4.435827360944133,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=gradient_boosting -> MAE"
+    },
+    {
+      "rendered": "7.00",
+      "raw_value": 7.003659894775708,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=gradient_boosting -> RMSE"
+    },
+    {
+      "rendered": "28.17",
+      "raw_value": 28.16848862076403,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=gradient_boosting -> sMAPE"
+    },
+    {
+      "rendered": "0.129",
+      "raw_value": 0.1286759163627899,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=gradient_boosting -> MASE"
+    },
+    {
+      "rendered": "+2.10",
+      "raw_value": 2.0963676887302447,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=gradient_boosting -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=moving_average -> n_scored"
+    },
+    {
+      "rendered": "4.47",
+      "raw_value": 4.465986394557823,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=moving_average -> MAE"
+    },
+    {
+      "rendered": "8.23",
+      "raw_value": 8.22979901557351,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=moving_average -> RMSE"
+    },
+    {
+      "rendered": "24.90",
+      "raw_value": 24.89562040193933,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=moving_average -> sMAPE"
+    },
+    {
+      "rendered": "0.128",
+      "raw_value": 0.1282859579235262,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=moving_average -> MASE"
+    },
+    {
+      "rendered": "+1.02",
+      "raw_value": 1.0170068027210888,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=moving_average -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=sarima -> n_scored"
+    },
+    {
+      "rendered": "5.99",
+      "raw_value": 5.992793067094353,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=sarima -> MAE"
+    },
+    {
+      "rendered": "8.01",
+      "raw_value": 8.006578668900975,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=sarima -> RMSE"
+    },
+    {
+      "rendered": "58.81",
+      "raw_value": 58.80845315746648,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=sarima -> sMAPE"
+    },
+    {
+      "rendered": "0.175",
+      "raw_value": 0.1753550273643964,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=sarima -> MASE"
+    },
+    {
+      "rendered": "-2.95",
+      "raw_value": -2.9513359637888463,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=sarima -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=seasonal_naive -> n_scored"
+    },
+    {
+      "rendered": "6.64",
+      "raw_value": 6.642857142857143,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=seasonal_naive -> MAE"
+    },
+    {
+      "rendered": "13.61",
+      "raw_value": 13.614593011072452,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=seasonal_naive -> RMSE"
+    },
+    {
+      "rendered": "31.12",
+      "raw_value": 31.12258228854868,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=seasonal_naive -> sMAPE"
+    },
+    {
+      "rendered": "0.191",
+      "raw_value": 0.1906653492867912,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=seasonal_naive -> MASE"
+    },
+    {
+      "rendered": "+2.79",
+      "raw_value": 2.7857142857142856,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=seasonal_naive -> ME_bias"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=random_forest -> n_scored"
+    },
+    {
+      "rendered": "7.35",
+      "raw_value": 7.345011289281075,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=random_forest -> MAE"
+    },
+    {
+      "rendered": "18.33",
+      "raw_value": 18.33151652987566,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=random_forest -> RMSE"
+    },
+    {
+      "rendered": "30.66",
+      "raw_value": 30.66374931353837,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=random_forest -> sMAPE"
+    },
+    {
+      "rendered": "0.208",
+      "raw_value": 0.207746483794458,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=random_forest -> MASE"
+    },
+    {
+      "rendered": "+5.23",
+      "raw_value": 5.227261967010961,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=1 model=random_forest -> ME_bias"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> full_dev_n"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> n_scored"
+    },
+    {
+      "rendered": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "raw_value": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 -> reason"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=moving_average -> n_scored"
+    },
+    {
+      "rendered": "6.61",
+      "raw_value": 6.609890109890111,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=moving_average -> MAE"
+    },
+    {
+      "rendered": "8.50",
+      "raw_value": 8.495037592699516,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=moving_average -> RMSE"
+    },
+    {
+      "rendered": "48.60",
+      "raw_value": 48.60052860362888,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=moving_average -> sMAPE"
+    },
+    {
+      "rendered": "0.196",
+      "raw_value": 0.1963751654210453,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=moving_average -> MASE"
+    },
+    {
+      "rendered": "+0.99",
+      "raw_value": 0.9871794871794872,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=moving_average -> ME_bias"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=exponential_smoothing -> n_scored"
+    },
+    {
+      "rendered": "6.78",
+      "raw_value": 6.7791177151943,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=exponential_smoothing -> MAE"
+    },
+    {
+      "rendered": "9.66",
+      "raw_value": 9.663732284141116,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=exponential_smoothing -> RMSE"
+    },
+    {
+      "rendered": "50.01",
+      "raw_value": 50.00942521797506,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=exponential_smoothing -> sMAPE"
+    },
+    {
+      "rendered": "0.200",
+      "raw_value": 0.1999546581231473,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=exponential_smoothing -> MASE"
+    },
+    {
+      "rendered": "+1.68",
+      "raw_value": 1.679745896610784,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=exponential_smoothing -> ME_bias"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=ensemble -> n_scored"
+    },
+    {
+      "rendered": "8.36",
+      "raw_value": 8.359629717133991,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=ensemble -> MAE"
+    },
+    {
+      "rendered": "12.24",
+      "raw_value": 12.24063448526238,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=ensemble -> RMSE"
+    },
+    {
+      "rendered": "50.84",
+      "raw_value": 50.83939880474012,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=ensemble -> sMAPE"
+    },
+    {
+      "rendered": "0.243",
+      "raw_value": 0.2433908351270017,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=ensemble -> MASE"
+    },
+    {
+      "rendered": "+2.73",
+      "raw_value": 2.733790602647216,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=ensemble -> ME_bias"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=naive -> n_scored"
+    },
+    {
+      "rendered": "8.46",
+      "raw_value": 8.461538461538462,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=naive -> MAE"
+    },
+    {
+      "rendered": "11.92",
+      "raw_value": 11.916375287812984,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=naive -> RMSE"
+    },
+    {
+      "rendered": "61.22",
+      "raw_value": 61.21888427919283,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=naive -> sMAPE"
+    },
+    {
+      "rendered": "0.248",
+      "raw_value": 0.2484805708170509,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=naive -> MASE"
+    },
+    {
+      "rendered": "-1.23",
+      "raw_value": -1.2307692307692308,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=naive -> ME_bias"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=seasonal_naive -> n_scored"
+    },
+    {
+      "rendered": "9.69",
+      "raw_value": 9.692307692307692,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=seasonal_naive -> MAE"
+    },
+    {
+      "rendered": "15.37",
+      "raw_value": 15.372302765288364,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=seasonal_naive -> RMSE"
+    },
+    {
+      "rendered": "55.04",
+      "raw_value": 55.03687486195872,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=seasonal_naive -> sMAPE"
+    },
+    {
+      "rendered": "0.282",
+      "raw_value": 0.282069120834979,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=seasonal_naive -> MASE"
+    },
+    {
+      "rendered": "+5.85",
+      "raw_value": 5.846153846153846,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=seasonal_naive -> ME_bias"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=random_forest -> n_scored"
+    },
+    {
+      "rendered": "10.65",
+      "raw_value": 10.653699137218505,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=random_forest -> MAE"
+    },
+    {
+      "rendered": "17.02",
+      "raw_value": 17.019498142211297,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=random_forest -> RMSE"
+    },
+    {
+      "rendered": "55.77",
+      "raw_value": 55.77385104036036,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=random_forest -> sMAPE"
+    },
+    {
+      "rendered": "0.309",
+      "raw_value": 0.3087040595571468,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=random_forest -> MASE"
+    },
+    {
+      "rendered": "+3.79",
+      "raw_value": 3.787835308683648,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=random_forest -> ME_bias"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=sarima -> n_scored"
+    },
+    {
+      "rendered": "11.10",
+      "raw_value": 11.102640990195056,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=sarima -> MAE"
+    },
+    {
+      "rendered": "13.34",
+      "raw_value": 13.33749001340454,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=sarima -> RMSE"
+    },
+    {
+      "rendered": "95.87",
+      "raw_value": 95.866971308938,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=sarima -> sMAPE"
+    },
+    {
+      "rendered": "0.334",
+      "raw_value": 0.3342772435838603,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=sarima -> MASE"
+    },
+    {
+      "rendered": "-0.21",
+      "raw_value": -0.2113209469476347,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=sarima -> ME_bias"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=gradient_boosting -> n_scored"
+    },
+    {
+      "rendered": "12.23",
+      "raw_value": 12.229732978005504,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=gradient_boosting -> MAE"
+    },
+    {
+      "rendered": "19.02",
+      "raw_value": 19.018008467382128,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=gradient_boosting -> RMSE"
+    },
+    {
+      "rendered": "63.97",
+      "raw_value": 63.96908820280572,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=gradient_boosting -> sMAPE"
+    },
+    {
+      "rendered": "0.354",
+      "raw_value": 0.3543276966461345,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=gradient_boosting -> MASE"
+    },
+    {
+      "rendered": "+5.61",
+      "raw_value": 5.608346624238152,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=7 model=gradient_boosting -> ME_bias"
+    },
+    {
+      "rendered": "46",
+      "raw_value": 46.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> full_dev_n"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> n_scored"
+    },
+    {
+      "rendered": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "raw_value": "champion is the simplest candidate not distinguishable from the numerical leader",
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 -> reason"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=seasonal_naive -> n_scored"
+    },
+    {
+      "rendered": "5.33",
+      "raw_value": 5.333333333333333,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=seasonal_naive -> MAE"
+    },
+    {
+      "rendered": "7.06",
+      "raw_value": 7.05927286151579,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=seasonal_naive -> RMSE"
+    },
+    {
+      "rendered": "57.86",
+      "raw_value": 57.85745293291732,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=seasonal_naive -> sMAPE"
+    },
+    {
+      "rendered": "0.157",
+      "raw_value": 0.1565149827286233,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=seasonal_naive -> MASE"
+    },
+    {
+      "rendered": "-1.00",
+      "raw_value": -1.0,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=seasonal_naive -> ME_bias"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=exponential_smoothing -> n_scored"
+    },
+    {
+      "rendered": "7.33",
+      "raw_value": 7.329325292778953,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=exponential_smoothing -> MAE"
+    },
+    {
+      "rendered": "9.90",
+      "raw_value": 9.904327374877026,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=exponential_smoothing -> RMSE"
+    },
+    {
+      "rendered": "67.64",
+      "raw_value": 67.6415013447934,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=exponential_smoothing -> sMAPE"
+    },
+    {
+      "rendered": "0.215",
+      "raw_value": 0.2146776655693155,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=exponential_smoothing -> MASE"
+    },
+    {
+      "rendered": "+2.10",
+      "raw_value": 2.100074606057339,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=exponential_smoothing -> ME_bias"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=ensemble -> n_scored"
+    },
+    {
+      "rendered": "7.52",
+      "raw_value": 7.516569515515194,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=ensemble -> MAE"
+    },
+    {
+      "rendered": "11.65",
+      "raw_value": 11.650533142615656,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=ensemble -> RMSE"
+    },
+    {
+      "rendered": "54.76",
+      "raw_value": 54.756797248150825,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=ensemble -> sMAPE"
+    },
+    {
+      "rendered": "0.217",
+      "raw_value": 0.2168105272703246,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=ensemble -> MASE"
+    },
+    {
+      "rendered": "+4.28",
+      "raw_value": 4.282317991836368,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=ensemble -> ME_bias"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=moving_average -> n_scored"
+    },
+    {
+      "rendered": "7.68",
+      "raw_value": 7.68452380952381,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=moving_average -> MAE"
+    },
+    {
+      "rendered": "10.72",
+      "raw_value": 10.722124557495825,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=moving_average -> RMSE"
+    },
+    {
+      "rendered": "55.82",
+      "raw_value": 55.82301847532779,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=moving_average -> sMAPE"
+    },
+    {
+      "rendered": "0.226",
+      "raw_value": 0.2256592283427648,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=moving_average -> MASE"
+    },
+    {
+      "rendered": "+6.42",
+      "raw_value": 6.422619047619048,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=moving_average -> ME_bias"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=gradient_boosting -> n_scored"
+    },
+    {
+      "rendered": "8.26",
+      "raw_value": 8.256186428158033,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=gradient_boosting -> MAE"
+    },
+    {
+      "rendered": "14.56",
+      "raw_value": 14.56408351256192,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=gradient_boosting -> RMSE"
+    },
+    {
+      "rendered": "49.69",
+      "raw_value": 49.68635669586667,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=gradient_boosting -> sMAPE"
+    },
+    {
+      "rendered": "0.236",
+      "raw_value": 0.2360751566248977,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=gradient_boosting -> MASE"
+    },
+    {
+      "rendered": "+6.46",
+      "raw_value": 6.464561377615393,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=gradient_boosting -> ME_bias"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=naive -> n_scored"
+    },
+    {
+      "rendered": "9.33",
+      "raw_value": 9.333333333333334,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=naive -> MAE"
+    },
+    {
+      "rendered": "10.97",
+      "raw_value": 10.969655114602888,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=naive -> RMSE"
+    },
+    {
+      "rendered": "77.81",
+      "raw_value": 77.80950892661774,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=naive -> sMAPE"
+    },
+    {
+      "rendered": "0.277",
+      "raw_value": 0.277374021556,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=naive -> MASE"
+    },
+    {
+      "rendered": "+4.17",
+      "raw_value": 4.166666666666667,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=naive -> ME_bias"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=random_forest -> n_scored"
+    },
+    {
+      "rendered": "12.01",
+      "raw_value": 12.008534934177794,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=random_forest -> MAE"
+    },
+    {
+      "rendered": "21.47",
+      "raw_value": 21.470454525420248,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=random_forest -> RMSE"
+    },
+    {
+      "rendered": "62.81",
+      "raw_value": 62.81054194898693,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=random_forest -> sMAPE"
+    },
+    {
+      "rendered": "0.341",
+      "raw_value": 0.3411903300893288,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=random_forest -> MASE"
+    },
+    {
+      "rendered": "+10.21",
+      "raw_value": 10.214529005392002,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=random_forest -> ME_bias"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=sarima -> n_scored"
+    },
+    {
+      "rendered": "18.07",
+      "raw_value": 18.072567584690866,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=sarima -> MAE"
+    },
+    {
+      "rendered": "19.85",
+      "raw_value": 19.85379755734482,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=sarima -> RMSE"
+    },
+    {
+      "rendered": "171.31",
+      "raw_value": 171.30652872480866,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=sarima -> sMAPE"
+    },
+    {
+      "rendered": "0.531",
+      "raw_value": 0.5306721925483894,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=sarima -> MASE"
+    },
+    {
+      "rendered": "-14.27",
+      "raw_value": -14.268789890870028,
+      "source": "forecasts/comparison_matrix.csv",
+      "locator": "fold_scope=post_cutoff_common_support window_rule=capped target=Children discharged from HHS Care horizon=14 model=sarima -> ME_bias"
+    },
+    {
+      "rendered": "no candidate beat both naive and seasonal-naive; the best baseline is the champion and is preserved as the result",
+      "raw_value": "no candidate beat both naive and seasonal-naive; the best baseline is the champion and is preserved as the result",
+      "source": "forecasts/champion_selection.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 -> reason"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "count champion in baselines"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "count champion in {sarima, exponential_smoothing}"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "count champion in {random_forest, gradient_boosting}"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "min n_scored"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "max n_scored"
+    },
+    {
+      "rendered": "2,484.0",
+      "raw_value": 2484.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=1 is_champion=True -> point_forecast"
+    },
+    {
+      "rendered": "2,458.1",
+      "raw_value": 2458.05,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=1 is_champion=True -> lower"
+    },
+    {
+      "rendered": "2,510.1",
+      "raw_value": 2510.1,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=1 is_champion=True -> upper"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=1 is_champion=True -> n_residuals"
+    },
+    {
+      "rendered": "2,484.0",
+      "raw_value": 2484.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=7 is_champion=True -> point_forecast"
+    },
+    {
+      "rendered": "2,329.0",
+      "raw_value": 2328.975,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=7 is_champion=True -> lower"
+    },
+    {
+      "rendered": "2,558.7",
+      "raw_value": 2558.675,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=7 is_champion=True -> upper"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=7 is_champion=True -> n_residuals"
+    },
+    {
+      "rendered": "2,484.0",
+      "raw_value": 2484.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=14 is_champion=True -> point_forecast"
+    },
+    {
+      "rendered": "2,112.0",
+      "raw_value": 2112.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=14 is_champion=True -> lower"
+    },
+    {
+      "rendered": "2,618.1",
+      "raw_value": 2618.05,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=14 is_champion=True -> upper"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=14 is_champion=True -> n_residuals"
+    },
+    {
+      "rendered": "14.0",
+      "raw_value": 14.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 is_champion=True -> point_forecast"
+    },
+    {
+      "rendered": "6.0",
+      "raw_value": 6.05,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 is_champion=True -> lower"
+    },
+    {
+      "rendered": "24.0",
+      "raw_value": 24.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 is_champion=True -> upper"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=1 is_champion=True -> n_residuals"
+    },
+    {
+      "rendered": "14.0",
+      "raw_value": 14.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 is_champion=True -> point_forecast"
+    },
+    {
+      "rendered": "0.0",
+      "raw_value": 0.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 is_champion=True -> lower"
+    },
+    {
+      "rendered": "39.7",
+      "raw_value": 39.725,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 is_champion=True -> upper"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=7 is_champion=True -> n_residuals"
+    },
+    {
+      "rendered": "16.0",
+      "raw_value": 16.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 is_champion=True -> point_forecast"
+    },
+    {
+      "rendered": "1.9",
+      "raw_value": 1.8500000000000012,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 is_champion=True -> lower"
+    },
+    {
+      "rendered": "24.7",
+      "raw_value": 24.725,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 is_champion=True -> upper"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children discharged from HHS Care horizon=14 is_champion=True -> n_residuals"
+    },
+    {
+      "rendered": "9.0",
+      "raw_value": 9.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=1 -> transferred_forecast"
+    },
+    {
+      "rendered": "14.0",
+      "raw_value": 14.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=1 -> discharged_forecast"
+    },
+    {
+      "rendered": "-5.0",
+      "raw_value": -5.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=1 -> net_pressure"
+    },
+    {
+      "rendered": "8.0",
+      "raw_value": 7.979713289073998,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=1 -> std"
+    },
+    {
+      "rendered": "exits exceed intake -- net relief",
+      "raw_value": "exits exceed intake -- net relief",
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=1 -> interpretation"
+    },
+    {
+      "rendered": "15.0",
+      "raw_value": 15.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=7 -> transferred_forecast"
+    },
+    {
+      "rendered": "14.0",
+      "raw_value": 14.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=7 -> discharged_forecast"
+    },
+    {
+      "rendered": "+1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=7 -> net_pressure"
+    },
+    {
+      "rendered": "14.3",
+      "raw_value": 14.30931201198752,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=7 -> std"
+    },
+    {
+      "rendered": "intake exceeds exits -- net inflow pressure",
+      "raw_value": "intake exceeds exits -- net inflow pressure",
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=7 -> interpretation"
+    },
+    {
+      "rendered": "6.0",
+      "raw_value": 6.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=14 -> transferred_forecast"
+    },
+    {
+      "rendered": "16.0",
+      "raw_value": 16.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=14 -> discharged_forecast"
+    },
+    {
+      "rendered": "-10.0",
+      "raw_value": -10.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=14 -> net_pressure"
+    },
+    {
+      "rendered": "9.0",
+      "raw_value": 9.015138782776852,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=14 -> std"
+    },
+    {
+      "rendered": "exits exceed intake -- net relief",
+      "raw_value": "exits exceed intake -- net relief",
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=14 -> interpretation"
+    },
+    {
+      "rendered": "2025-12-21",
+      "raw_value": "2025-12-21",
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "origin_date"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95.0,
+      "source": "forecasts/provenance.json",
+      "locator": "nominal_interval_coverage"
+    },
+    {
+      "rendered": "52",
+      "raw_value": 52.04999999999973,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=1 -> interval_width"
+    },
+    {
+      "rendered": "506",
+      "raw_value": 506.0500000000002,
+      "source": "forecasts/forward_forecasts.csv",
+      "locator": "target=Children in HHS Care horizon=14 -> interval_width"
+    },
+    {
+      "rendered": "independence",
+      "raw_value": "independence",
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "uncertainty_form"
+    },
+    {
+      "rendered": "-0.153",
+      "raw_value": -0.1531714193269715,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=1 -> measured_correlation"
+    },
+    {
+      "rendered": "14",
+      "raw_value": 14.0,
+      "source": "forecasts/imbalance_forecast.csv",
+      "locator": "horizon=1 -> n_paired_residuals"
+    },
+    {
+      "rendered": "14.3",
+      "raw_value": 14.30931201198752,
+      "source": "derived from forecasts/imbalance_forecast.csv",
+      "locator": "max of std / |net_pressure|"
+    },
+    {
+      "rendered": "75",
+      "raw_value": 75,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=75 -> percentile"
+    },
+    {
+      "rendered": "16",
+      "raw_value": 16,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=75 -> n_fired"
+    },
+    {
+      "rendered": "16",
+      "raw_value": 16,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=75 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=75 -> false_positive"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=75 -> false_negative"
+    },
+    {
+      "rendered": "0.102",
+      "raw_value": 0.1020408163265306,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=75 -> false_negative_rate"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=75 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "80",
+      "raw_value": 80,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=80 -> percentile"
+    },
+    {
+      "rendered": "16",
+      "raw_value": 16,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=80 -> n_fired"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=80 -> true_positive"
+    },
+    {
+      "rendered": "1",
+      "raw_value": 1,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=80 -> false_positive"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=80 -> false_negative"
+    },
+    {
+      "rendered": "0.102",
+      "raw_value": 0.1020408163265306,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=80 -> false_negative_rate"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=80 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "85",
+      "raw_value": 85,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=85 -> percentile"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=85 -> n_fired"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=85 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=85 -> false_positive"
+    },
+    {
+      "rendered": "4",
+      "raw_value": 4,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=85 -> false_negative"
+    },
+    {
+      "rendered": "0.080",
+      "raw_value": 0.08,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=85 -> false_negative_rate"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=85 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "90",
+      "raw_value": 90,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> percentile"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> n_fired"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> false_positive"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> false_negative"
+    },
+    {
+      "rendered": "0.115",
+      "raw_value": 0.1153846153846153,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> false_negative_rate"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=95 -> percentile"
+    },
+    {
+      "rendered": "11",
+      "raw_value": 11,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=95 -> n_fired"
+    },
+    {
+      "rendered": "11",
+      "raw_value": 11,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=95 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=95 -> false_positive"
+    },
+    {
+      "rendered": "7",
+      "raw_value": 7,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=95 -> false_negative"
+    },
+    {
+      "rendered": "0.130",
+      "raw_value": 0.1296296296296296,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=95 -> false_negative_rate"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=95 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "75",
+      "raw_value": 75,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=75 -> percentile"
+    },
+    {
+      "rendered": "8",
+      "raw_value": 8,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=75 -> n_fired"
+    },
+    {
+      "rendered": "8",
+      "raw_value": 8,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=75 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=75 -> false_positive"
+    },
+    {
+      "rendered": "42",
+      "raw_value": 42,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=75 -> false_negative"
+    },
+    {
+      "rendered": "0.737",
+      "raw_value": 0.7368421052631579,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=75 -> false_negative_rate"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=75 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "80",
+      "raw_value": 80,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=80 -> percentile"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=80 -> n_fired"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=80 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=80 -> false_positive"
+    },
+    {
+      "rendered": "43",
+      "raw_value": 43,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=80 -> false_negative"
+    },
+    {
+      "rendered": "0.717",
+      "raw_value": 0.7166666666666667,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=80 -> false_negative_rate"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=80 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "85",
+      "raw_value": 85,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=85 -> percentile"
+    },
+    {
+      "rendered": "3",
+      "raw_value": 3,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=85 -> n_fired"
+    },
+    {
+      "rendered": "3",
+      "raw_value": 3,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=85 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=85 -> false_positive"
+    },
+    {
+      "rendered": "36",
+      "raw_value": 36,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=85 -> false_negative"
+    },
+    {
+      "rendered": "0.581",
+      "raw_value": 0.5806451612903226,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=85 -> false_negative_rate"
+    },
+    {
+      "rendered": "2.0",
+      "raw_value": 2.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=85 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "90",
+      "raw_value": 90,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> percentile"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> n_fired"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> false_positive"
+    },
+    {
+      "rendered": "30",
+      "raw_value": 30,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> false_negative"
+    },
+    {
+      "rendered": "0.476",
+      "raw_value": 0.4761904761904761,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> false_negative_rate"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "95",
+      "raw_value": 95,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> percentile"
+    },
+    {
+      "rendered": "1",
+      "raw_value": 1,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> n_fired"
+    },
+    {
+      "rendered": "1",
+      "raw_value": 1,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> true_positive"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> false_positive"
+    },
+    {
+      "rendered": "20",
+      "raw_value": 20,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> false_negative"
+    },
+    {
+      "rendered": "0.312",
+      "raw_value": 0.3125,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> false_negative_rate"
+    },
+    {
+      "rendered": "13.0",
+      "raw_value": 13.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "65",
+      "raw_value": 65.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> n_backtest_origins"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "1",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> min_surge_lead_time"
+    },
+    {
+      "rendered": "1",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children in HHS Care percentile=90 -> max_surge_lead_time"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> min_surge_lead_time"
+    },
+    {
+      "rendered": "3",
+      "raw_value": 3.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> max_surge_lead_time"
+    },
+    {
+      "rendered": "~20 days",
+      "raw_value": "~20 days",
+      "source": "app/lib/artifacts.py",
+      "locator": "HORIZON_CALENDAR_DAYS"
+    },
+    {
+      "rendered": "Watch",
+      "raw_value": "Watch",
+      "source": "forecasts/provenance.json",
+      "locator": "early_warning.tiers.14"
+    },
+    {
+      "rendered": "Warning",
+      "raw_value": "Warning",
+      "source": "forecasts/provenance.json",
+      "locator": "early_warning.tiers.7"
+    },
+    {
+      "rendered": "Alert",
+      "raw_value": "Alert",
+      "source": "forecasts/provenance.json",
+      "locator": "early_warning.tiers.1"
+    },
+    {
+      "rendered": "90",
+      "raw_value": 90,
+      "source": "forecasts/provenance.json",
+      "locator": "early_warning.percentile"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60,
+      "source": "forecasts/provenance.json",
+      "locator": "early_warning.trailing_window_periods"
+    },
+    {
+      "rendered": "2,450.6",
+      "raw_value": 2450.6,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> threshold_proxy_value"
+    },
+    {
+      "rendered": "16.0",
+      "raw_value": 16.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> threshold_proxy_value"
+    },
+    {
+      "rendered": "Relative, data-derived proxy for unusually high load by this programme's own recent standards. No official capacity threshold exists in the source documentation or the dataset; this is not an official capacity figure and does not indicate that capacity has been or will be breached.",
+      "raw_value": "Relative, data-derived proxy for unusually high load by this programme's own recent standards. No official capacity threshold exists in the source documentation or the dataset; this is not an official capacity figure and does not indicate that capacity has been or will be breached.",
+      "source": "forecasts/provenance.json",
+      "locator": "early_warning.disclaimer"
+    },
+    {
+      "rendered": "0.312",
+      "raw_value": 0.3125,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care -> min false_negative_rate"
+    },
+    {
+      "rendered": "0.737",
+      "raw_value": 0.7368421052631579,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care -> max false_negative_rate"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> n_fired"
+    },
+    {
+      "rendered": "65",
+      "raw_value": 65.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> n_backtest_origins"
+    },
+    {
+      "rendered": "30",
+      "raw_value": 30.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=90 -> false_negative"
+    },
+    {
+      "rendered": "0.476",
+      "raw_value": 0.4761904761904761,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> false_negative_rate"
+    },
+    {
+      "rendered": "13",
+      "raw_value": 13.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> median_surge_lead_time"
+    },
+    {
+      "rendered": "1",
+      "raw_value": 1.0,
+      "source": "forecasts/early_warning_sensitivity.csv",
+      "locator": "target=Children discharged from HHS Care percentile=95 -> n_fired"
+    },
+    {
+      "rendered": "manual only -- replace the CSV and re-run this script",
+      "raw_value": "manual only -- replace the CSV and re-run this script",
+      "source": "forecasts/provenance.json",
+      "locator": "refresh_policy"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "2.5",
+      "raw_value": 2.5,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "~20 days",
+      "raw_value": "~20 days",
+      "source": "app/lib/artifacts.py",
+      "locator": "HORIZON_CALENDAR_DAYS"
+    },
+    {
+      "rendered": "682",
+      "raw_value": 682,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "rows with all terms genuinely observed"
+    },
+    {
+      "rendered": "18",
+      "raw_value": 18,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "count of zero residual"
+    },
+    {
+      "rendered": "2.64",
+      "raw_value": 2.6392961876832843,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "percent exact"
+    },
+    {
+      "rendered": "24.0",
+      "raw_value": 24.0,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "median absolute residual"
+    },
+    {
+      "rendered": "+42.0",
+      "raw_value": 41.961876832844574,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "mean signed residual"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "min n"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "max n"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "count covers_nominal == False"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/interval_coverage.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "12",
+      "raw_value": 12.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "min n_scored"
+    },
+    {
+      "rendered": "15",
+      "raw_value": 15.0,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "max n_scored"
+    },
+    {
+      "rendered": "0.476",
+      "raw_value": 0.4761904761904761,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> false_negative_rate"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "stability_formula: 0 of 195 test positions reached from more than one origin"
+    },
+    {
+      "rendered": "195",
+      "raw_value": 195,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "stability_formula: total test positions"
+    },
+    {
+      "rendered": "10",
+      "raw_value": 10,
+      "source": "src/config.py",
+      "locator": "WALK_FORWARD_STEP"
+    },
+    {
+      "rendered": "0.476",
+      "raw_value": 0.4761904761904761,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children discharged from HHS Care -> false_negative_rate"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "count champion in baselines"
+    },
+    {
+      "rendered": "6",
+      "raw_value": 6,
+      "source": "forecasts/champion_selection.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "1.0",
+      "raw_value": 1.0,
+      "source": "forecasts/kpi_summary.csv",
+      "locator": "target=Children in HHS Care -> median_surge_lead_time_periods"
+    },
+    {
+      "rendered": "2.64",
+      "raw_value": 2.6392961876832843,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "percent exact reconciliation"
+    },
+    {
+      "rendered": "+42.0",
+      "raw_value": 41.961876832844574,
+      "source": "derived from data/interim/master_series.parquet",
+      "locator": "mean signed reconciliation residual"
+    },
+    {
+      "rendered": "0",
+      "raw_value": 0,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=0 -> fold_id"
+    },
+    {
+      "rendered": "49",
+      "raw_value": 49,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=0 -> origin_pos"
+    },
+    {
+      "rendered": "2023-03-22",
+      "raw_value": "2023-03-22",
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=0 -> origin_date"
+    },
+    {
+      "rendered": "49",
+      "raw_value": 49,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=0 -> train_cutoff_pos"
+    },
+    {
+      "rendered": "50",
+      "raw_value": 50,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=0 -> test_pos_h1"
+    },
+    {
+      "rendered": "63",
+      "raw_value": 63,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=0 -> test_pos_h14"
+    },
+    {
+      "rendered": "1",
+      "raw_value": 1,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=1 -> fold_id"
+    },
+    {
+      "rendered": "59",
+      "raw_value": 59,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=1 -> origin_pos"
+    },
+    {
+      "rendered": "2023-04-05",
+      "raw_value": "2023-04-05",
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=1 -> origin_date"
+    },
+    {
+      "rendered": "59",
+      "raw_value": 59,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=1 -> train_cutoff_pos"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=1 -> test_pos_h1"
+    },
+    {
+      "rendered": "73",
+      "raw_value": 73,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=1 -> test_pos_h14"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=2 -> fold_id"
+    },
+    {
+      "rendered": "69",
+      "raw_value": 69,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=2 -> origin_pos"
+    },
+    {
+      "rendered": "2023-04-19",
+      "raw_value": "2023-04-19",
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=2 -> origin_date"
+    },
+    {
+      "rendered": "69",
+      "raw_value": 69,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=2 -> train_cutoff_pos"
+    },
+    {
+      "rendered": "70",
+      "raw_value": 70,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=2 -> test_pos_h1"
+    },
+    {
+      "rendered": "83",
+      "raw_value": 83,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=2 -> test_pos_h14"
+    },
+    {
+      "rendered": "3",
+      "raw_value": 3,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=3 -> fold_id"
+    },
+    {
+      "rendered": "79",
+      "raw_value": 79,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=3 -> origin_pos"
+    },
+    {
+      "rendered": "2023-05-03",
+      "raw_value": "2023-05-03",
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=3 -> origin_date"
+    },
+    {
+      "rendered": "79",
+      "raw_value": 79,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=3 -> train_cutoff_pos"
+    },
+    {
+      "rendered": "80",
+      "raw_value": 80,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=3 -> test_pos_h1"
+    },
+    {
+      "rendered": "93",
+      "raw_value": 93,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=3 -> test_pos_h14"
+    },
+    {
+      "rendered": "4",
+      "raw_value": 4,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=4 -> fold_id"
+    },
+    {
+      "rendered": "89",
+      "raw_value": 89,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=4 -> origin_pos"
+    },
+    {
+      "rendered": "2023-05-17",
+      "raw_value": "2023-05-17",
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=4 -> origin_date"
+    },
+    {
+      "rendered": "89",
+      "raw_value": 89,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=4 -> train_cutoff_pos"
+    },
+    {
+      "rendered": "90",
+      "raw_value": 90,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=4 -> test_pos_h1"
+    },
+    {
+      "rendered": "103",
+      "raw_value": 103,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "fold_id=4 -> test_pos_h14"
+    },
+    {
+      "rendered": "42",
+      "raw_value": 42,
+      "source": "src/config.py",
+      "locator": "RANDOM_SEED"
+    },
+    {
+      "rendered": "2025-02-05",
+      "raw_value": "2025-02-05",
+      "source": "src/config.py",
+      "locator": "TRAINING_CAP_DATE"
+    },
+    {
+      "rendered": "60",
+      "raw_value": 60,
+      "source": "src/config.py",
+      "locator": "FINAL_TEST_WINDOW"
+    },
+    {
+      "rendered": "10",
+      "raw_value": 10,
+      "source": "src/config.py",
+      "locator": "WALK_FORWARD_STEP"
+    },
+    {
+      "rendered": "50",
+      "raw_value": 50,
+      "source": "src/config.py",
+      "locator": "MIN_INITIAL_TRAINING"
+    },
+    {
+      "rendered": "5",
+      "raw_value": 5,
+      "source": "src/config.py",
+      "locator": "SEASONAL_PERIOD_M"
+    },
+    {
+      "rendered": "90",
+      "raw_value": 90,
+      "source": "src/config.py",
+      "locator": "EARLY_WARNING_PERCENTILE"
+    },
+    {
+      "rendered": "10",
+      "raw_value": 10,
+      "source": "src/config.py",
+      "locator": "MIN_RESIDUALS_FOR_INTERVAL"
+    },
+    {
+      "rendered": "10,000",
+      "raw_value": 10000,
+      "source": "src/config.py",
+      "locator": "PRACTICAL_EQUIVALENCE_RESAMPLES"
+    },
+    {
+      "rendered": "42",
+      "raw_value": 42,
+      "source": "src/config.py",
+      "locator": "RANDOM_SEED"
+    },
+    {
+      "rendered": "65",
+      "raw_value": 65,
+      "source": "forecasts/walk_forward_folds.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "5,124",
+      "raw_value": 5124,
+      "source": "forecasts/oos_residuals.csv",
+      "locator": "row count"
+    },
+    {
+      "rendered": "7",
+      "raw_value": 7,
+      "source": "forecasts/oos_residuals.csv",
+      "locator": "nunique model"
+    },
+    {
+      "rendered": "2",
+      "raw_value": 2,
+      "source": "forecasts/oos_residuals.csv",
+      "locator": "nunique target"
+    },
+    {
+      "rendered": "3",
+      "raw_value": 3,
+      "source": "forecasts/oos_residuals.csv",
+      "locator": "nunique horizon"
+    }
+  ],
+  "paper": "reports/research_paper.md",
+  "raw_csv_sha256": "061af0a97a1b3bda7a36f0ce8df08b6994847b0a4c402828cf2ef835d4947198",
+  "master_series_sha256": "3c6b093d73744140ac7d1d68d308e9f3f0f070fdc3d26e8c6e3d03bf24243c6d",
+  "n_sections": 25
+}

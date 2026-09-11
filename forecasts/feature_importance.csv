@@ -1,0 +1,343 @@
+target,family,horizon,feature,importance,n_training_pairs
+Children in HHS Care,random_forest,14,day_of_week,5.421304912103619e-05,558
+Children in HHS Care,random_forest,14,month,0.014765636579399478,558
+Children in HHS Care,random_forest,14,is_near_holiday,8.388492307074857e-05,558
+Children in HHS Care,random_forest,14,lag_1_Children apprehended and placed in CBP custody*,0.030819463006815647,558
+Children in HHS Care,random_forest,14,lag_7_Children apprehended and placed in CBP custody*,0.0005246159544591615,558
+Children in HHS Care,random_forest,14,lag_14_Children apprehended and placed in CBP custody*,0.0009977758109403266,558
+Children in HHS Care,random_forest,14,lag_1_Children in CBP custody,0.02360603379385479,558
+Children in HHS Care,random_forest,14,lag_7_Children in CBP custody,0.0035646259389181542,558
+Children in HHS Care,random_forest,14,lag_14_Children in CBP custody,0.0021777446685715537,558
+Children in HHS Care,random_forest,14,lag_1_Children transferred out of CBP custody,0.023914568246221523,558
+Children in HHS Care,random_forest,14,lag_7_Children transferred out of CBP custody,0.0023991047299289515,558
+Children in HHS Care,random_forest,14,lag_14_Children transferred out of CBP custody,0.0015389263628333288,558
+Children in HHS Care,random_forest,14,lag_1_Children in HHS Care,0.1296688269110155,558
+Children in HHS Care,random_forest,14,lag_7_Children in HHS Care,0.07928720413477246,558
+Children in HHS Care,random_forest,14,lag_14_Children in HHS Care,0.068577116294606,558
+Children in HHS Care,random_forest,14,lag_1_Children discharged from HHS Care,0.0376225166434526,558
+Children in HHS Care,random_forest,14,lag_7_Children discharged from HHS Care,0.013444590263763639,558
+Children in HHS Care,random_forest,14,lag_14_Children discharged from HHS Care,0.002900491951411495,558
+Children in HHS Care,random_forest,14,lag_1_net_flow,0.0020056278316586368,558
+Children in HHS Care,random_forest,14,lag_7_net_flow,0.002476333297508769,558
+Children in HHS Care,random_forest,14,lag_14_net_flow,0.004076315705267849,558
+Children in HHS Care,random_forest,14,rolling_7_mean_Children apprehended and placed in CBP custody*,0.019969232083043742,558
+Children in HHS Care,random_forest,14,rolling_7_var_Children apprehended and placed in CBP custody*,0.01829770927989336,558
+Children in HHS Care,random_forest,14,rolling_7_nobs_Children apprehended and placed in CBP custody*,0.00017409765820937463,558
+Children in HHS Care,random_forest,14,rolling_14_mean_Children apprehended and placed in CBP custody*,0.008571801509766106,558
+Children in HHS Care,random_forest,14,rolling_14_var_Children apprehended and placed in CBP custody*,0.001710596624583931,558
+Children in HHS Care,random_forest,14,rolling_14_nobs_Children apprehended and placed in CBP custody*,0.00030870891639924835,558
+Children in HHS Care,random_forest,14,rolling_7_mean_Children in CBP custody,0.023656602252875063,558
+Children in HHS Care,random_forest,14,rolling_7_var_Children in CBP custody,0.0005988461711833059,558
+Children in HHS Care,random_forest,14,rolling_7_nobs_Children in CBP custody,0.0,558
+Children in HHS Care,random_forest,14,rolling_14_mean_Children in CBP custody,0.01597776020061037,558
+Children in HHS Care,random_forest,14,rolling_14_var_Children in CBP custody,0.007579576030145064,558
+Children in HHS Care,random_forest,14,rolling_14_nobs_Children in CBP custody,0.0,558
+Children in HHS Care,random_forest,14,rolling_7_mean_Children transferred out of CBP custody,0.03128020622466398,558
+Children in HHS Care,random_forest,14,rolling_7_var_Children transferred out of CBP custody,0.0141744282000534,558
+Children in HHS Care,random_forest,14,rolling_7_nobs_Children transferred out of CBP custody,0.00015089281627065485,558
+Children in HHS Care,random_forest,14,rolling_14_mean_Children transferred out of CBP custody,0.018446062495373602,558
+Children in HHS Care,random_forest,14,rolling_14_var_Children transferred out of CBP custody,0.006213705660494438,558
+Children in HHS Care,random_forest,14,rolling_14_nobs_Children transferred out of CBP custody,0.00032255147502257306,558
+Children in HHS Care,random_forest,14,rolling_7_mean_Children in HHS Care,0.13502435285468756,558
+Children in HHS Care,random_forest,14,rolling_7_var_Children in HHS Care,0.0027478882090702056,558
+Children in HHS Care,random_forest,14,rolling_7_nobs_Children in HHS Care,0.0,558
+Children in HHS Care,random_forest,14,rolling_14_mean_Children in HHS Care,0.09311506034571802,558
+Children in HHS Care,random_forest,14,rolling_14_var_Children in HHS Care,0.0028622116325640427,558
+Children in HHS Care,random_forest,14,rolling_14_nobs_Children in HHS Care,0.0,558
+Children in HHS Care,random_forest,14,rolling_7_mean_Children discharged from HHS Care,0.057564479250129495,558
+Children in HHS Care,random_forest,14,rolling_7_var_Children discharged from HHS Care,0.008107078373097005,558
+Children in HHS Care,random_forest,14,rolling_7_nobs_Children discharged from HHS Care,0.0001006907575364159,558
+Children in HHS Care,random_forest,14,rolling_14_mean_Children discharged from HHS Care,0.05360215041984875,558
+Children in HHS Care,random_forest,14,rolling_14_var_Children discharged from HHS Care,0.006686259737277903,558
+Children in HHS Care,random_forest,14,rolling_14_nobs_Children discharged from HHS Care,0.0003593891804301199,558
+Children in HHS Care,random_forest,14,rolling_7_mean_net_flow,0.0096661040339824,558
+Children in HHS Care,random_forest,14,rolling_7_var_net_flow,0.0019252179669742785,558
+Children in HHS Care,random_forest,14,rolling_7_nobs_net_flow,7.476915929722839e-05,558
+Children in HHS Care,random_forest,14,rolling_14_mean_net_flow,0.012676013527208147,558
+Children in HHS Care,random_forest,14,rolling_14_var_net_flow,0.003162949469112798,558
+Children in HHS Care,random_forest,14,rolling_14_nobs_net_flow,0.0003869913868856689,558
+Children in HHS Care,random_forest,1,day_of_week,2.0900385819621104e-05,569
+Children in HHS Care,random_forest,1,month,0.006753482842853623,569
+Children in HHS Care,random_forest,1,is_near_holiday,0.0,569
+Children in HHS Care,random_forest,1,lag_1_Children apprehended and placed in CBP custody*,0.031189541188457254,569
+Children in HHS Care,random_forest,1,lag_7_Children apprehended and placed in CBP custody*,0.0005476476905009674,569
+Children in HHS Care,random_forest,1,lag_14_Children apprehended and placed in CBP custody*,0.0003325202583916869,569
+Children in HHS Care,random_forest,1,lag_1_Children in CBP custody,0.014577842134936327,569
+Children in HHS Care,random_forest,1,lag_7_Children in CBP custody,0.002984286180840256,569
+Children in HHS Care,random_forest,1,lag_14_Children in CBP custody,0.0004878859032833262,569
+Children in HHS Care,random_forest,1,lag_1_Children transferred out of CBP custody,0.021690524802219596,569
+Children in HHS Care,random_forest,1,lag_7_Children transferred out of CBP custody,0.003045884532214015,569
+Children in HHS Care,random_forest,1,lag_14_Children transferred out of CBP custody,0.00041129046080270256,569
+Children in HHS Care,random_forest,1,lag_1_Children in HHS Care,0.13645230933319563,569
+Children in HHS Care,random_forest,1,lag_7_Children in HHS Care,0.08425447068888572,569
+Children in HHS Care,random_forest,1,lag_14_Children in HHS Care,0.06877978052424864,569
+Children in HHS Care,random_forest,1,lag_1_Children discharged from HHS Care,0.037145693038323636,569
+Children in HHS Care,random_forest,1,lag_7_Children discharged from HHS Care,0.021600661730322795,569
+Children in HHS Care,random_forest,1,lag_14_Children discharged from HHS Care,0.006857418290788478,569
+Children in HHS Care,random_forest,1,lag_1_net_flow,0.0031154237606645457,569
+Children in HHS Care,random_forest,1,lag_7_net_flow,0.0014444321958874341,569
+Children in HHS Care,random_forest,1,lag_14_net_flow,0.0010666416977190309,569
+Children in HHS Care,random_forest,1,rolling_7_mean_Children apprehended and placed in CBP custody*,0.020623158255942905,569
+Children in HHS Care,random_forest,1,rolling_7_var_Children apprehended and placed in CBP custody*,0.026543902954324378,569
+Children in HHS Care,random_forest,1,rolling_7_nobs_Children apprehended and placed in CBP custody*,3.868894799194277e-05,569
+Children in HHS Care,random_forest,1,rolling_14_mean_Children apprehended and placed in CBP custody*,0.008077815901507392,569
+Children in HHS Care,random_forest,1,rolling_14_var_Children apprehended and placed in CBP custody*,0.000911457125993703,569
+Children in HHS Care,random_forest,1,rolling_14_nobs_Children apprehended and placed in CBP custody*,0.0001555638510836331,569
+Children in HHS Care,random_forest,1,rolling_7_mean_Children in CBP custody,0.02320261488511134,569
+Children in HHS Care,random_forest,1,rolling_7_var_Children in CBP custody,0.00036049814312778534,569
+Children in HHS Care,random_forest,1,rolling_7_nobs_Children in CBP custody,0.0,569
+Children in HHS Care,random_forest,1,rolling_14_mean_Children in CBP custody,0.01615481873440644,569
+Children in HHS Care,random_forest,1,rolling_14_var_Children in CBP custody,0.007636337266213043,569
+Children in HHS Care,random_forest,1,rolling_14_nobs_Children in CBP custody,0.0,569
+Children in HHS Care,random_forest,1,rolling_7_mean_Children transferred out of CBP custody,0.032829716234746786,569
+Children in HHS Care,random_forest,1,rolling_7_var_Children transferred out of CBP custody,0.012566257952419979,569
+Children in HHS Care,random_forest,1,rolling_7_nobs_Children transferred out of CBP custody,3.5012727316264327e-05,569
+Children in HHS Care,random_forest,1,rolling_14_mean_Children transferred out of CBP custody,0.01661940393156046,569
+Children in HHS Care,random_forest,1,rolling_14_var_Children transferred out of CBP custody,0.0029058978070981294,569
+Children in HHS Care,random_forest,1,rolling_14_nobs_Children transferred out of CBP custody,0.00010204454519194724,569
+Children in HHS Care,random_forest,1,rolling_7_mean_Children in HHS Care,0.13461027615257545,569
+Children in HHS Care,random_forest,1,rolling_7_var_Children in HHS Care,0.0014208540189840897,569
+Children in HHS Care,random_forest,1,rolling_7_nobs_Children in HHS Care,0.0,569
+Children in HHS Care,random_forest,1,rolling_14_mean_Children in HHS Care,0.1043290717436153,569
+Children in HHS Care,random_forest,1,rolling_14_var_Children in HHS Care,0.001607774128211144,569
+Children in HHS Care,random_forest,1,rolling_14_nobs_Children in HHS Care,0.0,569
+Children in HHS Care,random_forest,1,rolling_7_mean_Children discharged from HHS Care,0.06110223048915503,569
+Children in HHS Care,random_forest,1,rolling_7_var_Children discharged from HHS Care,0.005857269214684457,569
+Children in HHS Care,random_forest,1,rolling_7_nobs_Children discharged from HHS Care,2.1622734843239e-05,569
+Children in HHS Care,random_forest,1,rolling_14_mean_Children discharged from HHS Care,0.052184803806932724,569
+Children in HHS Care,random_forest,1,rolling_14_var_Children discharged from HHS Care,0.008797260337736772,569
+Children in HHS Care,random_forest,1,rolling_14_nobs_Children discharged from HHS Care,0.00011037724790459945,569
+Children in HHS Care,random_forest,1,rolling_7_mean_net_flow,0.00789437707705763,569
+Children in HHS Care,random_forest,1,rolling_7_var_net_flow,0.001452822732713482,569
+Children in HHS Care,random_forest,1,rolling_7_nobs_net_flow,1.5297036039465333e-05,569
+Children in HHS Care,random_forest,1,rolling_14_mean_net_flow,0.00725719764624802,569
+Children in HHS Care,random_forest,1,rolling_14_var_net_flow,0.0017261540416776899,569
+Children in HHS Care,random_forest,1,rolling_14_nobs_net_flow,9.078468722950975e-05,569
+Children in HHS Care,random_forest,7,day_of_week,9.57000806373158e-05,564
+Children in HHS Care,random_forest,7,month,0.00991252124282769,564
+Children in HHS Care,random_forest,7,is_near_holiday,4.6458402446915374e-05,564
+Children in HHS Care,random_forest,7,lag_1_Children apprehended and placed in CBP custody*,0.031146549514365997,564
+Children in HHS Care,random_forest,7,lag_7_Children apprehended and placed in CBP custody*,0.0006015902080880395,564
+Children in HHS Care,random_forest,7,lag_14_Children apprehended and placed in CBP custody*,0.000246413477659777,564
+Children in HHS Care,random_forest,7,lag_1_Children in CBP custody,0.02314056032245939,564
+Children in HHS Care,random_forest,7,lag_7_Children in CBP custody,0.0033404021597256044,564
+Children in HHS Care,random_forest,7,lag_14_Children in CBP custody,0.0007218477396840799,564
+Children in HHS Care,random_forest,7,lag_1_Children transferred out of CBP custody,0.022501783692740085,564
+Children in HHS Care,random_forest,7,lag_7_Children transferred out of CBP custody,0.0026142987856604596,564
+Children in HHS Care,random_forest,7,lag_14_Children transferred out of CBP custody,0.00045667415256884705,564
+Children in HHS Care,random_forest,7,lag_1_Children in HHS Care,0.13186310228446396,564
+Children in HHS Care,random_forest,7,lag_7_Children in HHS Care,0.08278095914871415,564
+Children in HHS Care,random_forest,7,lag_14_Children in HHS Care,0.06884414028399971,564
+Children in HHS Care,random_forest,7,lag_1_Children discharged from HHS Care,0.043476673830466155,564
+Children in HHS Care,random_forest,7,lag_7_Children discharged from HHS Care,0.01613955953393173,564
+Children in HHS Care,random_forest,7,lag_14_Children discharged from HHS Care,0.001642395328391822,564
+Children in HHS Care,random_forest,7,lag_1_net_flow,0.00262738373636348,564
+Children in HHS Care,random_forest,7,lag_7_net_flow,0.0017715078549921377,564
+Children in HHS Care,random_forest,7,lag_14_net_flow,0.0027960462884898314,564
+Children in HHS Care,random_forest,7,rolling_7_mean_Children apprehended and placed in CBP custody*,0.02148443595153452,564
+Children in HHS Care,random_forest,7,rolling_7_var_Children apprehended and placed in CBP custody*,0.01917783529729099,564
+Children in HHS Care,random_forest,7,rolling_7_nobs_Children apprehended and placed in CBP custody*,8.709757171841882e-05,564
+Children in HHS Care,random_forest,7,rolling_14_mean_Children apprehended and placed in CBP custody*,0.00820802463633752,564
+Children in HHS Care,random_forest,7,rolling_14_var_Children apprehended and placed in CBP custody*,0.0013687439273557607,564
+Children in HHS Care,random_forest,7,rolling_14_nobs_Children apprehended and placed in CBP custody*,0.0002339584971143147,564
+Children in HHS Care,random_forest,7,rolling_7_mean_Children in CBP custody,0.02451993170980293,564
+Children in HHS Care,random_forest,7,rolling_7_var_Children in CBP custody,0.000434194146135576,564
+Children in HHS Care,random_forest,7,rolling_7_nobs_Children in CBP custody,0.0,564
+Children in HHS Care,random_forest,7,rolling_14_mean_Children in CBP custody,0.01749801019131686,564
+Children in HHS Care,random_forest,7,rolling_14_var_Children in CBP custody,0.007235682126121284,564
+Children in HHS Care,random_forest,7,rolling_14_nobs_Children in CBP custody,0.0,564
+Children in HHS Care,random_forest,7,rolling_7_mean_Children transferred out of CBP custody,0.03136584805282039,564
+Children in HHS Care,random_forest,7,rolling_7_var_Children transferred out of CBP custody,0.014394001072803562,564
+Children in HHS Care,random_forest,7,rolling_7_nobs_Children transferred out of CBP custody,5.7334474992040644e-05,564
+Children in HHS Care,random_forest,7,rolling_14_mean_Children transferred out of CBP custody,0.018880578820369465,564
+Children in HHS Care,random_forest,7,rolling_14_var_Children transferred out of CBP custody,0.003375744391628995,564
+Children in HHS Care,random_forest,7,rolling_14_nobs_Children transferred out of CBP custody,0.00017592051954706174,564
+Children in HHS Care,random_forest,7,rolling_7_mean_Children in HHS Care,0.13248565493267542,564
+Children in HHS Care,random_forest,7,rolling_7_var_Children in HHS Care,0.0025193098385331222,564
+Children in HHS Care,random_forest,7,rolling_7_nobs_Children in HHS Care,0.0,564
+Children in HHS Care,random_forest,7,rolling_14_mean_Children in HHS Care,0.09886039719224553,564
+Children in HHS Care,random_forest,7,rolling_14_var_Children in HHS Care,0.0016101601776259934,564
+Children in HHS Care,random_forest,7,rolling_14_nobs_Children in HHS Care,0.0,564
+Children in HHS Care,random_forest,7,rolling_7_mean_Children discharged from HHS Care,0.058892808036285896,564
+Children in HHS Care,random_forest,7,rolling_7_var_Children discharged from HHS Care,0.007331982779223044,564
+Children in HHS Care,random_forest,7,rolling_7_nobs_Children discharged from HHS Care,5.645874404885331e-05,564
+Children in HHS Care,random_forest,7,rolling_14_mean_Children discharged from HHS Care,0.05746162297674357,564
+Children in HHS Care,random_forest,7,rolling_14_var_Children discharged from HHS Care,0.0050619385113528335,564
+Children in HHS Care,random_forest,7,rolling_14_nobs_Children discharged from HHS Care,0.0001486032493237516,564
+Children in HHS Care,random_forest,7,rolling_7_mean_net_flow,0.006575793087719367,564
+Children in HHS Care,random_forest,7,rolling_7_var_net_flow,0.001713073302986221,564
+Children in HHS Care,random_forest,7,rolling_7_nobs_net_flow,2.3163783339544717e-05,564
+Children in HHS Care,random_forest,7,rolling_14_mean_net_flow,0.009721826406839383,564
+Children in HHS Care,random_forest,7,rolling_14_var_net_flow,0.0021288092904964942,564
+Children in HHS Care,random_forest,7,rolling_14_nobs_net_flow,0.00014448823499421394,564
+Children discharged from HHS Care,random_forest,14,day_of_week,0.006907090254853463,528
+Children discharged from HHS Care,random_forest,14,month,0.009404513548078726,528
+Children discharged from HHS Care,random_forest,14,is_near_holiday,6.763662957370075e-05,528
+Children discharged from HHS Care,random_forest,14,lag_1_Children apprehended and placed in CBP custody*,0.023413117059901244,528
+Children discharged from HHS Care,random_forest,14,lag_7_Children apprehended and placed in CBP custody*,0.004355190985642202,528
+Children discharged from HHS Care,random_forest,14,lag_14_Children apprehended and placed in CBP custody*,0.0014750165257369039,528
+Children discharged from HHS Care,random_forest,14,lag_1_Children in CBP custody,0.032528650624311914,528
+Children discharged from HHS Care,random_forest,14,lag_7_Children in CBP custody,0.003389021057919285,528
+Children discharged from HHS Care,random_forest,14,lag_14_Children in CBP custody,0.0035736570943969187,528
+Children discharged from HHS Care,random_forest,14,lag_1_Children transferred out of CBP custody,0.019320524550471587,528
+Children discharged from HHS Care,random_forest,14,lag_7_Children transferred out of CBP custody,0.0041527501047520475,528
+Children discharged from HHS Care,random_forest,14,lag_14_Children transferred out of CBP custody,0.003375129858890904,528
+Children discharged from HHS Care,random_forest,14,lag_1_Children in HHS Care,0.1048230109283989,528
+Children discharged from HHS Care,random_forest,14,lag_7_Children in HHS Care,0.07263993273760322,528
+Children discharged from HHS Care,random_forest,14,lag_14_Children in HHS Care,0.05134118866190169,528
+Children discharged from HHS Care,random_forest,14,lag_1_Children discharged from HHS Care,0.09541799748694212,528
+Children discharged from HHS Care,random_forest,14,lag_7_Children discharged from HHS Care,0.01758960067753899,528
+Children discharged from HHS Care,random_forest,14,lag_14_Children discharged from HHS Care,0.011737535382392791,528
+Children discharged from HHS Care,random_forest,14,lag_1_net_flow,0.013102700581660028,528
+Children discharged from HHS Care,random_forest,14,lag_7_net_flow,0.003661538002801127,528
+Children discharged from HHS Care,random_forest,14,lag_14_net_flow,0.0045867697384706614,528
+Children discharged from HHS Care,random_forest,14,rolling_7_mean_Children apprehended and placed in CBP custody*,0.012469291709628556,528
+Children discharged from HHS Care,random_forest,14,rolling_7_var_Children apprehended and placed in CBP custody*,0.024666301660939804,528
+Children discharged from HHS Care,random_forest,14,rolling_7_nobs_Children apprehended and placed in CBP custody*,0.00010492640983582835,528
+Children discharged from HHS Care,random_forest,14,rolling_14_mean_Children apprehended and placed in CBP custody*,0.0062628429136005566,528
+Children discharged from HHS Care,random_forest,14,rolling_14_var_Children apprehended and placed in CBP custody*,0.004010604506560013,528
+Children discharged from HHS Care,random_forest,14,rolling_14_nobs_Children apprehended and placed in CBP custody*,0.00043154306298997044,528
+Children discharged from HHS Care,random_forest,14,rolling_7_mean_Children in CBP custody,0.013827791874411577,528
+Children discharged from HHS Care,random_forest,14,rolling_7_var_Children in CBP custody,0.0016487053192918806,528
+Children discharged from HHS Care,random_forest,14,rolling_7_nobs_Children in CBP custody,0.0,528
+Children discharged from HHS Care,random_forest,14,rolling_14_mean_Children in CBP custody,0.012640305048898482,528
+Children discharged from HHS Care,random_forest,14,rolling_14_var_Children in CBP custody,0.008688318827944528,528
+Children discharged from HHS Care,random_forest,14,rolling_14_nobs_Children in CBP custody,0.0,528
+Children discharged from HHS Care,random_forest,14,rolling_7_mean_Children transferred out of CBP custody,0.024383192543666988,528
+Children discharged from HHS Care,random_forest,14,rolling_7_var_Children transferred out of CBP custody,0.003619387868071998,528
+Children discharged from HHS Care,random_forest,14,rolling_7_nobs_Children transferred out of CBP custody,0.0001303381840797061,528
+Children discharged from HHS Care,random_forest,14,rolling_14_mean_Children transferred out of CBP custody,0.02838408750340861,528
+Children discharged from HHS Care,random_forest,14,rolling_14_var_Children transferred out of CBP custody,0.0073624164487624336,528
+Children discharged from HHS Care,random_forest,14,rolling_14_nobs_Children transferred out of CBP custody,0.00016045439819077802,528
+Children discharged from HHS Care,random_forest,14,rolling_7_mean_Children in HHS Care,0.11300435583439125,528
+Children discharged from HHS Care,random_forest,14,rolling_7_var_Children in HHS Care,0.005061657131154136,528
+Children discharged from HHS Care,random_forest,14,rolling_7_nobs_Children in HHS Care,0.0,528
+Children discharged from HHS Care,random_forest,14,rolling_14_mean_Children in HHS Care,0.08142411871747403,528
+Children discharged from HHS Care,random_forest,14,rolling_14_var_Children in HHS Care,0.0027068574660857564,528
+Children discharged from HHS Care,random_forest,14,rolling_14_nobs_Children in HHS Care,0.0,528
+Children discharged from HHS Care,random_forest,14,rolling_7_mean_Children discharged from HHS Care,0.06896633305271266,528
+Children discharged from HHS Care,random_forest,14,rolling_7_var_Children discharged from HHS Care,0.008376126426216102,528
+Children discharged from HHS Care,random_forest,14,rolling_7_nobs_Children discharged from HHS Care,7.700661299185132e-05,528
+Children discharged from HHS Care,random_forest,14,rolling_14_mean_Children discharged from HHS Care,0.04968201287792547,528
+Children discharged from HHS Care,random_forest,14,rolling_14_var_Children discharged from HHS Care,0.007713386163070721,528
+Children discharged from HHS Care,random_forest,14,rolling_14_nobs_Children discharged from HHS Care,0.0002142481310496744,528
+Children discharged from HHS Care,random_forest,14,rolling_7_mean_net_flow,0.009761208269533639,528
+Children discharged from HHS Care,random_forest,14,rolling_7_var_net_flow,0.0023224385711912154,528
+Children discharged from HHS Care,random_forest,14,rolling_7_nobs_net_flow,9.741086297202814e-05,528
+Children discharged from HHS Care,random_forest,14,rolling_14_mean_net_flow,0.010431591984869511,528
+Children discharged from HHS Care,random_forest,14,rolling_14_var_net_flow,0.004195694720379097,528
+Children discharged from HHS Care,random_forest,14,rolling_14_nobs_net_flow,0.0003124724054627121,528
+Children discharged from HHS Care,random_forest,1,day_of_week,0.009004697549122975,538
+Children discharged from HHS Care,random_forest,1,month,0.003451295695089181,538
+Children discharged from HHS Care,random_forest,1,is_near_holiday,6.698211035542875e-05,538
+Children discharged from HHS Care,random_forest,1,lag_1_Children apprehended and placed in CBP custody*,0.04172175847716181,538
+Children discharged from HHS Care,random_forest,1,lag_7_Children apprehended and placed in CBP custody*,0.0036869166620656416,538
+Children discharged from HHS Care,random_forest,1,lag_14_Children apprehended and placed in CBP custody*,0.001363096836025908,538
+Children discharged from HHS Care,random_forest,1,lag_1_Children in CBP custody,0.012856992087464731,538
+Children discharged from HHS Care,random_forest,1,lag_7_Children in CBP custody,0.0014924521514522325,538
+Children discharged from HHS Care,random_forest,1,lag_14_Children in CBP custody,0.002008125616866303,538
+Children discharged from HHS Care,random_forest,1,lag_1_Children transferred out of CBP custody,0.0183958838589969,538
+Children discharged from HHS Care,random_forest,1,lag_7_Children transferred out of CBP custody,0.003537103820976387,538
+Children discharged from HHS Care,random_forest,1,lag_14_Children transferred out of CBP custody,0.0023250465301539376,538
+Children discharged from HHS Care,random_forest,1,lag_1_Children in HHS Care,0.10323831396824366,538
+Children discharged from HHS Care,random_forest,1,lag_7_Children in HHS Care,0.09560808796194283,538
+Children discharged from HHS Care,random_forest,1,lag_14_Children in HHS Care,0.055717342188188,538
+Children discharged from HHS Care,random_forest,1,lag_1_Children discharged from HHS Care,0.019248597831417396,538
+Children discharged from HHS Care,random_forest,1,lag_7_Children discharged from HHS Care,0.018382858979886767,538
+Children discharged from HHS Care,random_forest,1,lag_14_Children discharged from HHS Care,0.05191406254831859,538
+Children discharged from HHS Care,random_forest,1,lag_1_net_flow,0.003350431132250203,538
+Children discharged from HHS Care,random_forest,1,lag_7_net_flow,0.004735360159764161,538
+Children discharged from HHS Care,random_forest,1,lag_14_net_flow,0.014805430827895896,538
+Children discharged from HHS Care,random_forest,1,rolling_7_mean_Children apprehended and placed in CBP custody*,0.012291641428043178,538
+Children discharged from HHS Care,random_forest,1,rolling_7_var_Children apprehended and placed in CBP custody*,0.027620103147530356,538
+Children discharged from HHS Care,random_forest,1,rolling_7_nobs_Children apprehended and placed in CBP custody*,7.859966384915005e-05,538
+Children discharged from HHS Care,random_forest,1,rolling_14_mean_Children apprehended and placed in CBP custody*,0.008504737280976251,538
+Children discharged from HHS Care,random_forest,1,rolling_14_var_Children apprehended and placed in CBP custody*,0.005695885708592595,538
+Children discharged from HHS Care,random_forest,1,rolling_14_nobs_Children apprehended and placed in CBP custody*,8.936042110585414e-05,538
+Children discharged from HHS Care,random_forest,1,rolling_7_mean_Children in CBP custody,0.02308606178637248,538
+Children discharged from HHS Care,random_forest,1,rolling_7_var_Children in CBP custody,0.0008835503573437772,538
+Children discharged from HHS Care,random_forest,1,rolling_7_nobs_Children in CBP custody,0.0,538
+Children discharged from HHS Care,random_forest,1,rolling_14_mean_Children in CBP custody,0.006724996956474367,538
+Children discharged from HHS Care,random_forest,1,rolling_14_var_Children in CBP custody,0.01901799908210065,538
+Children discharged from HHS Care,random_forest,1,rolling_14_nobs_Children in CBP custody,0.0,538
+Children discharged from HHS Care,random_forest,1,rolling_7_mean_Children transferred out of CBP custody,0.04649897217943464,538
+Children discharged from HHS Care,random_forest,1,rolling_7_var_Children transferred out of CBP custody,0.00581651420469005,538
+Children discharged from HHS Care,random_forest,1,rolling_7_nobs_Children transferred out of CBP custody,0.00013527531497952548,538
+Children discharged from HHS Care,random_forest,1,rolling_14_mean_Children transferred out of CBP custody,0.017662145466457113,538
+Children discharged from HHS Care,random_forest,1,rolling_14_var_Children transferred out of CBP custody,0.0061640606050585075,538
+Children discharged from HHS Care,random_forest,1,rolling_14_nobs_Children transferred out of CBP custody,0.00017629383914321954,538
+Children discharged from HHS Care,random_forest,1,rolling_7_mean_Children in HHS Care,0.10875448429602466,538
+Children discharged from HHS Care,random_forest,1,rolling_7_var_Children in HHS Care,0.001582739266471187,538
+Children discharged from HHS Care,random_forest,1,rolling_7_nobs_Children in HHS Care,0.0,538
+Children discharged from HHS Care,random_forest,1,rolling_14_mean_Children in HHS Care,0.09210724989855079,538
+Children discharged from HHS Care,random_forest,1,rolling_14_var_Children in HHS Care,0.0017894550847130906,538
+Children discharged from HHS Care,random_forest,1,rolling_14_nobs_Children in HHS Care,0.0,538
+Children discharged from HHS Care,random_forest,1,rolling_7_mean_Children discharged from HHS Care,0.04051936475527625,538
+Children discharged from HHS Care,random_forest,1,rolling_7_var_Children discharged from HHS Care,0.005960901604863121,538
+Children discharged from HHS Care,random_forest,1,rolling_7_nobs_Children discharged from HHS Care,9.034711633868018e-05,538
+Children discharged from HHS Care,random_forest,1,rolling_14_mean_Children discharged from HHS Care,0.06260722893916074,538
+Children discharged from HHS Care,random_forest,1,rolling_14_var_Children discharged from HHS Care,0.00814856045614857,538
+Children discharged from HHS Care,random_forest,1,rolling_14_nobs_Children discharged from HHS Care,0.00011340300670094012,538
+Children discharged from HHS Care,random_forest,1,rolling_7_mean_net_flow,0.008564258364536984,538
+Children discharged from HHS Care,random_forest,1,rolling_7_var_net_flow,0.0032396371729433568,538
+Children discharged from HHS Care,random_forest,1,rolling_7_nobs_net_flow,0.00010325729597623249,538
+Children discharged from HHS Care,random_forest,1,rolling_14_mean_net_flow,0.013063254909789289,538
+Children discharged from HHS Care,random_forest,1,rolling_14_var_net_flow,0.005893525904162586,538
+Children discharged from HHS Care,random_forest,1,rolling_14_nobs_net_flow,0.00010529749255275862,538
+Children discharged from HHS Care,random_forest,7,day_of_week,0.020423603854236867,531
+Children discharged from HHS Care,random_forest,7,month,0.008255108475004219,531
+Children discharged from HHS Care,random_forest,7,is_near_holiday,7.241795218398824e-05,531
+Children discharged from HHS Care,random_forest,7,lag_1_Children apprehended and placed in CBP custody*,0.028105377294790092,531
+Children discharged from HHS Care,random_forest,7,lag_7_Children apprehended and placed in CBP custody*,0.0014066877312405618,531
+Children discharged from HHS Care,random_forest,7,lag_14_Children apprehended and placed in CBP custody*,0.0019499744307027189,531
+Children discharged from HHS Care,random_forest,7,lag_1_Children in CBP custody,0.021994063463397533,531
+Children discharged from HHS Care,random_forest,7,lag_7_Children in CBP custody,0.002541141403858998,531
+Children discharged from HHS Care,random_forest,7,lag_14_Children in CBP custody,0.002361752303490917,531
+Children discharged from HHS Care,random_forest,7,lag_1_Children transferred out of CBP custody,0.023214337800672086,531
+Children discharged from HHS Care,random_forest,7,lag_7_Children transferred out of CBP custody,0.003590592419072287,531
+Children discharged from HHS Care,random_forest,7,lag_14_Children transferred out of CBP custody,0.002612500147924842,531
+Children discharged from HHS Care,random_forest,7,lag_1_Children in HHS Care,0.11829851198734359,531
+Children discharged from HHS Care,random_forest,7,lag_7_Children in HHS Care,0.0746589071373185,531
+Children discharged from HHS Care,random_forest,7,lag_14_Children in HHS Care,0.057964061202905856,531
+Children discharged from HHS Care,random_forest,7,lag_1_Children discharged from HHS Care,0.027674049289274062,531
+Children discharged from HHS Care,random_forest,7,lag_7_Children discharged from HHS Care,0.022235262392063065,531
+Children discharged from HHS Care,random_forest,7,lag_14_Children discharged from HHS Care,0.010679163299083977,531
+Children discharged from HHS Care,random_forest,7,lag_1_net_flow,0.004677333688753158,531
+Children discharged from HHS Care,random_forest,7,lag_7_net_flow,0.004902975396570675,531
+Children discharged from HHS Care,random_forest,7,lag_14_net_flow,0.004276146762574946,531
+Children discharged from HHS Care,random_forest,7,rolling_7_mean_Children apprehended and placed in CBP custody*,0.019467548407853832,531
+Children discharged from HHS Care,random_forest,7,rolling_7_var_Children apprehended and placed in CBP custody*,0.01958392520246542,531
+Children discharged from HHS Care,random_forest,7,rolling_7_nobs_Children apprehended and placed in CBP custody*,9.197239883256564e-05,531
+Children discharged from HHS Care,random_forest,7,rolling_14_mean_Children apprehended and placed in CBP custody*,0.006646071869653817,531
+Children discharged from HHS Care,random_forest,7,rolling_14_var_Children apprehended and placed in CBP custody*,0.001573062743937735,531
+Children discharged from HHS Care,random_forest,7,rolling_14_nobs_Children apprehended and placed in CBP custody*,0.00041084323127265455,531
+Children discharged from HHS Care,random_forest,7,rolling_7_mean_Children in CBP custody,0.01972733609282714,531
+Children discharged from HHS Care,random_forest,7,rolling_7_var_Children in CBP custody,0.0016084272511790565,531
+Children discharged from HHS Care,random_forest,7,rolling_7_nobs_Children in CBP custody,0.0,531
+Children discharged from HHS Care,random_forest,7,rolling_14_mean_Children in CBP custody,0.015854697283544127,531
+Children discharged from HHS Care,random_forest,7,rolling_14_var_Children in CBP custody,0.012221598356387642,531
+Children discharged from HHS Care,random_forest,7,rolling_14_nobs_Children in CBP custody,0.0,531
+Children discharged from HHS Care,random_forest,7,rolling_7_mean_Children transferred out of CBP custody,0.04037223770292943,531
+Children discharged from HHS Care,random_forest,7,rolling_7_var_Children transferred out of CBP custody,0.017022228343424074,531
+Children discharged from HHS Care,random_forest,7,rolling_7_nobs_Children transferred out of CBP custody,7.127637775755016e-05,531
+Children discharged from HHS Care,random_forest,7,rolling_14_mean_Children transferred out of CBP custody,0.015577934383269843,531
+Children discharged from HHS Care,random_forest,7,rolling_14_var_Children transferred out of CBP custody,0.004321842734685479,531
+Children discharged from HHS Care,random_forest,7,rolling_14_nobs_Children transferred out of CBP custody,0.0003053880300500895,531
+Children discharged from HHS Care,random_forest,7,rolling_7_mean_Children in HHS Care,0.1213483605553315,531
+Children discharged from HHS Care,random_forest,7,rolling_7_var_Children in HHS Care,0.0037580263557095033,531
+Children discharged from HHS Care,random_forest,7,rolling_7_nobs_Children in HHS Care,0.0,531
+Children discharged from HHS Care,random_forest,7,rolling_14_mean_Children in HHS Care,0.08495204514660964,531
+Children discharged from HHS Care,random_forest,7,rolling_14_var_Children in HHS Care,0.002940406149476956,531
+Children discharged from HHS Care,random_forest,7,rolling_14_nobs_Children in HHS Care,0.0,531
+Children discharged from HHS Care,random_forest,7,rolling_7_mean_Children discharged from HHS Care,0.06153092258560108,531
+Children discharged from HHS Care,random_forest,7,rolling_7_var_Children discharged from HHS Care,0.008011326569446739,531
+Children discharged from HHS Care,random_forest,7,rolling_7_nobs_Children discharged from HHS Care,9.925649753198638e-05,531
+Children discharged from HHS Care,random_forest,7,rolling_14_mean_Children discharged from HHS Care,0.0643650759964122,531
+Children discharged from HHS Care,random_forest,7,rolling_14_var_Children discharged from HHS Care,0.012113295601505545,531
+Children discharged from HHS Care,random_forest,7,rolling_14_nobs_Children discharged from HHS Care,0.00022927878620666867,531
+Children discharged from HHS Care,random_forest,7,rolling_7_mean_net_flow,0.006986516551083489,531
+Children discharged from HHS Care,random_forest,7,rolling_7_var_net_flow,0.0025428615317291937,531
+Children discharged from HHS Care,random_forest,7,rolling_7_nobs_net_flow,8.928384702803044e-05,531
+Children discharged from HHS Care,random_forest,7,rolling_14_mean_net_flow,0.011023739135310923,531
+Children discharged from HHS Care,random_forest,7,rolling_14_var_net_flow,0.0030050366445710996,531
+Children discharged from HHS Care,random_forest,7,rolling_14_nobs_net_flow,0.0002542092039120699,531
